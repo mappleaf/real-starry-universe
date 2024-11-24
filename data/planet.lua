@@ -92,6 +92,28 @@ local planets = {
     },
     {
         type = "planet",
+        name = "asteroid-belt-inner",
+        -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
+        icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
+        icon_size = 512,
+        -- starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Again, there is no image for asteroid-belt-inner.
+        starmap_icon = "__real-starry-universe__/graphics/jupiter.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
+        starmap_icon_size = 512,
+        gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
+        distance = 40.5, -- 2.7 AU (centre of the asteroid belt)
+        orientation = 0.4,
+        magnitude = 1,
+        map_gen_settings = planet_map_gen.asteroid_belt-1(),
+        surface_properties = {
+            -- Inner Asteroid Belt (Between Mars and Jupiter)
+            ["day-night-cycle"] = 0.37681889586 * day,  -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
+            ["magnetic-field"] = 0,        -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
+            ["solar-power"] = 13.717,             -- Percentage of solar power compared to that on earth? Seems to fit with the data of jupiter and mars, being about in between.
+            pressure = 0,              -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
+            gravity = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
+    }
+    {
+        type = "planet",
         name = "jupiter", -- 木星
         icon = "__real-starry-universe__/graphics/jupiter.png",
         icon_size = 512,
@@ -283,11 +305,26 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "mars-jupiter", -- 火星到木星
+        name = "mars-asteroid-belt-inner", -- Mars to the inner asteroid belt
         subgroup = "planet-connections",
         from = "mars",
+        to = "asteroid-belt-inner",
+        order = "d[mars]-e[asteroid-belt-inner]",
+        length = 55.0,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.1 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "asteroid-belt-inner-jupiter", -- The inner asteroid belt to jupiter.
+        subgroup = "planet-connections",
+        from = "asteroid-belt-inner",
         to = "jupiter",
-        order = "d[mars]-e[jupiter]",
+        order = "d[asteroid-belt-inner]-e[jupiter]",
         length = 55.0,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
