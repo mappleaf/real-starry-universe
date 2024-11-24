@@ -1,5 +1,6 @@
 local effects = require("__core__.lualib.surface-render-parameter-effects")
-local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
+local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions") -- The original asteroid spawn definitions from Space Age. Should be replaced as soon as possible to allow custom spawn definitions.
+-- local asteroid_util = require("asteroid_definitions.asteroid_util") -- New asteroid spawn definitions for when there's new definitions. It isn't ready yet.
 local planet_catalogue_gleba = require("__space-age__.prototypes.planet.procession-catalogue-gleba")
 
 local planet_map_gen = require("data.planet-map-gen")
@@ -415,22 +416,23 @@ end
 data:extend(space_connections)
 
 local planets = {
-    { "mercury", "水星", "planet-discovery-neptune" },
-    { "venus", "金星", "planet-discovery-mercury" },
-    { "earth", "地球", "" },
-    { "mars", "火星", "planet-discovery-earth" },
-    { "luna", "月球", "planet-discovery-earth" },
-    { "jupiter", "木星", "planet-discovery-mars" },
-    { "saturn", "土星", "planet-discovery-jupiter" },
-    { "uranus", "天王星", "planet-discovery-saturn" },
-    { "neptune", "海王星", "planet-discovery-uranus" },
-    { "pluto", "冥王星", "planet-discovery-neptune" }
+    { "mercury", "水星", {"planet-discovery-venus", "space-platform-thruster"} },
+    { "venus", "金星", {"planet-discovery-luna", "space-platform-thruster"} },
+    { "earth", "地球", {"space-platform-thruster"} },
+    { "luna", "月球", {"planet-discovery-earth", "space-platform-thruster"} },
+    { "mars", "火星", {"planet-discovery-luna", "space-platform-thruster"} },
+    { "inner-asteroid-belt", "内小行星带", {"planet-discovery-mars", "space-platform-thruster"} },
+    { "jupiter", "木星", {"planet-discovery-inner-asteroid-belt", "space-platform-thruster"} },
+    { "saturn", "土星", {"planet-discovery-jupiter", "space-platform-thruster"} },
+    { "uranus", "天王星", {"planet-discovery-saturn", "space-platform-thruster"} },
+    { "neptune", "海王星", {"planet-discovery-uranus", "space-platform-thruster"} },
+    { "pluto", "冥王星", {"planet-discovery-neptune", "space-platform-thruster"} }
 }
 
 for i, planet in ipairs(planets) do
     local planet_name = planet[1]
     local planet_description = planet[2]
-    local prerequisite = planet[3]
+    local prerequisites = planet[3]
 
     data:extend({
         {
@@ -446,7 +448,7 @@ for i, planet in ipairs(planets) do
                     use_icon_overlay_constant = true
                 }
             },
-            prerequisites = prerequisite ~= "" and { prerequisite } or {},
+            prerequisites = prerequisites,
             unit = {
                 count = 10,
                 ingredients = {
