@@ -146,6 +146,27 @@ function MapGen.asteroid_belt_1()
     return map_gen_setting
 end
 
+function MapGen.ceres()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.hygiea()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.pallas()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.vesta()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 -- 木星：没有固态表面，仅供空间资源探索
 -- 木星：气态巨星，特殊大气采集站
 function MapGen.jupiter()
