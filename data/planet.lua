@@ -16,7 +16,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 3.7, -- 水星表面重力 (相对值)
         distance = 5.8, -- 距离星系中心 以15为一个AU，约 0.39 AU
-        orientation = 0.1, -- 与星系中心角度
+        orientation = 40 / 360, -- 与星系中心角度
         magnitude = 0.383, -- Mercury (水星)
         map_gen_settings = planet_map_gen.mercury(),
         surface_properties = {
@@ -37,7 +37,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 8.87,
         distance = 10.8, -- 0.72 AU
-        orientation = 0.2,
+        orientation = 80 / 360,
         magnitude = 0.949, -- Venus (金星)
         map_gen_settings = planet_map_gen.venus(),
         surface_properties = {
@@ -58,7 +58,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 9.8,
         distance = 15, -- 1 AU
-        orientation = 0.315,
+        orientation = 120 / 360,
         magnitude = 1,
         map_gen_settings = planet_map_gen.normal(),
         surface_properties = {
@@ -100,7 +100,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 3.71,
         distance = 22.8, -- 1.52 AU
-        orientation = 0.35,
+        orientation = 160 / 360,
         magnitude = 0.532, -- Mars (火星)
         map_gen_settings = planet_map_gen.mars(),
         surface_properties = {
@@ -122,6 +122,7 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/jupiter.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
         starmap_icon_size = 512,
         gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
+
         distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
         orientation = 185 / 360,
         magnitude = 1,
@@ -137,14 +138,101 @@ local planets = {
     },
     {
         type = "planet",
+        name = "ceres", -- 谷神星
+        icon = "__real-starry-universe__/graphics/ceres.png",
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/ceres.png",
+        starmap_icon_size = 512,
+        gravity_pull = 0.028,
+        distance = 27, -- 2.77 AU
+        orientation = 210 / 360,
+        magnitude = 0.22, -- Ceres (谷神星)
+        map_gen_settings = planet_map_gen.ceres(),
+        surface_properties = {
+            -- Ceres (谷神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 谷神星昼夜周期：约9小时
+            ["magnetic-field"] = 0, -- 谷神星几乎没有磁场
+            ["solar-power"] = 13.717, -- 太阳能效率较低
+            pressure = 0, -- 大气压为零
+            gravity = 0.028, -- 重力极低
+        },
+    },
+
+    {
+        type = "planet",
+        name = "vesta", -- 灶神星
+        icon = "__real-starry-universe__/graphics/vesta.png",
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/vesta.png",
+        starmap_icon_size = 512,
+        gravity_pull = 0.025,
+        distance = 27, -- 2.36 AU
+        orientation = 240 / 360,
+        magnitude = 0.2, -- Vesta (灶神星)
+        map_gen_settings = planet_map_gen.vesta(),
+        surface_properties = {
+            -- Vesta (灶神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 灶神星昼夜周期：约5.3小时
+            ["magnetic-field"] = 0, -- 灶神星几乎没有磁场
+            ["solar-power"] = 13.717, -- 太阳能效率较低
+            pressure = 0, -- 大气压为零
+            gravity = 0.025, -- 重力极低
+        },
+    },
+
+    {
+        type = "planet",
+        name = "pallas", -- 智神星
+        icon = "__real-starry-universe__/graphics/pallas.png",
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/pallas.png",
+        starmap_icon_size = 512,
+        gravity_pull = 0.020,
+        distance = 27, -- 2.77 AU
+        orientation = 270 / 360,
+        magnitude = 0.2, -- Pallas (智神星)
+        map_gen_settings = planet_map_gen.pallas(),
+        surface_properties = {
+            -- Pallas (智神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 智神星昼夜周期：约7.8小时
+            ["magnetic-field"] = 0, -- 智神星几乎没有磁场
+            ["solar-power"] = 13.717, -- 太阳能效率较低
+            pressure = 0, -- 大气压为零
+            gravity = 0.020, -- 重力极低
+        },
+    },
+
+    {
+        type = "planet",
+        name = "hygiea", -- 健神星
+        icon = "__real-starry-universe__/graphics/hygiea.png",
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/hygiea.png",
+        starmap_icon_size = 512,
+        gravity_pull = 0.005,
+        distance = 27, -- 3.14 AU
+        orientation = 310 / 360,
+        magnitude = 0.2, -- Hygiea (健神星)
+        map_gen_settings = planet_map_gen.hygiea(),
+        surface_properties = {
+            -- Hygiea (健神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 健神星昼夜周期：约13小时
+            ["magnetic-field"] = 0, -- 健神星几乎没有磁场
+            ["solar-power"] = 13.717, -- 太阳能效率较低
+            pressure = 0, -- 大气压为零
+            gravity = 0.005, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
         name = "jupiter", -- 木星
         icon = "__real-starry-universe__/graphics/jupiter.png",
         icon_size = 512,
         starmap_icon = "__real-starry-universe__/graphics/jupiter.png",
         starmap_icon_size = 512,
         gravity_pull = 24.79,
-        distance = 77.8, -- 5.2 AU
-        orientation = 0.45,
+        distance = 77.8 / 2, -- 5.2 AU
+        orientation = 240 / 360,
         magnitude = 11.209, -- Jupiter (木星)
         map_gen_settings = planet_map_gen.jupiter(),
         surface_properties = {
@@ -164,8 +252,8 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/saturn.png",
         starmap_icon_size = 512,
         gravity_pull = 10.44,
-        distance = 143.3, -- 9.58 AU
-        orientation = 0.55,
+        distance = 143.3 / 3, -- 9.58 AU
+        orientation = 280 / 360,
         magnitude = 9.449, -- Saturn (土星)
         map_gen_settings = planet_map_gen.saturn(),
         surface_properties = {
@@ -185,8 +273,8 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/uranus.png",
         starmap_icon_size = 512,
         gravity_pull = 8.87,
-        distance = 287.7, -- 19.22 AU
-        orientation = 0.7,
+        distance = 287.7 / 4.5, -- 19.22 AU
+        orientation = 320 / 360,
         magnitude = 4.007, -- Uranus (天王星)
         map_gen_settings = planet_map_gen.uranus(),
         surface_properties = {
@@ -206,8 +294,8 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/neptune.png",
         starmap_icon_size = 512,
         gravity_pull = 11.15,
-        distance = 450.3, -- 30.05 AU
-        orientation = 0.85,
+        distance = 450.3 / 5, -- 30.05 AU
+        orientation = 355 / 360,
         magnitude = 3.883, -- Neptune (海王星)
         map_gen_settings = planet_map_gen.neptune(),
         surface_properties = {
@@ -227,9 +315,9 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/pluto.png",
         starmap_icon_size = 512,
         gravity_pull = 0.62,
-        distance = 592, -- 39.52 AU
-        orientation = 0.8,
-        magnitude = 0.186, -- Pluto (冥王星)
+        distance = 592 / 6, -- 39.52 AU
+        orientation = 0.97,
+        magnitude = 45 / 360, -- Pluto (冥王星)
         map_gen_settings = planet_map_gen.pluto(),
         surface_properties = {
             -- Pluto (冥王星)
@@ -267,6 +355,7 @@ local planets = {
 
 data:extend(planets)
 
+--https://lua-api.factorio.com/latest/prototypes/SpaceConnectionPrototype.html
 local space_connections = {
     {
         type = "space-connection",
@@ -357,6 +446,67 @@ local space_connections = {
             particle_color = { r = 0.6, g = 0.5, b = 0.2 }
         }
     },
+
+    {
+        type = "space-connection",
+        name = "asteroid-belt-inner-ceres", -- 小行星带内侧到谷神星
+        subgroup = "planet-connections",
+        from = "asteroid-belt-inner",
+        to = "ceres",
+        order = "d[asteroid-belt-inner]-e[ceres]",
+        length = 3.0, -- 小行星带内侧到谷神星的距离，比例单位
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.1, g = 0.1, b = 0.2 },
+            particle_color = { r = 0.8, g = 0.6, b = 0.4 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "ceres-vesta", -- 谷神星到灶神星
+        subgroup = "planet-connections",
+        from = "ceres",
+        to = "vesta",
+        order = "e[ceres]-f[vesta]",
+        length = 2.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.1, g = 0.2, b = 0.3 },
+            particle_color = { r = 0.7, g = 0.8, b = 0.5 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "vesta-pallas", -- 灶神星到智神星
+        subgroup = "planet-connections",
+        from = "vesta",
+        to = "pallas",
+        order = "f[vesta]-g[pallas]",
+        length = 2.8,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.2, b = 0.3 },
+            particle_color = { r = 0.6, g = 0.7, b = 0.6 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "pallas-hygiea", -- 智神星到健神星
+        subgroup = "planet-connections",
+        from = "pallas",
+        to = "hygiea",
+        order = "g[pallas]-h[hygiea]",
+        length = 3.2,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.3, b = 0.4 },
+            particle_color = { r = 0.5, g = 0.6, b = 0.7 }
+        }
+    },
+
     {
         type = "space-connection",
         name = "asteroid-belt-inner-jupiter", -- The inner asteroid belt to jupiter.
@@ -424,6 +574,9 @@ local space_connections = {
         from = "neptune",
         to = "asteroid-belt-outer",
         order = "i[neptune]-j[asteroid-belt-outer]",
+        from = "pluto",
+        to = "neptune",
+        order = "i",
         length = 300,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
@@ -516,24 +669,29 @@ for _, planet in ipairs(planets) do
     local planet_name = planet[1]
     -- 为每个星球添加自动放置控制
 
-    for _, item in ipairs(kuang) do
-        local autoplace_control_name = item[1]
-        -- 为每个星球添加自动放置控制
-        data.raw.planet[planet_name].map_gen_settings.autoplace_controls[autoplace_control_name] = {
-            order = "a[" .. autoplace_control_name .. "]",
-            frequency = 1,
-            size = 1,
-            richness = 1,
-            distribution = "uniform",
-            starting_area_size = 1,
-            starting_area_order = "a[ore]",
-            has_starting_area = false
-        }
-        -- 为每个星球添加自动放置设置
-        data.raw.planet[planet_name].map_gen_settings.autoplace_settings.entity.settings[autoplace_control_name] = {
-            name = autoplace_control_name,
-            minimum_required = 0,
-            maximum = 10
-        }
+
+    if data.raw.planet[planet_name] then
+
+
+        for _, item in ipairs(kuang) do
+            local autoplace_control_name = item[1]
+            -- 为每个星球添加自动放置控制
+            data.raw.planet[planet_name].map_gen_settings.autoplace_controls[autoplace_control_name] = {
+                order = "a[" .. autoplace_control_name .. "]",
+                frequency = 1,
+                size = 1,
+                richness = 1,
+                distribution = "uniform",
+                starting_area_size = 1,
+                starting_area_order = "a[ore]",
+                has_starting_area = false
+            }
+            -- 为每个星球添加自动放置设置
+            data.raw.planet[planet_name].map_gen_settings.autoplace_settings.entity.settings[autoplace_control_name] = {
+                name = autoplace_control_name,
+                minimum_required = 0,
+                maximum = 10
+            }
+        end
     end
 end
