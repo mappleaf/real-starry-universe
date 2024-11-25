@@ -1,4 +1,4 @@
--- An example file of what the planet and moon specific lua scripts should look like.
+-- An example file of what the planet and moon specific lua scripts should look like. This is not and should not be included in star systems, but could be copied for other planets and moons.
 local ExampleDefinitions = {} -- An empty table which will contain all data referencing this planet directly.
 ExampleDefinitions.name = "example" -- The name of the planet or moon this file defines the asteroid data for. Here it's just "example".
 ExampleDefinitions.inner = {} -- This shouldn't be empty, but contain about half of the definition between a planet and the planet closer to the star it orbits, if any. This only affects planets.
