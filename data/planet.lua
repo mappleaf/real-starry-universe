@@ -21,11 +21,11 @@ local planets = {
         map_gen_settings = planet_map_gen.mercury(),
         surface_properties = {
             -- Mercury (水星)
-            ["day-night-cycle"] = 58.7 * day,  -- 水星昼夜周期：58.7个地球日
-            ["magnetic-field"] = 1,            -- 极弱的磁场
-            ["solar-power"] = 500,             -- 接收太阳能最多
-            pressure = 0,                      -- 无明显大气压
-            gravity = 3.7,                     -- 重力较小
+            ["day-night-cycle"] = 58.7 * day, -- 水星昼夜周期：58.7个地球日
+            ["magnetic-field"] = 1, -- 极弱的磁场
+            ["solar-power"] = 500, -- 接收太阳能最多
+            pressure = 0, -- 无明显大气压
+            gravity = 3.7, -- 重力较小
         },
     },
     {
@@ -42,11 +42,11 @@ local planets = {
         map_gen_settings = planet_map_gen.venus(),
         surface_properties = {
             -- Venus (金星)
-            ["day-night-cycle"] = 243 * day,   -- 金星昼夜周期：243个地球日
-            ["magnetic-field"] = 1,            -- 几乎无磁场
-            ["solar-power"] = 90,              -- 高温和厚大气层影响太阳能
-            pressure = 920000,                 -- 极高的大气压（单位：Pa）
-            gravity = 8.87,                    -- 类似于地球的重力
+            ["day-night-cycle"] = 243 * day, -- 金星昼夜周期：243个地球日
+            ["magnetic-field"] = 1, -- 几乎无磁场
+            ["solar-power"] = 90, -- 高温和厚大气层影响太阳能
+            pressure = 920000, -- 极高的大气压（单位：Pa）
+            gravity = 8.87, -- 类似于地球的重力
         },
     },
     {
@@ -63,11 +63,11 @@ local planets = {
         map_gen_settings = planet_map_gen.normal(),
         surface_properties = {
             -- Earth (地球)
-            ["day-night-cycle"] = 1 * day,     -- 地球昼夜周期：1个地球日
-            ["magnetic-field"] = 100,          -- 强磁场保护
-            ["solar-power"] = 100,             -- 标准太阳能基准
-            pressure = 1000,                   -- 1个大气压
-            gravity = 9.8,                     -- 地球重力
+            ["day-night-cycle"] = 1 * day, -- 地球昼夜周期：1个地球日
+            ["magnetic-field"] = 100, -- 强磁场保护
+            ["solar-power"] = 100, -- 标准太阳能基准
+            pressure = 1000, -- 1个大气压
+            gravity = 9.8, -- 地球重力
         },
     },
     {
@@ -84,11 +84,11 @@ local planets = {
         map_gen_settings = planet_map_gen.mars(),
         surface_properties = {
             -- Mars (火星)
-            ["day-night-cycle"] = 1.03 * day,  -- 火星昼夜周期：接近地球
-            ["magnetic-field"] = 1,            -- 几乎无磁场
-            ["solar-power"] = 43,              -- 较远离太阳，太阳能效率低
-            pressure = 6,                      -- 极低的大气压（单位：Pa）
-            gravity = 3.71,                    -- 重力较低
+            ["day-night-cycle"] = 1.03 * day, -- 火星昼夜周期：接近地球
+            ["magnetic-field"] = 1, -- 几乎无磁场
+            ["solar-power"] = 43, -- 较远离太阳，太阳能效率低
+            pressure = 6, -- 极低的大气压（单位：Pa）
+            gravity = 3.71, -- 重力较低
         },
     },
     {
@@ -104,15 +104,16 @@ local planets = {
         distance = 40.5, -- 2.7 AU (centre of the asteroid belt)
         orientation = 0.4,
         magnitude = 1,
-        map_gen_settings = planet_map_gen.asteroid_belt-1(),
+        map_gen_settings = planet_map_gen.asteroid_belt_1(),
         surface_properties = {
             -- Inner Asteroid Belt (Between Mars and Jupiter)
-            ["day-night-cycle"] = 0.37681889586 * day,  -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
-            ["magnetic-field"] = 0,        -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
-            ["solar-power"] = 13.717,             -- Percentage of solar power compared to that on earth? Seems to fit with the data of jupiter and mars, being about in between.
-            pressure = 0,              -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
+            ["day-night-cycle"] = 0.37681889586 * day, -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
+            ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
+            ["solar-power"] = 13.717, -- Percentage of solar power compared to that on earth? Seems to fit with the data of jupiter and mars, being about in between.
+            pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
             gravity = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
-    }
+        },
+    },
     {
         type = "planet",
         name = "jupiter", -- 木星
@@ -127,11 +128,11 @@ local planets = {
         map_gen_settings = planet_map_gen.jupiter(),
         surface_properties = {
             -- Jupiter (木星)
-            ["day-night-cycle"] = 0.41 * day,  -- 木星昼夜周期：10小时
-            ["magnetic-field"] = 20000,        -- 极强磁场
-            ["solar-power"] = 3.7,             -- 距太阳远，太阳能效率非常低
-            pressure = 200000000,              -- 压力极高（单位：Pa）
-            gravity = 24.79,                   -- 极高重力
+            ["day-night-cycle"] = 0.41 * day, -- 木星昼夜周期：10小时
+            ["magnetic-field"] = 20000, -- 极强磁场
+            ["solar-power"] = 3.7, -- 距太阳远，太阳能效率非常低
+            pressure = 200000000, -- 压力极高（单位：Pa）
+            gravity = 24.79, -- 极高重力
         },
     },
     {
@@ -148,11 +149,11 @@ local planets = {
         map_gen_settings = planet_map_gen.saturn(),
         surface_properties = {
             -- Saturn (土星)
-            ["day-night-cycle"] = 0.45 * day,  -- 土星昼夜周期：10.7小时
-            ["magnetic-field"] = 580,          -- 中等磁场
-            ["solar-power"] = 1.1,             -- 远离太阳，效率极低
-            pressure = 100000000,              -- 大气压极高（单位：Pa）
-            gravity = 10.44,                   -- 类似木星的重力
+            ["day-night-cycle"] = 0.45 * day, -- 土星昼夜周期：10.7小时
+            ["magnetic-field"] = 580, -- 中等磁场
+            ["solar-power"] = 1.1, -- 远离太阳，效率极低
+            pressure = 100000000, -- 大气压极高（单位：Pa）
+            gravity = 10.44, -- 类似木星的重力
         },
     },
     {
@@ -169,11 +170,11 @@ local planets = {
         map_gen_settings = planet_map_gen.uranus(),
         surface_properties = {
             -- Uranus (天王星)
-            ["day-night-cycle"] = 0.72 * day,  -- 天王星昼夜周期：17小时
-            ["magnetic-field"] = 50,           -- 弱磁场
-            ["solar-power"] = 0.3,             -- 距太阳非常远
-            pressure = 80000000,               -- 大气压较高（单位：Pa）
-            gravity = 8.69,                    -- 类似地球的重力
+            ["day-night-cycle"] = 0.72 * day, -- 天王星昼夜周期：17小时
+            ["magnetic-field"] = 50, -- 弱磁场
+            ["solar-power"] = 0.3, -- 距太阳非常远
+            pressure = 80000000, -- 大气压较高（单位：Pa）
+            gravity = 8.69, -- 类似地球的重力
         },
     },
     {
@@ -190,11 +191,11 @@ local planets = {
         map_gen_settings = planet_map_gen.neptune(),
         surface_properties = {
             -- Neptune (海王星)
-            ["day-night-cycle"] = 0.67 * day,  -- 海王星昼夜周期：16小时
-            ["magnetic-field"] = 25,           -- 与地球相似的磁场
-            ["solar-power"] = 0.1,             -- 极低的太阳能
-            pressure = 90000000,               -- 高大气压（单位：Pa）
-            gravity = 11.15,                   -- 稍高于地球的重力
+            ["day-night-cycle"] = 0.67 * day, -- 海王星昼夜周期：16小时
+            ["magnetic-field"] = 25, -- 与地球相似的磁场
+            ["solar-power"] = 0.1, -- 极低的太阳能
+            pressure = 90000000, -- 高大气压（单位：Pa）
+            gravity = 11.15, -- 稍高于地球的重力
         },
     },
     {
@@ -211,11 +212,11 @@ local planets = {
         map_gen_settings = planet_map_gen.pluto(),
         surface_properties = {
             -- Pluto (冥王星)
-            ["day-night-cycle"] = 6.39 * day,  -- 冥王星昼夜周期：6.39个地球日
-            ["magnetic-field"] = 0,            -- 无磁场
-            ["solar-power"] = 0.05,            -- 几乎没有太阳能
-            pressure = 0.1,                      -- 极其稀薄的大气压
-            gravity = 0.62,                    -- 极低重力
+            ["day-night-cycle"] = 6.39 * day, -- 冥王星昼夜周期：6.39个地球日
+            ["magnetic-field"] = 0, -- 无磁场
+            ["solar-power"] = 0.05, -- 几乎没有太阳能
+            pressure = 0.1, -- 极其稀薄的大气压
+            gravity = 0.62, -- 极低重力
         },
     },
     {
@@ -232,11 +233,11 @@ local planets = {
         map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
         surface_properties = {
             -- Luna (月球)
-            ["day-night-cycle"] = 30 * day,  -- 月球昼夜周期：27.3个地球日
-            ["magnetic-field"] = 1,            -- 极弱磁场
-            ["solar-power"] = 136,             -- 太阳能较高
-            pressure = 0,                      -- 无大气
-            gravity = 1.62,                    -- 重力远小于地球
+            ["day-night-cycle"] = 30 * day, -- 月球昼夜周期：27.3个地球日
+            ["magnetic-field"] = 1, -- 极弱磁场
+            ["solar-power"] = 136, -- 太阳能较高
+            pressure = 0, -- 无大气
+            gravity = 1.62, -- 重力远小于地球
         },
     },
 }
@@ -416,17 +417,17 @@ end
 data:extend(space_connections)
 
 local planets = {
-    { "mercury", "水星", {"planet-discovery-venus", "space-platform-thruster"} },
-    { "venus", "金星", {"planet-discovery-luna", "space-platform-thruster"} },
-    { "earth", "地球", {"space-platform-thruster"} },
-    { "luna", "月球", {"planet-discovery-earth", "space-platform-thruster"} },
-    { "mars", "火星", {"planet-discovery-luna", "space-platform-thruster"} },
-    { "inner-asteroid-belt", "内小行星带", {"planet-discovery-mars", "space-platform-thruster"} },
-    { "jupiter", "木星", {"planet-discovery-inner-asteroid-belt", "space-platform-thruster"} },
-    { "saturn", "土星", {"planet-discovery-jupiter", "space-platform-thruster"} },
-    { "uranus", "天王星", {"planet-discovery-saturn", "space-platform-thruster"} },
-    { "neptune", "海王星", {"planet-discovery-uranus", "space-platform-thruster"} },
-    { "pluto", "冥王星", {"planet-discovery-neptune", "space-platform-thruster"} }
+    { "mercury", "水星", { "planet-discovery-venus", "space-platform-thruster" } },
+    { "venus", "金星", { "planet-discovery-luna", "space-platform-thruster" } },
+    { "earth", "地球", { "space-platform-thruster" } },
+    { "luna", "月球", { "planet-discovery-earth", "space-platform-thruster" } },
+    { "mars", "火星", { "planet-discovery-luna", "space-platform-thruster" } },
+    { "inner-asteroid-belt", "内小行星带", { "planet-discovery-mars", "space-platform-thruster" } },
+    { "jupiter", "木星", { "planet-discovery-inner-asteroid-belt", "space-platform-thruster" } },
+    { "saturn", "土星", { "planet-discovery-jupiter", "space-platform-thruster" } },
+    { "uranus", "天王星", { "planet-discovery-saturn", "space-platform-thruster" } },
+    { "neptune", "海王星", { "planet-discovery-uranus", "space-platform-thruster" } },
+    { "pluto", "冥王星", { "planet-discovery-neptune", "space-platform-thruster" } }
 }
 
 for i, planet in ipairs(planets) do

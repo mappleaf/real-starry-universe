@@ -139,7 +139,7 @@ end
 
 -- Inner Asteroid Belt: Mainly for resource collection, can be landed on.
 -- Inner Asteroid Belt: Between Jupiter and Mars. To get to jupiter, you need to pass through/by the asteroid belt - asteroids are much more common here.
-function MapGen.asteroid_belt-1()
+function MapGen.asteroid_belt_1()
     -- The asteroid belt between Mars and Jupiter.
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
