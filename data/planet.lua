@@ -113,7 +113,7 @@ local planets = {
         },
     },
     {
-        type = "planet",
+        type = "space-location",
         name = "asteroid-belt-inner",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
         icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
@@ -122,8 +122,8 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/jupiter.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
         starmap_icon_size = 512,
         gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
-        distance = 40.5, -- 2.7 AU (centre of the inner asteroid belt)
-        orientation = 0.4,
+        distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
+        orientation = 185 / 360,
         magnitude = 1,
         map_gen_settings = planet_map_gen.asteroid_belt_1(),
         surface_properties = {
