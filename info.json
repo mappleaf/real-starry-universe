@@ -1,7 +1,7 @@
 {
     "name": "real-starry-universe",
-    "version": "1.0.11",
-    "title": "Real Starry Universe",
+    "version": "1.0.13",
+    "title": "Realistic Celestial Universe",
     "author": "plexpt",
     "description": "A mod that transforms the Factorio universe into a realistic starry cosmos. Bringing real astronomical data, Explore planets and a real solar system.",
     "homepage": "https://github.com/plexpt",
@@ -10,5 +10,6 @@
         "? alien-biomes"
     ],
     "factorio_version": "2.0",
+    "space_travel_required": true,
     "license": "MIT"
 }
