@@ -1,1 +1,1 @@
-require("solar-system")
+require("asteroid_definitions.solar-system")
