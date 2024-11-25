@@ -113,7 +113,7 @@ local planets = {
         },
     },
     {
-        type = "space-location",
+        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
         name = "asteroid-belt-inner",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
         icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
@@ -241,7 +241,7 @@ local planets = {
         },
     },
     {
-        type = "planet",
+        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
         name = "asteroid-belt-outer",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Currently, there is no image for asteroid-belt-outer.
         icon = "__real-starry-universe__/graphics/pluto.png", -- As there is no special image yet, the inner asteroid belt is going to use the pluto icon.
@@ -251,8 +251,8 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 600, -- 40 AU (centre of the outer asteroid belt)
-        orientation = 0.8,
-        magnitude = 1,
+        orientation = 0.8, -- Not sure where orientation data comes from, so just the same as pluto for now.
+        magnitude = 1, -- Not sure where magnitude data comes from, so just the same as the inner asteroid belt for now.
         map_gen_settings = planet_map_gen.asteroid_belt_1(),
         surface_properties = {
             -- Outer Asteroid Belt (Between Neptune and Solar System Edge)
