@@ -13,7 +13,7 @@ function MapGen.mercury()
     local map_gen_setting = table.deepcopy(data.raw.planet.vulcanus.map_gen_settings)
     -- Both vulcanus and mercury are hot, so until a map generation settings property can be created specifically for mercury, this will work better than nauvis generation.
 
-      -- Mercury is a rocky planet with high temperatures and no water
+    -- Mercury is a rocky planet with high temperatures and no water
     --map_gen_setting.water = "none" -- 无水覆盖
     --map_gen_setting.terrain_segmentation = "very-low" -- 地形多为光滑、平坦的区域
     -- 金属矿物丰富，特别是铁
@@ -134,6 +134,15 @@ function MapGen.mars()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = false
+    return map_gen_setting
+end
+
+-- Inner Asteroid Belt: Mainly for resource collection, can be landed on.
+-- Inner Asteroid Belt: Between Jupiter and Mars. To get to jupiter, you need to pass through/by the asteroid belt - asteroids are much more common here.
+function MapGen.asteroid_belt_1()
+    -- The asteroid belt between Mars and Jupiter.
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
     return map_gen_setting
 end
 
@@ -299,39 +308,63 @@ function MapGen.luna()
     --    ["iron-ore"] = { frequency = "medium", size = "medium", richness = "good" },
     --    ["uranium-ore"] = { frequency = "low", size = "small", richness = "poor" }
     --}
+    map_gen_setting.cliff_settings = {
+        cliff_elevation_0 = 70,
+        cliff_elevation_interval = 120,
+        name = "cliff-vulcanus"
+    }
 
+    -- 月球特有资源
+    map_gen_setting.autoplace_controls = {
+        nauvis_cliff = {},
+        rocks = {},
+        stone = {},
+        ["water"] = { frequency = 0, size = 0, richness = 0 }, -- 极地冰川
+        ["iron-ore"] = { frequency = "high", size = "medium", richness = "good" },
+        ["uranium-ore"] = { frequency = "high", size = "small", richness = "good" }, -- 代表氦-3资源
 
+        --["stone"] = { frequency = "very-high", size = "big", richness = "very-good" },
+    }
 
-    map_gen_setting.terrain_segmentation = "very-high" -- 陨石坑地形
-    map_gen_setting.water = "very-low" -- 极地可能有冰
-    map_gen_setting.starting_area = "small"
+    -- 陨石坑地形
+    --map_gen_setting.terrain_segmentation = "very-high"
+    --map_gen_setting.water = "very-low" -- 极地可能有冰
+    --map_gen_setting.starting_area = "small"
+
+    map_gen_setting.autoplace_settings.entity.settings = {
+        ["big-rock"] = {},
+        ["big-sand-rock"] = {},
+
+        ["iron-ore"] = {},
+        stone = {},
+        ["uranium-ore"] = {}
+
+    }
 
     -- 月球特有的地表特征
     map_gen_setting.autoplace_settings.decorative.settings = {
         ["medium-rock"] = {},
         ["small-rock"] = {},
         ["tiny-rock"] = {},
-        ["sand-dune-decal"] = {}
+
+        --["sand-dune-decal"] = {}
     }
 
-    -- 月球特有资源
-    map_gen_setting.autoplace_controls = {
-        ["stone"] = { frequency = "very-high", size = "big", richness = "very-good" },
-        ["iron-ore"] = { frequency = "high", size = "medium", richness = "good" },
-        ["uranium-ore"] = { frequency = "high", size = "small", richness = "good" }, -- 代表氦-3资源
-        ["water"] = { frequency = "very-low", size = "small", richness = "poor" } -- 极地冰川
-    }
 
     -- 月球地形
     map_gen_setting.autoplace_settings.tile.settings = {
-        ["dirt-1"] = {},
-        ["dirt-2"] = {},
-        ["dirt-3"] = {},
-        ["dirt-4"] = {},
-        water = {} -- 极地冰
+        --["nuclear-ground"] = { frequency = 1.8, size = 1, richness = 1 },
+        ["volcanic-soil-dark"] = {},
+        ["volcanic-soil-light"] = {},
+        ["volcanic-ash-dark"] = {},
+        ["volcanic-ash-flats"] = {},
+        ["volcanic-jagged-ground"] = {},
+        ["volcanic-pumice-stones"] = {},
     }
 
     return map_gen_setting
 end
+
+-- https://lua-api.factorio.com/latest/types/PlanetPrototypeMapGenSettings.html
 
 return MapGen
