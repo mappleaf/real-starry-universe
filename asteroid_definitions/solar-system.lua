@@ -4,6 +4,10 @@ local Earth = require("asteroid_definitions.earth")
 local Luna = require("asteroid_definitions.luna")
 local Mars = require("asteroid_definitions.mars")
 local AsteroidBeltInner = require("asteroid_definitions.asteroid-belt-inner")
+local Ceres = require("asteroid_definitions.ceres")
+local Vesta = require("asteroid_definitions.vesta")
+local Pallas = require("asteroid_definitions.pallas")
+local Hygiea = require("asteroid_definitions.hygiea")
 local Jupiter = require("asteroid_definitions.jupiter")
 local Saturn = require("asteroid_definitions.saturn")
 local Uranus = require("asteroid_definitions.uranus")
@@ -22,7 +26,7 @@ local Planets = {1 = Mercury, 2 = Venus, 3 = Earth, 4 = Mars, 5 = AsteroidBeltIn
 -- For instance, Luna is labelled under 3,1 - meaning that it's the first moon of the third planet, Earth.
 -- Nil is currently representing moons which don't exist yet, such as the moons of Mars.
 -- Empty tables represent planets with no moons, such as mercury.
-local Moons = {1 = {}, 2 = {}, 3 = {1 = Luna}, 4 = {1 = nil, 2 = nil}, 5 = {}, 6 = {1 = nil, 2 = nil, 3 = nil, 4 = nil}, 7 = {1 = nil, 2 = nil, 3 = nil}, 8 = {1 = nil, 2 = nil, 3 = nil, 4 = nil, 5 = nil}, 9 = {1 = nil}, 10 = {1 = Pluto, 2 = nil}}
+local Moons = {1 = {}, 2 = {}, 3 = {1 = Luna}, 4 = {1 = nil, 2 = nil}, 5 = {1 = Ceres, 2 = Vesta, 3 = Pallas, 4 = Hygiea}, 6 = {1 = nil, 2 = nil, 3 = nil, 4 = nil}, 7 = {1 = nil, 2 = nil, 3 = nil}, 8 = {1 = nil, 2 = nil, 3 = nil, 4 = nil, 5 = nil}, 9 = {1 = nil}, 10 = {1 = Pluto, 2 = nil}}
 
 -- Use the Planet + Moon definition function to create the solar system.
 local SolarSystem = DefinitionsUtil.StarSystem(Planets, Moons)
