@@ -272,6 +272,15 @@ function MapGen.neptune()
     return map_gen_setting
 end
 
+-- Outer Asteroid Belt: Mainly for resource collection, can be landed on.
+-- Outer Asteroid Belt: Between neptune and the solar system edge. To get to the solar system edge or pluto, you need to pass through/by the asteroid belt - asteroids are much more common here.
+function MapGen.asteroid_belt_2()
+    -- The asteroid belt between Neptune and Solar System Edge.
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 -- 冥王星：矮行星、极寒环境，特定稀有矿物
 function MapGen.pluto()
     -- Both aquilo and pluto are cold, so until a map generation settings property can be created specifically for pluto, this will work better than nauvis generation.
