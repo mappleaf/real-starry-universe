@@ -1,4 +1,4 @@
---This is a reference file, a copy of the code from the original
+--This is a reference file, a copy of the code from the vallian
 local nauvis_planet = {
     distance = 15,
     gravity_pull = 10,
