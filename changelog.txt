@@ -1,4 +1,34 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.16
+  Features:
+    - add dependency alien-biomes
+    - **Space Effects Optimization:** Defined unique background colors and particle colors for new space connections to enhance visual effects.
+    - **Asteroid Spawn Rules:** Defined asteroid spawn rules for new space connections to simulate small asteroids in the asteroid belt.
+    - Added Dwarf Planet
+       - Ceres
+       - Vesta
+       - Pallas
+       - Hygiea
+       - Makemake
+       - Haumea
+       - Eris
+       - Gonggong
+    - If any issues are encountered during the update process, please report them promptly so we can address them. Thank you for your support and feedback! We will continue to work hard to bring you a better gaming experience.
+
+    -    新增矮行星：
+         谷神星（Ceres）
+         灶神星（Vesta）
+         智神星（Pallas）
+         健神星（Hygiea）
+         鸟神星（Makemake）
+         妊神星（Haumea）
+         阋神星（Eris）
+         共工星（Gonggong）
+    - 太空效果优化： 为新增的太空连接定义了独特的背景颜色和粒子颜色，以增强视觉效果。
+    - 小行星生成规则： 为新增的太空连接定义了小行星生成规则，以模拟小行星带中的小小行星。
+
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.12
   Features:
     - During rapid development, changelogs may not be updated frequently.

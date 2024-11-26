@@ -41,9 +41,9 @@ function MapGen.venus()
 
     -- 火山和岩浆地形
     map_gen_setting.autoplace_settings.decorative.settings = {
-        ["cracked-mud-decal"] = {},
-        ["dark-mud-decal"] = {},
-        ["medium-rock"] = {}
+        --["cracked-mud-decal"] = {},
+        --["dark-mud-decal"] = {},
+        --["medium-rock"] = {}
     }
 
     --map_gen_setting.terrain_segmentation = "very-high" -- 地形多为复杂丘陵和断层
@@ -104,10 +104,10 @@ function MapGen.mars()
 
     -- 火星特有的地表特征
     map_gen_setting.autoplace_settings.decorative.settings = {
-        ["red-desert-decal"] = {},
-        ["sand-dune-decal"] = {},
-        ["medium-rock"] = {},
-        ["small-rock"] = {}
+        --["red-desert-decal"] = {},
+        --["sand-dune-decal"] = {},
+        --["medium-rock"] = {},
+        --["small-rock"] = {}
     }
 
     -- 丰富的铁矿（红色来源）和其他矿物
@@ -151,6 +151,7 @@ function MapGen.ceres()
 
     return map_gen_setting
 end
+
 function MapGen.hygiea()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
@@ -162,6 +163,27 @@ function MapGen.pallas()
     return map_gen_setting
 end
 function MapGen.vesta()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.makemake()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.eris()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.haumea()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.gonggong()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
     return map_gen_setting
@@ -362,8 +384,8 @@ function MapGen.luna()
     --map_gen_setting.starting_area = "small"
 
     map_gen_setting.autoplace_settings.entity.settings = {
-        ["big-rock"] = {},
-        ["big-sand-rock"] = {},
+        --["big-rock"] = {},
+        --["big-sand-rock"] = {},
 
         ["iron-ore"] = {},
         stone = {},
@@ -373,9 +395,9 @@ function MapGen.luna()
 
     -- 月球特有的地表特征
     map_gen_setting.autoplace_settings.decorative.settings = {
-        ["medium-rock"] = {},
-        ["small-rock"] = {},
-        ["tiny-rock"] = {},
+        --["medium-rock"] = {},
+        --["small-rock"] = {},
+        --["tiny-rock"] = {},
 
         --["sand-dune-decal"] = {}
     }
