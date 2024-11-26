@@ -146,6 +146,27 @@ function MapGen.asteroid_belt_1()
     return map_gen_setting
 end
 
+function MapGen.ceres()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.hygiea()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.pallas()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+function MapGen.vesta()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 -- 木星：没有固态表面，仅供空间资源探索
 -- 木星：气态巨星，特殊大气采集站
 function MapGen.jupiter()
@@ -247,6 +268,15 @@ function MapGen.neptune()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
+
+    return map_gen_setting
+end
+
+-- Outer Asteroid Belt: Mainly for resource collection, can be landed on.
+-- Outer Asteroid Belt: Between neptune and the solar system edge. To get to the solar system edge or pluto, you need to pass through/by the asteroid belt - asteroids are much more common here.
+function MapGen.asteroid_belt_2()
+    -- The asteroid belt between Neptune and Solar System Edge.
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
     return map_gen_setting
 end
