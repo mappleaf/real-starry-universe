@@ -113,7 +113,7 @@ local planets = {
         },
     },
     {
-        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
+        type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must go to ceres
         name = "asteroid-belt-inner",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
         icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
@@ -145,7 +145,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 0.028,
         distance = 27, -- 2.77 AU
-        orientation = 210 / 360,
+        orientation = 200 / 360,
         magnitude = 0.22, -- Ceres (谷神星)
         map_gen_settings = planet_map_gen.ceres(),
         surface_properties = {
@@ -167,7 +167,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 0.025,
         distance = 27, -- 2.36 AU
-        orientation = 240 / 360,
+        orientation = 260 / 360,
         magnitude = 0.2, -- Vesta (灶神星)
         map_gen_settings = planet_map_gen.vesta(),
         surface_properties = {
@@ -189,7 +189,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 0.020,
         distance = 27, -- 2.77 AU
-        orientation = 270 / 360,
+        orientation = 300 / 360,
         magnitude = 0.2, -- Pallas (智神星)
         map_gen_settings = planet_map_gen.pallas(),
         surface_properties = {
@@ -211,7 +211,7 @@ local planets = {
         starmap_icon_size = 512,
         gravity_pull = 0.005,
         distance = 27, -- 3.14 AU
-        orientation = 310 / 360,
+        orientation = 355 / 360,
         magnitude = 0.2, -- Hygiea (健神星)
         map_gen_settings = planet_map_gen.hygiea(),
         surface_properties = {
@@ -309,15 +309,15 @@ local planets = {
     },
     {
         type = "planet",
-        name = "pluto",
+        name = "pluto", -- Pluto (冥王星)
         icon = "__real-starry-universe__/graphics/pluto.png",
         icon_size = 512,
         starmap_icon = "__real-starry-universe__/graphics/pluto.png",
         starmap_icon_size = 512,
         gravity_pull = 0.62,
-        distance = 592 / 6, -- 39.52 AU
-        orientation = 0.97,
-        magnitude = 45 / 360, -- Pluto (冥王星)
+        distance = 120, -- 39.52 AU
+        orientation = 290 / 360,
+        magnitude = 0.3,
         map_gen_settings = planet_map_gen.pluto(),
         surface_properties = {
             -- Pluto (冥王星)
@@ -329,18 +329,18 @@ local planets = {
         },
     },
     {
-        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
+        type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must land on one of it like pluto.
         name = "asteroid-belt-outer",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Currently, there is no image for asteroid-belt-outer.
-        icon = "__real-starry-universe__/graphics/pluto.png", -- As there is no special image yet, the inner asteroid belt is going to use the pluto icon.
-        icon_size = 512,
+        icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- As there is no special image yet, the inner asteroid belt is going to use the pluto icon.
+        icon_size = 1024,
         -- starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Again, there is no image for asteroid-belt-outer.
-        starmap_icon = "__real-starry-universe__/graphics/pluto.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the pluto icon.
-        starmap_icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the pluto icon.
+        starmap_icon_size = 1024,
         gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
-        distance = 600, -- 40 AU (centre of the outer asteroid belt)
-        orientation = 0.8, -- Not sure where orientation data comes from, so just the same as pluto for now.
-        magnitude = 1, -- Not sure where magnitude data comes from, so just the same as the inner asteroid belt for now.
+        distance = 120, -- 40 AU (centre of the outer asteroid belt)
+        orientation = 359 / 360,
+        magnitude = 0.4,
         map_gen_settings = planet_map_gen.asteroid_belt_1(),
         surface_properties = {
             -- Outer Asteroid Belt (Between Neptune and Solar System Edge)
@@ -351,6 +351,93 @@ local planets = {
             gravity = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
+
+    {
+        type = "planet",
+        name = "makemake", -- 鸟神星
+        icon = "__real-starry-universe__/graphics/makemake.png",
+        icon_size = 1024,
+        starmap_icon = "__real-starry-universe__/graphics/makemake.png",
+        starmap_icon_size = 1024,
+        gravity_pull = 0.05,
+        distance = 120, -- 45.79 AU
+        orientation = 220 / 360,
+        magnitude = 0.25,
+        map_gen_settings = planet_map_gen.makemake(),
+        surface_properties = {
+            -- Makemake (鸟神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 鸟神星昼夜周期：约22.5小时
+            ["magnetic-field"] = 0, -- 鸟神星几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.05, -- 重力极低
+        },
+    },
+
+    {
+        type = "planet",
+        name = "haumea", -- 妊神星
+        icon = "__real-starry-universe__/graphics/haumea.png",
+        icon_size = 1024,
+        starmap_icon = "__real-starry-universe__/graphics/haumea.png",
+        starmap_icon_size = 1024,
+        gravity_pull = 0.04,
+        distance = 120, -- 43.34 AU
+        orientation = 150 / 360,
+        magnitude = 0.25,
+        map_gen_settings = planet_map_gen.haumea(),
+        surface_properties = {
+            -- Haumea (妊神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 妊神星昼夜周期：约3.9小时
+            ["magnetic-field"] = 0, -- 妊神星几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.04, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
+        name = "eris", -- 阋神星
+        icon = "__real-starry-universe__/graphics/eris.png",
+        icon_size = 1024,
+        starmap_icon = "__real-starry-universe__/graphics/eris.png",
+        starmap_icon_size = 1024,
+        gravity_pull = 0.08,
+        distance = 120, -- 67.78 AU
+        orientation = 80 / 360,
+        magnitude = 0.25,
+        map_gen_settings = planet_map_gen.eris(),
+        surface_properties = {
+            -- Eris (阋神星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 阋神星昼夜周期：约15.8小时
+            ["magnetic-field"] = 0, -- 阋神星几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.08, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
+        name = "gonggong", -- 共工星
+        icon = "__real-starry-universe__/graphics/gonggong.png",
+        icon_size = 1024,
+        starmap_icon = "__real-starry-universe__/graphics/gonggong.png",
+        starmap_icon_size = 1024,
+        gravity_pull = 0.06,
+        distance = 120, -- 67.5 AU
+        orientation = 10 / 360,
+        magnitude = 0.25,
+        map_gen_settings = planet_map_gen.gonggong(),
+        surface_properties = {
+            -- Gonggong (共工星)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 共工星昼夜周期：约25小时
+            ["magnetic-field"] = 0, -- 共工星几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.06, -- 重力极低
+        },
+    },
+
 }
 
 data:extend(planets)
@@ -366,7 +453,7 @@ local space_connections = {
         order = "a[mercury]-b[venus]",
         length = 5.0, -- 水星到金星的距离，比例单位
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
-        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.small_asteroids),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.1, b = 0.3 },
             particle_color = { r = 0.6, g = 0.4, b = 0.2 }
@@ -439,7 +526,7 @@ local space_connections = {
         to = "asteroid-belt-inner",
         order = "d[mars]-e[asteroid-belt-inner]",
         length = 55.0,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.1 },
@@ -455,7 +542,7 @@ local space_connections = {
         to = "ceres",
         order = "d[asteroid-belt-inner]-e[ceres]",
         length = 3.0, -- 小行星带内侧到谷神星的距离，比例单位
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.1, g = 0.1, b = 0.2 },
             particle_color = { r = 0.8, g = 0.6, b = 0.4 }
@@ -470,7 +557,7 @@ local space_connections = {
         to = "vesta",
         order = "e[ceres]-f[vesta]",
         length = 2.5,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.1, g = 0.2, b = 0.3 },
             particle_color = { r = 0.7, g = 0.8, b = 0.5 }
@@ -485,7 +572,7 @@ local space_connections = {
         to = "pallas",
         order = "f[vesta]-g[pallas]",
         length = 2.8,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.2, b = 0.3 },
             particle_color = { r = 0.6, g = 0.7, b = 0.6 }
@@ -500,7 +587,7 @@ local space_connections = {
         to = "hygiea",
         order = "g[pallas]-h[hygiea]",
         length = 3.2,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.3, b = 0.4 },
             particle_color = { r = 0.5, g = 0.6, b = 0.7 }
@@ -515,7 +602,7 @@ local space_connections = {
         to = "jupiter",
         order = "e[asteroid-belt-inner]-f[jupiter]",
         length = 55.0,
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.1 },
@@ -593,6 +680,81 @@ local space_connections = {
         space_effects = {
             background_color = { r = 0.7, g = 0.4, b = 0.9 },
             particle_color = { r = 0.5, g = 0.6, b = 0.8 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "makemake-pluto", -- 鸟神星到冥王星
+        subgroup = "planet-connections",
+        from = "makemake",
+        to = "pluto",
+        order = "i[makemake]-j[pluto]",
+        length = 4.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.1, g = 0.1, b = 0.3 },
+            particle_color = { r = 0.8, g = 0.6, b = 0.2 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "haumea-pluto", -- 妊神星到冥王星
+        subgroup = "planet-connections",
+        from = "haumea",
+        to = "pluto",
+        order = "k[haumea]-j[pluto]",
+        length = 4.2,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.1, b = 0.4 },
+            particle_color = { r = 0.7, g = 0.5, b = 0.3 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "eris-pluto", -- 阋神星到冥王星
+        subgroup = "planet-connections",
+        from = "eris",
+        to = "pluto",
+        order = "l[eris]-j[pluto]",
+        length = 5.0,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.1, b = 0.5 },
+            particle_color = { r = 0.6, g = 0.4, b = 0.4 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "gonggong-eris", -- 共工星到阋神星
+        subgroup = "planet-connections",
+        from = "gonggong",
+        to = "eris",
+        order = "m[gonggong]-l[eris]",
+        length = 3.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.2, b = 0.5 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.4 }
+        }
+    },
+
+    {
+        type = "space-connection",
+        name = "gonggong-pluto", -- 共工星到冥王星
+        subgroup = "planet-connections",
+        from = "gonggong",
+        to = "pluto",
+        order = "m[gonggong]-j[pluto]",
+        length = 5.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.2, b = 0.6 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.5 }
         }
     },
 }
