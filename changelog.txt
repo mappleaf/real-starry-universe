@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.12
   Features:
-    - During rapid development, logs may not be updated frequently.
+    - During rapid development, changelogs may not be updated frequently.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.6

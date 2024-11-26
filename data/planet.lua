@@ -72,6 +72,27 @@ local planets = {
     },
     {
         type = "planet",
+        name = "luna",
+        icon = "__real-starry-universe__/graphics/luna.png",
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/luna.png",
+        starmap_icon_size = 512,
+        gravity_pull = 1.62, -- 月球的重力
+        distance = 15.5, -- 距离地球非常近
+        orientation = 0.33, -- 地球轨道附近
+        magnitude = 0.273, -- Luna (月球)
+        map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
+        surface_properties = {
+            -- Luna (月球)
+            ["day-night-cycle"] = 30 * day, -- 月球昼夜周期：27.3个地球日
+            ["magnetic-field"] = 1, -- 极弱磁场
+            ["solar-power"] = 136, -- 太阳能较高
+            pressure = 0, -- 无大气
+            gravity = 1.62, -- 重力远小于地球
+        },
+    },
+    {
+        type = "planet",
         name = "mars", -- 火星
         icon = "__real-starry-universe__/graphics/mars.png",
         icon_size = 512,
@@ -92,7 +113,7 @@ local planets = {
         },
     },
     {
-        type = "space-location",
+        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
         name = "asteroid-belt-inner",
         -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
         icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
@@ -101,7 +122,8 @@ local planets = {
         starmap_icon = "__real-starry-universe__/graphics/jupiter.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
         starmap_icon_size = 512,
         gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
-        distance = 27, -- 2.7 AU (centre of the asteroid belt)
+
+        distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
         orientation = 185 / 360,
         magnitude = 1,
         map_gen_settings = planet_map_gen.asteroid_belt_1(),
@@ -307,24 +329,26 @@ local planets = {
         },
     },
     {
-        type = "planet",
-        name = "luna",
-        icon = "__real-starry-universe__/graphics/luna.png",
+        type = "planet", -- You should be able to land on asteroids in the asteroid belt.
+        name = "asteroid-belt-outer",
+        -- icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Currently, there is no image for asteroid-belt-outer.
+        icon = "__real-starry-universe__/graphics/pluto.png", -- As there is no special image yet, the inner asteroid belt is going to use the pluto icon.
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/luna.png",
+        -- starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Again, there is no image for asteroid-belt-outer.
+        starmap_icon = "__real-starry-universe__/graphics/pluto.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the pluto icon.
         starmap_icon_size = 512,
-        gravity_pull = 1.62, -- 月球的重力
-        distance = 15, -- 距离地球非常近
-        orientation = 125 / 360, -- 地球轨道附近
-        magnitude = 0.273, -- Luna (月球)
-        map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
+        gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
+        distance = 600, -- 40 AU (centre of the outer asteroid belt)
+        orientation = 0.8, -- Not sure where orientation data comes from, so just the same as pluto for now.
+        magnitude = 1, -- Not sure where magnitude data comes from, so just the same as the inner asteroid belt for now.
+        map_gen_settings = planet_map_gen.asteroid_belt_1(),
         surface_properties = {
-            -- Luna (月球)
-            ["day-night-cycle"] = 30 * day, -- 月球昼夜周期：27.3个地球日
-            ["magnetic-field"] = 1, -- 极弱磁场
-            ["solar-power"] = 136, -- 太阳能较高
-            pressure = 0, -- 无大气
-            gravity = 1.62, -- 重力远小于地球
+            -- Outer Asteroid Belt (Between Neptune and Solar System Edge)
+            ["day-night-cycle"] = 0.28449826615 * day, -- Aproximate day-night cycle for asteroids in the outer asteroid belt (also known as kuiper belt)
+            ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
+            ["solar-power"] = 0.8625, -- Percentage of solar power compared to that on earth? Seems to fit with the data of pluto, being around the same.
+            pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
+            gravity = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
 }
@@ -376,6 +400,20 @@ local space_connections = {
         space_effects = {
             background_color = { r = 0.3, g = 0.2, b = 0.4 },
             particle_color = { r = 0.4, g = 0.7, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "earth-luna",
+        subgroup = "planet-connections",
+        from = "earth",
+        to = "luna",
+        order = "z[a]",
+        length = 15, -- 非常近的距离
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.8, g = 0.8, b = 0.9 },
+            particle_color = { r = 0.9, g = 0.9, b = 1.0 }
         }
     },
     {
@@ -475,7 +513,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "asteroid-belt-inner",
         to = "jupiter",
-        order = "d[asteroid-belt-inner]-e[jupiter]",
+        order = "e[asteroid-belt-inner]-f[jupiter]",
         length = 55.0,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
@@ -490,7 +528,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "jupiter",
         to = "saturn",
-        order = "e[jupiter]-f[saturn]",
+        order = "f[jupiter]-g[saturn]",
         length = 65.5,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
@@ -505,7 +543,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "saturn",
         to = "uranus",
-        order = "f[saturn]-g[uranus]",
+        order = "g[saturn]-h[uranus]",
         length = 144.0,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
@@ -520,7 +558,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "uranus",
         to = "neptune",
-        order = "g[uranus]-h[neptune]",
+        order = "h[uranus]-i[neptune]",
         length = 162.6,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
@@ -531,11 +569,11 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "neptune-pluto",
+        name = "neptune-asteroid-belt-outer",
         subgroup = "planet-connections",
-        from = "pluto",
-        to = "neptune",
-        order = "i",
+        from = "neptune",
+        to = "asteroid-belt-outer",
+        order = "i[neptune]-j[asteroid-belt-outer]",
         length = 300,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
@@ -545,16 +583,16 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "earth-luna",
+        name = "asteroid-belt-outer-pluto",
         subgroup = "planet-connections",
-        from = "earth",
-        to = "luna",
-        order = "z[a]",
-        length = 15, -- 非常近的距离
+        from = "asteroid-belt-outer",
+        to = "pluto",
+        order = "j[asteroid-belt-outer]-k[pluto]",
+        length = 300,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
-            background_color = { r = 0.8, g = 0.8, b = 0.9 },
-            particle_color = { r = 0.9, g = 0.9, b = 1.0 }
+            background_color = { r = 0.7, g = 0.4, b = 0.9 },
+            particle_color = { r = 0.5, g = 0.6, b = 0.8 }
         }
     },
 }
@@ -576,7 +614,8 @@ local planets = {
     { "saturn", "土星", { "planet-discovery-jupiter", "space-platform-thruster" } },
     { "uranus", "天王星", { "planet-discovery-saturn", "space-platform-thruster" } },
     { "neptune", "海王星", { "planet-discovery-uranus", "space-platform-thruster" } },
-    { "pluto", "冥王星", { "planet-discovery-neptune", "space-platform-thruster" } }
+    { "pluto", "冥王星", { "planet-discovery-neptune", "space-platform-thruster" } },
+    { "asteroid-belt-outer", "柯伊伯带", { "planet-discovery-pluto", "space-platform-thruster" } }
 }
 
 for i, planet in ipairs(planets) do
