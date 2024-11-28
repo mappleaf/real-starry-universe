@@ -10,6 +10,19 @@ local placeholder_png = "__real-starry-universe__/graphics/planet.png"
 
 local planets = {
     {
+        type = "space-location", -- This may need to be changed to "planet".
+        name = "sol", -- Similar to how the moon is called luna, the sun is called sol. This is actually more commonly used than luna as the word solar is derived from the word sol.
+        icon = "__real-starry-universe__/graphics/blank512.png", -- This should eventually be replaced with a proper image.
+        icon_size = 512,
+        starmap_icon = "__real-starry-universe__/graphics/blank512.png", -- This should be blank, as the sun is already in the utility sprites
+        starmap_icon_size = 512,
+        gravity_pull = 21.7, -- The surface gravity of the sun, equal to 217 m/s. This shouldn't be 217, because 217 km/s is too fast for the average player's space platform or 2.17, because 2.17 doesn't add much challenge.
+        distance = 0, -- The sun is 0 distance away from the sun, so this should be 0.
+        orientation = 0 / 360, -- Orinetation doesn't matter for the sun.
+        magnitude = 1, -- Should be 1 for now while I work out a better value...
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+    },
+    {
         type = "planet",
         name = "mercury", -- 水星
         icon = "__real-starry-universe__/graphics/mercury.png",
@@ -481,6 +494,19 @@ data:extend(planets)
 local space_connections = {
     {
         type = "space-connection",
+        name = "sol-mercury", -- The sun to mercury.
+        subgroup = "planet-connections",
+        from = "sol",
+        to = "mercury",
+        order = "0[sol]-a[mercury]",
+        length = 510100, -- The orbital distance of the parker solar probe which can be considered a safe distance from the sun, subtracted from the orbital distance of mercury - all in units of 100 kilometers.
+        space_effects = {
+            background_color = { r = 0.2, g = 0.1, b = 0.3 },
+            particle_color = { r = 0.6, g = 0.4, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
         name = "mercury-venus", -- 水星到金星
         subgroup = "planet-connections",
         from = "mercury",
@@ -845,6 +871,7 @@ end
 data:extend(space_connections)
 
 local PlanetTechnologies = {
+    { "sol", "太阳轨道", { "planet-discovery-mercury", "space-platform-thruster" }, true },
     { "mercury", "水星", { "planet-discovery-venus", "space-platform-thruster" }, false },
     { "venus", "金星", { "planet-discovery-luna", "space-platform-thruster" }, false },
     { "earth", "地球", { "space-platform-thruster" }, false },
