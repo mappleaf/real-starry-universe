@@ -6,14 +6,14 @@ local planet_catalogue_gleba = require("__space-age__.prototypes.planet.processi
 local planet_map_gen = require("data.planet-map-gen")
 local day = 24 * hour
 
+local placeholder_png = "__real-starry-universe__/graphics/planet.png"
+
 local planets = {
     {
         type = "planet",
         name = "mercury", -- 水星
         icon = "__real-starry-universe__/graphics/mercury.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/mercury.png",
-        starmap_icon_size = 512,
         gravity_pull = 3.7, -- 水星表面重力 (相对值)
         distance = 5.8, -- 距离星系中心 以15为一个AU，约 0.39 AU
         orientation = 40 / 360, -- 与星系中心角度
@@ -34,8 +34,6 @@ local planets = {
         name = "venus", -- 金星
         icon = "__real-starry-universe__/graphics/venus.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/venus.png",
-        starmap_icon_size = 512,
         gravity_pull = 8.87,
         distance = 10.8, -- 0.72 AU
         orientation = 80 / 360,
@@ -56,8 +54,6 @@ local planets = {
         name = "earth", -- 地球
         icon = "__real-starry-universe__/graphics/earth.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/earth.png",
-        starmap_icon_size = 512,
         gravity_pull = 9.8,
         distance = 15, -- 1 AU
         orientation = 120 / 360,
@@ -78,8 +74,6 @@ local planets = {
         name = "luna",
         icon = "__real-starry-universe__/graphics/luna.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/luna.png",
-        starmap_icon_size = 512,
         gravity_pull = 1.62, -- 月球的重力
         distance = 15.5, -- 距离地球非常近
         orientation = 0.33, -- 地球轨道附近
@@ -97,11 +91,9 @@ local planets = {
     },
     {
         type = "planet",
-        name = "mars", 
+        name = "mars",
         icon = "__real-starry-universe__/graphics/mars.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/mars.png",
-        starmap_icon_size = 512,
         gravity_pull = 3.71,
         distance = 22.8, -- 1.52 AU
         orientation = 160 / 360,
@@ -120,10 +112,8 @@ local planets = {
     {
         type = "planet",
         name = "phobos", -- Phobos, the first moon of mars.
-        icon = "__real-starry-universe__/graphics/blank.png",
-        icon_size = 32,
-        starmap_icon = "__real-starry-universe__/graphics/blank.png",
-        starmap_icon_size = 32,
+        icon = placeholder_png,
+        icon_size = 512,
         gravity_pull = 0.0057, -- This is in m/s, convert as necessary.
         distance = 22.8009401205, -- 0.0000626747 AU, or 9376 km from mars, added to the distance of mars from the sun.
         orientation = 160 / 360, -- The orientation of mars, may need to be changed.
@@ -142,10 +132,8 @@ local planets = {
     {
         type = "planet",
         name = "deimos", -- Deimos, the second moon of mars.
-        icon = "__real-starry-universe__/graphics/blank.png",
-        icon_size = 32,
-        starmap_icon = "__real-starry-universe__/graphics/blank.png",
-        starmap_icon_size = 32,
+        icon = placeholder_png,
+        icon_size = 512,
         gravity_pull = 0.003, -- This is in m/s, convert as necessary.
         distance = 22.8023526271, -- 0.0001568418046 AU, or 23463.2 km from mars, added to the distance of mars from the sun.
         orientation = 160 / 360, -- The orientation of mars, may need to be changed.
@@ -164,12 +152,8 @@ local planets = {
     {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must go to ceres
         name = "asteroid-belt-inner",
-        -- icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Currently, there is no image for asteroid-belt-inner.
-        icon = "__real-starry-universe__/graphics/jupiter.png", -- As there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
+        icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png",
         icon_size = 512,
-        -- starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png", -- Again, there is no image for asteroid-belt-inner.
-        starmap_icon = "__real-starry-universe__/graphics/jupiter.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the jupiter icon.
-        starmap_icon_size = 512,
         gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
 
         distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
@@ -191,8 +175,6 @@ local planets = {
         name = "ceres", -- 谷神星
         icon = "__real-starry-universe__/graphics/ceres.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/ceres.png",
-        starmap_icon_size = 512,
         gravity_pull = 0.028,
         distance = 27, -- 2.77 AU
         orientation = 200 / 360,
@@ -214,8 +196,6 @@ local planets = {
         name = "vesta", -- 灶神星
         icon = "__real-starry-universe__/graphics/vesta.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/vesta.png",
-        starmap_icon_size = 512,
         gravity_pull = 0.025,
         distance = 27, -- 2.36 AU
         orientation = 260 / 360,
@@ -237,8 +217,6 @@ local planets = {
         name = "pallas", -- 智神星
         icon = "__real-starry-universe__/graphics/pallas.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/pallas.png",
-        starmap_icon_size = 512,
         gravity_pull = 0.020,
         distance = 27, -- 2.77 AU
         orientation = 300 / 360,
@@ -260,8 +238,6 @@ local planets = {
         name = "hygiea", -- 健神星
         icon = "__real-starry-universe__/graphics/hygiea.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/hygiea.png",
-        starmap_icon_size = 512,
         gravity_pull = 0.005,
         distance = 27, -- 3.14 AU
         orientation = 355 / 360,
@@ -282,8 +258,6 @@ local planets = {
         name = "jupiter", -- 木星
         icon = "__real-starry-universe__/graphics/jupiter.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/jupiter.png",
-        starmap_icon_size = 512,
         gravity_pull = 24.79,
         distance = 77.8 / 2, -- 5.2 AU
         orientation = 240 / 360,
@@ -304,8 +278,6 @@ local planets = {
         name = "saturn", -- 土星
         icon = "__real-starry-universe__/graphics/saturn.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/saturn.png",
-        starmap_icon_size = 512,
         gravity_pull = 10.44,
         distance = 143.3 / 3, -- 9.58 AU
         orientation = 280 / 360,
@@ -326,8 +298,6 @@ local planets = {
         name = "uranus", -- 天王星
         icon = "__real-starry-universe__/graphics/uranus.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/uranus.png",
-        starmap_icon_size = 512,
         gravity_pull = 8.87,
         distance = 287.7 / 4.5, -- 19.22 AU
         orientation = 320 / 360,
@@ -348,8 +318,6 @@ local planets = {
         name = "neptune", -- 海王星
         icon = "__real-starry-universe__/graphics/neptune.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/neptune.png",
-        starmap_icon_size = 512,
         gravity_pull = 11.15,
         distance = 450.3 / 5, -- 30.05 AU
         orientation = 355 / 360,
@@ -370,8 +338,6 @@ local planets = {
         name = "pluto", -- Pluto (冥王星)
         icon = "__real-starry-universe__/graphics/pluto.png",
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/pluto.png",
-        starmap_icon_size = 512,
         gravity_pull = 0.62,
         distance = 120, -- 39.52 AU
         orientation = 290 / 360,
@@ -390,12 +356,8 @@ local planets = {
     {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must land on one of it like pluto.
         name = "asteroid-belt-outer",
-        -- icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Currently, there is no image for asteroid-belt-outer.
-        icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- As there is no special image yet, the inner asteroid belt is going to use the pluto icon.
+        icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png",
         icon_size = 1024,
-        -- starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Again, there is no image for asteroid-belt-outer.
-        starmap_icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png", -- Again, as there is no special image yet, the inner asteroid belt is going to use the pluto icon.
-        starmap_icon_size = 1024,
         gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 120, -- 40 AU (centre of the outer asteroid belt)
         orientation = 359 / 360,
@@ -417,8 +379,6 @@ local planets = {
         name = "makemake", -- 鸟神星
         icon = "__real-starry-universe__/graphics/makemake.png",
         icon_size = 1024,
-        starmap_icon = "__real-starry-universe__/graphics/makemake.png",
-        starmap_icon_size = 1024,
         gravity_pull = 0.05,
         distance = 120, -- 45.79 AU
         orientation = 220 / 360,
@@ -440,8 +400,6 @@ local planets = {
         name = "haumea", -- 妊神星
         icon = "__real-starry-universe__/graphics/haumea.png",
         icon_size = 1024,
-        starmap_icon = "__real-starry-universe__/graphics/haumea.png",
-        starmap_icon_size = 1024,
         gravity_pull = 0.04,
         distance = 120, -- 43.34 AU
         orientation = 150 / 360,
@@ -462,8 +420,6 @@ local planets = {
         name = "eris", -- 阋神星
         icon = "__real-starry-universe__/graphics/eris.png",
         icon_size = 1024,
-        starmap_icon = "__real-starry-universe__/graphics/eris.png",
-        starmap_icon_size = 1024,
         gravity_pull = 0.08,
         distance = 120, -- 67.78 AU
         orientation = 80 / 360,
@@ -484,8 +440,6 @@ local planets = {
         name = "gonggong", -- 共工星
         icon = "__real-starry-universe__/graphics/gonggong.png",
         icon_size = 1024,
-        starmap_icon = "__real-starry-universe__/graphics/gonggong.png",
-        starmap_icon_size = 1024,
         gravity_pull = 0.06,
         distance = 120, -- 67.5 AU
         orientation = 10 / 360,
@@ -504,6 +458,15 @@ local planets = {
 
 }
 
+for _, planet in pairs(planets) do
+    -- Check if the planet has an icon but does not have a starmap_icon
+    if planet.icon and not planet.starmap_icon then
+        -- Set the starmap_icon to be the same as the planet's icon
+        planet.starmap_icon = planet.icon
+        -- Set the starmap_icon_size to be the same as the planet's icon_size
+        planet.starmap_icon_size = planet.icon_size
+    end
+end
 
 data:extend(planets)
 
@@ -856,19 +819,19 @@ local space_connections = {
 
 local ScaleFactor = 100000 -- Scale each space connection by this factor.
 
-for i,SpaceConnection in pairs(space_connections) do
+for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
-    
+
     SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
-    
+
     if math.ceil(SpaceConnection.length) ~= SpaceConnection.length then
         SpaceConnection.length = math.ceil(SpaceConnection.length) -- Round up to the nearest integer.
     end
-    
+
     if SpaceConnection.length < 100 then
         SpaceConnection.length = 100 -- Set the length to 100 if the length is less than 100. In my testing, anything less than 100 breaks at speeds reached in the base game.
     end
-    
+
     space_connections[i] = SpaceConnection -- Set the new space connection to the modified one.
 end
 
@@ -896,12 +859,7 @@ for i, planet in ipairs(PlanetTechnologies) do
     local planet_description = planet[2]
     local prerequisites = planet[3]
     local IconIsBlank = planet[4]
-    local Icon = ""
-    if IconIsBlank then
-        Icon = "__real-starry-universe__/graphics/blank.png"
-    else
-        Icon = "__real-starry-universe__/graphics/" .. planet_name .. ".png"
-    end
+    local Icon = IconIsBlank and placeholder_png or "__real-starry-universe__/graphics/" .. planet_name .. ".png"
 
     data:extend({
         {
