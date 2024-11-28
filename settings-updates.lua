@@ -21,6 +21,18 @@ local function change_bool(name, value)
     end
 end
 
+local function change_double(name, value)
+    local settingitem = data.raw["int-setting"][name]
+
+    if settingitem then
+
+        settingitem.hidden = true
+        settingitem.allowed_values = { value }
+        settingitem.default_value = value
+        settingitem.forced_value = value
+    end
+end
+
 local alien_biomes_settings = {
     ["alien-biomes-include-dirt-aubergine"] = "Enabled",
     ["alien-biomes-include-dirt-beige"] = "Enabled",
@@ -62,7 +74,6 @@ local alien_biomes_settings = {
     ["alien-biomes-include-volcanic-orange"] = "Enabled",
     ["alien-biomes-include-volcanic-purple"] = "Enabled",
 
-    ["tile-speed-reduction"] = 100,
     ["alien-biomes-include-inland-shallows"] = "Enabled",
     ["alien-biomes-include-coastal-shallows"] = "Enabled",
     --["alien-biomes-disable-vegetation"] = "Disabled",
@@ -71,3 +82,6 @@ local alien_biomes_settings = {
 for name, setting in pairs(alien_biomes_settings) do
     change_string(name, setting)
 end
+
+
+change_double("tile-speed-reduction", 100)
