@@ -1,3 +1,4 @@
+local Sol = require("asteroid_definitions.sol")
 local Mercury = require("asteroid_definitions.mercury")
 local Venus = require("asteroid_definitions.venus")
 local Earth = require("asteroid_definitions.earth")
@@ -27,6 +28,7 @@ local DefinitionsUtil = require("asteroid_definitions.definitions_util")
 -- For instance, Earth is labelled under 3 - meaning that it's the third planet that orbits the Sun.
 -- Nil is currently representing planets which don't exist yet, such as the outer asteroid belt. These nils are defined in their respective asteroid definitions file.
 local Planets = {
+    [0] = Sol,
     [1] = Mercury,
     [2] = Venus,
     [3] = Earth,
@@ -44,6 +46,7 @@ local Planets = {
 -- Nil is currently representing moons which don't exist yet, such as the moons of Mars.
 -- Empty tables represent planets with no moons, such as mercury.
 local Moons = {
+    [0] = {} -- Sol
     [1] = {}, -- Mercury
     [2] = {}, -- Venus
     [3] = { -- Earth
