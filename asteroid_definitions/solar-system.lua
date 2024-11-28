@@ -27,16 +27,16 @@ local DefinitionsUtil = require("asteroid_definitions.definitions_util")
 -- For instance, Earth is labelled under 3 - meaning that it's the third planet that orbits the Sun.
 -- Nil is currently representing planets which don't exist yet, such as the outer asteroid belt. These nils are defined in their respective asteroid definitions file.
 local Planets = {
-    Mercury,
-    Venus,
-    Earth,
-    Mars,
-    AsteroidBeltInner,
-    Jupiter,
-    Saturn,
-    Uranus,
-    Neptune,
-    AsteroidBeltOuter
+    [1] = Mercury,
+    [2] = Venus,
+    [3] = Earth,
+    [4] = Mars,
+    [5] = AsteroidBeltInner,
+    [6] = Jupiter,
+    [7] = Saturn,
+    [8] = Uranus,
+    [9] = Neptune,
+    [10] = AsteroidBeltOuter
 }
 
 -- Moons are sorted by the planet they orbit.
