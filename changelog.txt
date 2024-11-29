@@ -2,7 +2,7 @@
 Version: 1.0.20
 Date: 2024-11-30
   Features:
-    - add translation Russian. thanks, @PinnedFox
+    - add translation Russian, Ukrainian. thanks, @PinnedFox
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.18
