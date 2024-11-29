@@ -2,6 +2,7 @@ local effects = require("__core__.lualib.surface-render-parameter-effects")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions") -- The original asteroid spawn definitions from Space Age. Should be replaced as soon as possible to allow custom spawn definitions.
 -- local asteroid_util = require("asteroid_definitions.asteroid_util") -- New asteroid spawn definitions for when there's new definitions. It isn't ready yet.
 local planet_catalogue_gleba = require("__space-age__.prototypes.planet.procession-catalogue-gleba")
+local rotation_util = require("data.rotation_util")
 
 local planet_map_gen = require("data.planet-map-gen")
 local day = 24 * hour
@@ -86,14 +87,14 @@ local planets = {
     {
         type = "planet",
         name = "luna",
+        moon = true, -- This is a moon.
+        parent_object = "earth", -- The object this moon orbits.
         icon = "__real-starry-universe__/graphics/luna.png",
         icon_size = 512,
         gravity_pull = 1.62, -- 月球的重力
-        distance = 15, -- 距离地球非常近
-        orientation = 124 / 360, -- 地球轨道附近
+        distance = 1, -- New distance from earth instead of the sun.
+        orientation = 270 / 360, -- New orientation relative to earth instead of the sun.
         magnitude = 0.273, -- Luna (月球)
-        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
@@ -128,13 +129,15 @@ local planets = {
     {
         type = "planet",
         name = "phobos", -- Phobos, the first moon of mars.
+        moon = true, -- This is a moon.
+        parent_object = "mars", -- The object this moon orbits.
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.0057, -- This is in m/s, convert as necessary.
-        distance = 22.8009401205, -- 0.0000626747 AU, or 9376 km from mars, added to the distance of mars from the sun.
-        orientation = 163 / 360, -- The orientation of mars, may need to be changed.
+        distance = 1, -- New distance from mars instead of the sun.
+        orientation = 270 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
+        label_orientation = 180 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false. all moon need this.
         map_gen_settings = planet_map_gen.phobos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -150,13 +153,15 @@ local planets = {
     {
         type = "planet",
         name = "deimos", -- Deimos, the second moon of mars.
+        moon = true, -- This is a moon.
+        parent_object = "mars", -- The object this moon orbits.
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.003, -- This is in m/s, convert as necessary.
-        distance = 22.8023526271, -- 0.0001568418046 AU, or 23463.2 km from mars, added to the distance of mars from the sun.
-        orientation = 157 / 360, -- The orientation of mars, may need to be changed.
+        distance = 2, -- New distance from mars instead of the sun.
+        orientation = 290 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 1 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
+        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.deimos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -478,13 +483,36 @@ local planets = {
 
 }
 
-for _, planet in pairs(planets) do
+for _, Planet in pairs(planets) do
+    if Planet.moon == true then
+        if Planet.label_orientation == nil then
+            log("Changed label orientation of \"" .. Planet.name .. "\" from \"" .. tostring(Planet.label_orientation) .. "\" to " .. tostring(270 / 360) .. "\".")
+            Planet.label_orientation = 270 / 360
+        end
+        if Planet.draw_orbit == nil then
+            Planet.draw_orbit = false
+        end
+        if Planet.orientation == nil then
+            Planet.orientation = 270 / 360
+        end
+        local ParentObject = nil
+        if Planet.parent_object ~= nil then
+            for _,Object in pairs(planets) do
+                if Planet.parent_object == Object.name then
+                    ParentObject = Object
+                end
+            end
+        end
+        if ParentObject ~= nil then
+            Planet = rotation_util.Unrelate(Planet, ParentObject)
+        end
+    end
     -- Check if the planet has an icon but does not have a starmap_icon
-    if planet.icon and not planet.starmap_icon then
+    if Planet.icon and not Planet.starmap_icon then
         -- Set the starmap_icon to be the same as the planet's icon
-        planet.starmap_icon = planet.icon
+        Planet.starmap_icon = Planet.icon
         -- Set the starmap_icon_size to be the same as the planet's icon_size
-        planet.starmap_icon_size = planet.icon_size
+        Planet.starmap_icon_size = Planet.icon_size
     end
 end
 
@@ -850,7 +878,7 @@ local space_connections = {
     },
 }
 
-local ScaleFactor = 100000 -- Scale each space connection by this factor.
+local ScaleFactor = 10000 -- Scale each space connection down by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
