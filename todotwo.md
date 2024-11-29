@@ -2,6 +2,7 @@
 *Note: This may or may not replace the other todo list.*
 ## Short Term Goals
 - [X] Create the sun, known as sol.
+- [X] Create a new system for allowing moons to be defined relative to the planets they orbit.
 - [ ] Add the moons of jupiter, saturn, uranus and neptune.
 - [ ] Create a list of ideas for new star systems and challenges.
 
@@ -16,3 +17,4 @@
 ## Long Term Goals
 - [ ] Add a reason to go to the solar system instead of just using the existing SA planets.
 - [ ] Create new science packs, challenges and technologies.
+- [ ] Release from an early access state, or whatever we're calling the current phase of development.
