@@ -231,6 +231,18 @@ function MapGen.jupiter()
     return map_gen_setting
 end
 
+function MapGen.io()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.callisto()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 -- 土星：类似木星，无固态表面，拥有环带资源
 -- 土星：气态巨星，密集环系统
 function MapGen.saturn()
@@ -251,6 +263,36 @@ function MapGen.saturn()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
+
+    return map_gen_setting
+end
+
+function MapGen.mimas()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.tethys()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.dione()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.rhea()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.iapetus()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
     return map_gen_setting
 end
@@ -280,6 +322,36 @@ function MapGen.uranus()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
+
+    return map_gen_setting
+end
+
+function MapGen.ariel()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.umbirel()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.titania()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.oberon()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.miranda()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
     return map_gen_setting
 end

@@ -257,7 +257,6 @@ local planets = {
             gravity = 0.020, -- 重力极低
         },
     },
-
     {
         type = "planet",
         name = "hygiea", -- 健神星
@@ -300,6 +299,50 @@ local planets = {
     },
     {
         type = "planet",
+        name = "io", -- Io
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Io orbits jupiter.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 1.796502844, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.io(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Io
+            ["day-night-cycle"] = 1.75 * day, -- Length of a day on io, aproximately 1.75 earth days.
+            ["magnetic-field"] = 0, -- Io doesn't have a significant magnetic field.
+            ["solar-power"] = 3.69735907899, -- Solar power on io, similar to that of jupiter - so hopefully accurate
+            pressure = 0, -- Io doesn't have an atmosphere
+            gravity = 1.796502844, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "callisto", -- Callisto
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Callisto orbits jupiter.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 1.235, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.callisto(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Callisto
+            ["day-night-cycle"] = 16.7 * day, -- Length of a day on callisto, aproximately 16.7 earth days.
+            ["magnetic-field"] = 0, -- Callisto doesn't have a significant magnetic field.
+            ["solar-power"] = 3.69396135946, -- Solar power on callisto, similar to that of jupiter - so hopefully accurate
+            pressure = 0, -- Callisto doesn't have an atmosphere
+            gravity = 1.235, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
         name = "saturn", -- 土星
         icon = "__real-starry-universe__/graphics/saturn.png",
         icon_size = 512,
@@ -320,6 +363,116 @@ local planets = {
     },
     {
         type = "planet",
+        name = "mimas", -- Mimas
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Mimas orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.064, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.mimas(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Mimas
+            ["day-night-cycle"] = 0.9375 * day, -- Length of a day on mimas, aproximately 0.9375 earth days.
+            ["magnetic-field"] = 0, -- Mimas doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09561205118, -- Solar power on mimas, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Mimas doesn't have an atmosphere
+            gravity = 0.064, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "tethys", -- Tethys
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Tethys orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.145, -- This is in m/s, convert as necessary.
+        distance = 3,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.tethys(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Tethys
+            ["day-night-cycle"] = 1.888 * day, -- Length of a day on tethys, aproximately 1.888 earth days.
+            ["magnetic-field"] = 0, -- Tethys doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09577261991, -- Solar power on tethys, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Tethys doesn't have an atmosphere
+            gravity = 0.145, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "dione", -- Dione
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Dione orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.212, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.dione(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Dione
+            ["day-night-cycle"] = 0.212 * day, -- Length of a day on dione, aproximately 0.212 earth days.
+            ["magnetic-field"] = 0, -- Dione doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09588733347, -- Solar power on dione, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Dione doesn't have an atmosphere
+            gravity = 0.212, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "rhea", -- Rhea
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Rhea orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.26, -- This is in m/s, convert as necessary.
+        distance = 5,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.rhea(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Rhea
+            ["day-night-cycle"] = 4.518212 * day, -- Length of a day on rhea, aproximately 4.518212 earth days.
+            ["magnetic-field"] = 0, -- Rhea doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09609386328, -- Solar power on rhea, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Rhea doesn't have an atmosphere
+            gravity = 0.26, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "iapetus", -- Iapetus
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Iapetus orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.223, -- This is in m/s, convert as necessary.
+        distance = 6,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.iapetus(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Iapetus
+            ["day-night-cycle"] = 79.3215 * day, -- Length of a day on iapetus, aproximately 79.3215 earth days.
+            ["magnetic-field"] = 0, -- Iapetus doesn't have a significant magnetic field.
+            ["solar-power"] = 1.10028291447, -- Solar power on iapetus, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Iapetus doesn't have an atmosphere
+            gravity = 0.223, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
         name = "uranus", -- 天王星
         icon = "__real-starry-universe__/graphics/uranus.png",
         icon_size = 512,
@@ -336,6 +489,116 @@ local planets = {
             ["solar-power"] = 0.3, -- 距太阳非常远
             pressure = 80000000, -- 大气压较高（单位：Pa）
             gravity = 8.69, -- 类似地球的重力
+        },
+    },
+    {
+        type = "planet",
+        name = "ariel", -- Ariel
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Ariel orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.246, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.ariel(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Ariel
+            ["day-night-cycle"] = 2.52 * day, -- Length of a day on ariel, aproximately 2.52 earth days.
+            ["magnetic-field"] = 0, -- Ariel doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27155015219, -- Solar power on ariel, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Ariel doesn't have an atmosphere
+            gravity = 0.246, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "umbriel", -- Umbriel
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Umbriel orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.195, -- This is in m/s, convert as necessary.
+        distance = 2,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.umbirel(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Umbriel
+            ["day-night-cycle"] = 4.1 * day, -- Length of a day on umbriel, aproximately 4.1 earth days.
+            ["magnetic-field"] = 0, -- Umbriel doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27156430335, -- Solar power on umbriel, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Umbriel doesn't have an atmosphere
+            gravity = 0.195, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "titania", -- Titania
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Titania orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.371, -- This is in m/s, convert as necessary.
+        distance = 3,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.titania(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Titania
+            ["day-night-cycle"] = 8.7 * day, -- Length of a day on titania, aproximately 8.7 earth days.
+            ["magnetic-field"] = 0, -- Titania doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27159260899, -- Solar power on titania, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Titania doesn't have an atmosphere
+            gravity = 0.371, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "oberon", -- Oberon
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Oberon orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.358, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.oberon(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Oberon
+            ["day-night-cycle"] = 13.46 * day, -- Length of a day on oberon, aproximately 13.46 earth days.
+            ["magnetic-field"] = 0, -- Oberon doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27161808784, -- Solar power on oberon, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Oberon doesn't have an atmosphere
+            gravity = 0.358, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "miranda", -- Miranda
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Miranda orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.076, -- This is in m/s, convert as necessary.
+        distance = 5,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.miranda(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Miranda
+            ["day-night-cycle"] = 1.41 * day, -- Length of a day on miranda, aproximately 1.41 earth days.
+            ["magnetic-field"] = 0, -- Miranda doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27154166202, -- Solar power on miranda, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Miranda doesn't have an atmosphere
+            gravity = 0.076, -- This is in m/s, convert as necessary.
         },
     },
     {
