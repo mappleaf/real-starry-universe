@@ -117,8 +117,8 @@ local planets = {
         name = "phobos", -- Phobos, the first moon of mars.
         icon = placeholder_png,
         icon_size = 512,
-        gravity_pull = 0.0057, -- This is in m/s, convert as necessary.
-        distance = 22.8009401205, -- 0.0000626747 AU, or 9376 km from mars, added to the distance of mars from the sun.
+        gravity_pull = 0.01, -- This is in m/s, convert as necessary.
+        distance = 22.8, -- 0.0000626747 AU, or 9376 km from mars, added to the distance of mars from the sun.
         orientation = 163 / 360, -- The orientation of mars, may need to be changed.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
         label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
@@ -127,11 +127,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Phobos
-            ["day-night-cycle"] = 0.318912037 * day, -- Day night cycle of phobos.
+            ["day-night-cycle"] = 0.32 * day, -- Day night cycle of phobos.
             ["magnetic-field"] = 0, -- Phobos has no significant magnetic field.
-            ["solar-power"] = 43.073785011, -- Aproximate solar power recieved on phobos. Consistent with the solar power recieved on mars, so likely correct(ish).
+            ["solar-power"] = 43.07 , -- Aproximate solar power recieved on phobos. Consistent with the solar power recieved on mars, so likely correct(ish).
             pressure = 0, -- Phobos is an asteroid-like moon and has no atmosphere.
-            gravity = 0.0057, -- This is in m/s, convert as necessary.
+            gravity = 0.01, -- This is in m/s, convert as necessary.
         },
     },
     {
@@ -149,9 +149,9 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Deimos
-            ["day-night-cycle"] = 0.3125 * day, -- Day night cycle of deimos.
+            ["day-night-cycle"] = 0.31 * day, -- Day night cycle of deimos.
             ["magnetic-field"] = 0, -- Deimos has no significant magnetic field.
-            ["solar-power"] = 43.046800236, -- Aproximate solar power recieved on deimos. Consistent with the solar power recieved on mars, so likely correct(ish).
+            ["solar-power"] = 43.04, -- Aproximate solar power recieved on deimos. Consistent with the solar power recieved on mars, so likely correct(ish).
             pressure = 0, -- Deimos is an asteroid-like moon and has no atmosphere.
             gravity = 0.003, -- This is in m/s, convert as necessary.
         },
@@ -161,8 +161,7 @@ local planets = {
         name = "asteroid-belt-inner",
         icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png",
         icon_size = 512,
-        gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
-
+        gravity_pull = 0.01, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
         distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
         orientation = 185 / 360,
         magnitude = 1,
@@ -170,11 +169,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Inner Asteroid Belt (Between Mars and Jupiter)
-            ["day-night-cycle"] = 0.37681889586 * day, -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
+            ["day-night-cycle"] = 0.37  * day, -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
             ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
             ["solar-power"] = 13.717, -- Percentage of solar power compared to that on earth? Seems to fit with the data of jupiter and mars, being about in between.
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
-            gravity = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
+            gravity = 0.01, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
         },
     },
     {
@@ -190,7 +189,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Ceres (谷神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 谷神星昼夜周期：约9小时
+            ["day-night-cycle"] = 0.37  * day, -- 谷神星昼夜周期：约9小时
             ["magnetic-field"] = 0, -- 谷神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -211,7 +210,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Vesta (灶神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 灶神星昼夜周期：约5.3小时
+            ["day-night-cycle"] = 0.37  * day, -- 灶神星昼夜周期：约5.3小时
             ["magnetic-field"] = 0, -- 灶神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -232,7 +231,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Pallas (智神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 智神星昼夜周期：约7.8小时
+            ["day-night-cycle"] = 0.37  * day, -- 智神星昼夜周期：约7.8小时
             ["magnetic-field"] = 0, -- 智神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -253,7 +252,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Hygiea (健神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 健神星昼夜周期：约13小时
+            ["day-night-cycle"] = 0.37 * day, -- 健神星昼夜周期：约13小时
             ["magnetic-field"] = 0, -- 健神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -360,7 +359,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Enceladus (土卫二)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 土卫二昼夜周期：约1.4天
+            ["day-night-cycle"] = 0.37  * day, -- 土卫二昼夜周期：约1.4天
             ["magnetic-field"] = 0, -- 土卫二几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -382,7 +381,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Titan (土卫六)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 土卫六昼夜周期：约15.9天
+            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
             ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 146700, -- 大气压极高（单位：Pa）
@@ -443,7 +442,7 @@ local planets = {
         map_gen_settings = planet_map_gen.triton(),
         surface_properties = {
             -- Triton (海卫一)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 海卫一昼夜周期：约14.1小时
+            ["day-night-cycle"] = 0.37  * day, -- 海卫一昼夜周期：约14.1小时
             ["magnetic-field"] = 0, -- 海卫一几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 1400, -- 大气压较低（单位：Pa）
@@ -485,7 +484,7 @@ local planets = {
         map_gen_settings = planet_map_gen.charon(),
         surface_properties = {
             -- Charon (冥卫一)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 冥卫一昼夜周期：约153小时
+            ["day-night-cycle"] = 0.37 * day, -- 冥卫一昼夜周期：约153小时
             ["magnetic-field"] = 0, -- 冥卫一几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -497,7 +496,7 @@ local planets = {
         name = "asteroid-belt-outer",
         icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png",
         icon_size = 1024,
-        gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
+        gravity_pull = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 120, -- 40 AU (centre of the outer asteroid belt)
         orientation = 359 / 360,
         magnitude = 0.4,
@@ -505,11 +504,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Outer Asteroid Belt (Between Neptune and Solar System Edge)
-            ["day-night-cycle"] = 0.28449826615 * day, -- Aproximate day-night cycle for asteroids in the outer asteroid belt (also known as kuiper belt)
+            ["day-night-cycle"] = 0.28 * day, -- Aproximate day-night cycle for asteroids in the outer asteroid belt (also known as kuiper belt)
             ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
-            ["solar-power"] = 0.8625, -- Percentage of solar power compared to that on earth? Seems to fit with the data of pluto, being around the same.
+            ["solar-power"] = 0.86, -- Percentage of solar power compared to that on earth? Seems to fit with the data of pluto, being around the same.
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
-            gravity = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
+            gravity = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
 
@@ -526,7 +525,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Makemake (鸟神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 鸟神星昼夜周期：约22.5小时
+            ["day-night-cycle"] = 0.37 * day, -- 鸟神星昼夜周期：约22.5小时
             ["magnetic-field"] = 0, -- 鸟神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -547,7 +546,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Haumea (妊神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 妊神星昼夜周期：约3.9小时
+            ["day-night-cycle"] = 0.37 * day, -- 妊神星昼夜周期：约3.9小时
             ["magnetic-field"] = 0, -- 妊神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -567,7 +566,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Eris (阋神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 阋神星昼夜周期：约15.8小时
+            ["day-night-cycle"] = 0.37 * day, -- 阋神星昼夜周期：约15.8小时
             ["magnetic-field"] = 0, -- 阋神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -587,7 +586,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Gonggong (共工星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 共工星昼夜周期：约25小时
+            ["day-night-cycle"] = 0.37 * day, -- 共工星昼夜周期：约25小时
             ["magnetic-field"] = 0, -- 共工星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
