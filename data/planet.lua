@@ -20,7 +20,7 @@ local planets = {
         gravity_pull = 21.7, -- The surface gravity of the sun, equal to 217 m/s. This shouldn't be 217, because 217 km/s is too fast for the average player's space platform or 2.17, because 2.17 doesn't add much challenge.
         distance = 0, -- The sun is 0 distance away from the sun, so this should be 0.
         orientation = 0 / 360, -- Orinetation doesn't matter for the sun.
-        magnitude = 1, -- Should be 1 for now while I work out a better value...
+        magnitude = 1, -- Magnitude doesn't seem to do anything. It might need changing though.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
     },
     {

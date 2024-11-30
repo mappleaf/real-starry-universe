@@ -43,10 +43,10 @@ local Planets = {
 
 -- Moons are sorted by the planet they orbit.
 -- For instance, Luna is labelled under 3,1 - meaning that it's the first moon of the third planet, Earth.
--- Nil is currently representing moons which don't exist yet, such as the moons of Mars.
+-- Nil is currently representing moons which don't exist yet, such as the moons of jupiter.
 -- Empty tables represent planets with no moons, such as mercury.
 local Moons = {
-    [0] = {} -- Sol
+    [0] = {}, -- Sol
     [1] = {}, -- Mercury
     [2] = {}, -- Venus
     [3] = { -- Earth
