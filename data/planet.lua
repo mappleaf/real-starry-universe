@@ -15,7 +15,7 @@ local planets = {
         name = "sol", -- Similar to how the moon is called luna, the sun is called sol. This is actually more commonly used than luna as the word solar is derived from the word sol.
         icon = "__real-starry-universe__/graphics/blank512.png", -- This should eventually be replaced with a proper image.
         icon_size = 512,
-        starmap_icon = "__real-starry-universe__/graphics/blank512.png", -- This should be blank, as the sun is already in the utility sprites
+        starmap_icon = "__core__/graphics/icons/starmap-star.png",
         starmap_icon_size = 512,
         gravity_pull = 21.7, -- The surface gravity of the sun, equal to 217 m/s. This shouldn't be 217, because 217 km/s is too fast for the average player's space platform or 2.17, because 2.17 doesn't add much challenge.
         distance = 0, -- The sun is 0 distance away from the sun, so this should be 0.
@@ -661,7 +661,6 @@ local planets = {
             gravity = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
-
     {
         type = "planet",
         name = "makemake", -- 鸟神星
@@ -682,7 +681,6 @@ local planets = {
             gravity = 0.05, -- 重力极低
         },
     },
-
     {
         type = "planet",
         name = "haumea", -- 妊神星
@@ -746,7 +744,7 @@ local planets = {
 
 }
 
-for _, Planet in pairs(planets) do
+for i, Planet in pairs(planets) do
     if Planet.moon == true then
         if Planet.label_orientation == nil then
             log("Changed label orientation of \"" .. Planet.name .. "\" from \"" .. tostring(Planet.label_orientation) .. "\" to " .. tostring(270 / 360) .. "\".")
@@ -767,7 +765,14 @@ for _, Planet in pairs(planets) do
             end
         end
         if ParentObject ~= nil then
-            Planet = rotation_util.Unrelate(Planet, ParentObject)
+            local TransititionedPlanet = rotation_util.Unrelate(Planet, ParentObject)
+            if TransititionedPlanet ~= nil then
+                Planet = TransititionedPlanet
+            else
+                log("Planet \"" .. Planet.name .. "\" was nillified by the Unrelate function!")
+            end
+        else
+            log("ParentObject of moon \"" .. Planet.name .. "\" is nil! Intended object was \"" .. Planet.parent_object .. "\". Is this correct?")
         end
     end
     -- Check if the planet has an icon but does not have a starmap_icon
@@ -777,7 +782,20 @@ for _, Planet in pairs(planets) do
         -- Set the starmap_icon_size to be the same as the planet's icon_size
         Planet.starmap_icon_size = Planet.icon_size
     end
+
+    if Planet.subgroup == nil then
+        Planet.subgroup = "planets"
+    end
+
+    if Planet == nil then
+        log("Planet nillified!")
+    else
+        planets[i] = Planet
+    end
+
 end
+
+log("Extending planets! \"" .. serpent.block(planets))
 
 data:extend(planets)
 
@@ -790,7 +808,7 @@ local space_connections = {
         from = "sol",
         to = "mercury",
         order = "0[sol]-a[mercury]",
-        length = 510100, -- The orbital distance of the parker solar probe which can be considered a safe distance from the sun, subtracted from the orbital distance of mercury - all in units of 100 kilometers.
+        length = 510100, -- A safe distance from the sun subtracted from the orbital distance of mercury in units of 100 kilometers.
         space_effects = {
             background_color = { r = 0.2, g = 0.1, b = 0.3 },
             particle_color = { r = 0.6, g = 0.4, b = 0.2 }
@@ -847,6 +865,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "earth",
         to = "luna",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "z[a]",
         length = 3843.99, -- Average distance between earth and luna in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -876,6 +895,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "mars",
         to = "phobos",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "d[mars]-e[phobos]",
         length = 93.76, -- Average distance between mars and phobos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -891,6 +911,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "phobos",
         to = "deimos",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "e[phobos]-f[deimos]",
         length = 180.06, -- Average distance between phobos and deimos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -993,6 +1014,38 @@ local space_connections = {
     },
     {
         type = "space-connection",
+        name = "jupiter-io", -- Jupiter to Io.
+        subgroup = "planet-connections",
+        from = "jupiter",
+        to = "io",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "f[jupiter]-g[io]",
+        length = 4218,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.4, b = 0.3 },
+            particle_color = { r = 0.5, g = 0.2, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "io-callisto", -- Io to Callisto.
+        subgroup = "planet-connections",
+        from = "io",
+        to = "callisto",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "f[io]-g[callisto]",
+        length = 14609,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.4, b = 0.3 },
+            particle_color = { r = 0.5, g = 0.2, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
         name = "jupiter-saturn", -- 木星到土星
         subgroup = "planet-connections",
         from = "jupiter",
@@ -1004,6 +1057,86 @@ local space_connections = {
         space_effects = {
             background_color = { r = 0.2, g = 0.4, b = 0.3 },
             particle_color = { r = 0.5, g = 0.2, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "saturn-mimas", -- Saturn to Mimas.
+        subgroup = "planet-connections",
+        from = "saturn",
+        to = "mimas",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[saturn]-h[mimas]",
+        length = 1855.4,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "mimas-tethys", -- Mimas to Tethys.
+        subgroup = "planet-connections",
+        from = "mimas",
+        to = "tethys",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[mimas]-h[tethys]",
+        length = 1091.3,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "tethys-dione", -- Tethys to Dione.
+        subgroup = "planet-connections",
+        from = "tethys",
+        to = "dione",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[tethys]-h[dione]",
+        length = 827.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "dione-rhea", -- Dione to Rhea.
+        subgroup = "planet-connections",
+        from = "dione",
+        to = "rhea",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[dione]-h[rhea]",
+        length = 1496.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "rhea-iapetus", -- Rhea to Iapetus.
+        subgroup = "planet-connections",
+        from = "rhea",
+        to = "iapetus",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[dione]-h[rhea]",
+        length = 6948,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
         }
     },
     {
@@ -1141,12 +1274,17 @@ local space_connections = {
     },
 }
 
-local ScaleFactor = 10000 -- Scale each space connection down by this factor.
+local MoonScaleFactor = 10 -- Scale each moon space connection down by this factor.
+local ScaleFactor = 10000 -- Scale each non-moon space connection down by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
 
-    SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
+    if SpaceConnection.moon == true then
+        SpaceConnection.length = SpaceConnection.length / MoonScaleFactor -- Divide each length by the Moon Scale Factor.
+    else
+        SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
+    end
 
     if math.ceil(SpaceConnection.length) ~= SpaceConnection.length then
         SpaceConnection.length = math.ceil(SpaceConnection.length) -- Round up to the nearest integer.
