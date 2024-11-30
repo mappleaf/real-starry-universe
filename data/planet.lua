@@ -136,14 +136,14 @@ local planets = {
     },
     {
         type = "planet",
-        name = "deimos", -- Deimos, the second moon of mars.
+        name = "deimos", -- Deimos, the second moon of mars. 火卫二
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.003, -- This is in m/s, convert as necessary.
-        distance = 22.8023526271, -- 0.0001568418046 AU, or 23463.2 km from mars, added to the distance of mars from the sun.
-        orientation = 157 / 360, -- The orientation of mars, may need to be changed.
+        distance = 21.8, -- 0.0001568418046 AU, or 23463.2 km from mars, added to the distance of mars from the sun.
+        orientation = 160 / 360, -- The orientation of mars, may need to be changed.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 1 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
+        label_orientation = 10 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.deimos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -282,6 +282,51 @@ local planets = {
     },
     {
         type = "planet",
+        name = "europa", -- 木卫二
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/europa.png",
+        icon_size = 512,
+        gravity_pull = 0.134,
+        distance = 82 / 2, -- 0.67 AU (relative to Jupiter)
+        orientation = 220 / 360,
+        magnitude = 0.3, -- Europa (木卫二)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.europa(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Europa (木卫二)
+            ["day-night-cycle"] = 0.37 * day, -- 木卫二昼夜周期：约3.5天
+            ["magnetic-field"] = 0, -- 木卫二几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.134, -- 重力较低
+        },
+    },
+    {
+        type = "planet",
+        name = "ganymede", -- 木卫三
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/ganymede.png",
+        icon_size = 512,
+        gravity_pull = 0.146,
+        distance = 100 / 2, -- 1.07 AU (relative to Jupiter)
+        orientation = 248 / 360,
+        magnitude = 0.42, -- Ganymede (木卫三)
+        label_orientation = 270 / 360,
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.ganymede(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Ganymede (木卫三)
+            ["day-night-cycle"] = 0.37 * day, -- 木卫三昼夜周期：约7.15天
+            ["magnetic-field"] = 0, -- 木卫三几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.146, -- 重力较低
+        },
+    },
+    {
+        type = "planet",
         name = "saturn", -- 土星
         icon = "__real-starry-universe__/graphics/saturn.png",
         icon_size = 512,
@@ -298,6 +343,50 @@ local planets = {
             ["solar-power"] = 1.1, -- 远离太阳，效率极低
             pressure = 100000000, -- 大气压极高（单位：Pa）
             gravity = 10.44, -- 类似木星的重力
+        },
+    },
+    {
+        type = "planet",
+        name = "enceladus", -- 土卫二
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/enceladus.png",
+        icon_size = 512,
+        gravity_pull = 0.011,
+        distance = 136 / 3, -- 1.51 AU (relative to Saturn)
+        orientation = 290 / 360,
+        magnitude = 0.2, -- Enceladus (土卫二)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.enceladus(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Enceladus (土卫二)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 土卫二昼夜周期：约1.4天
+            ["magnetic-field"] = 0, -- 土卫二几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.011, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
+        name = "titan", -- 土卫六
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/titan.png",
+        icon_size = 512,
+        gravity_pull = 0.14,
+        distance = 130 / 3, -- 1.22 AU (relative to Saturn)
+        orientation = 270 / 360,
+        magnitude = 0.4, -- Titan (土卫六)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.titan(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Titan (土卫六)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 土卫六昼夜周期：约15.9天
+            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 146700, -- 大气压极高（单位：Pa）
+            gravity = 0.14, -- 重力较低
         },
     },
     {
@@ -342,6 +431,27 @@ local planets = {
     },
     {
         type = "planet",
+        name = "triton", -- 海卫一
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/triton.png",
+        icon_size = 512,
+        gravity_pull = 0.079,
+        distance = 420 / 5, -- 3.54 AU (relative to Neptune)
+        orientation = 354 / 360,
+        magnitude = 0.24, -- Triton (海卫一)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.triton(),
+        surface_properties = {
+            -- Triton (海卫一)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 海卫一昼夜周期：约14.1小时
+            ["magnetic-field"] = 0, -- 海卫一几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 1400, -- 大气压较低（单位：Pa）
+            gravity = 0.079, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
         name = "pluto", -- Pluto (冥王星)
         icon = "__real-starry-universe__/graphics/pluto.png",
         icon_size = 512,
@@ -358,6 +468,28 @@ local planets = {
             ["solar-power"] = 0.05, -- 几乎没有太阳能
             pressure = 0.1, -- 极其稀薄的大气压
             gravity = 0.62, -- 极低重力
+        },
+    },
+    {
+        type = "planet",
+        name = "charon", -- 冥卫一
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/charon.png",
+        icon_size = 512,
+        gravity_pull = 0.028,
+        distance = 116, -- 39.5 AU (relative to Pluto)
+        orientation = 290 / 360,
+        magnitude = 0.15, -- Charon (冥卫一)
+        label_orientation = 90 / 360,
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.charon(),
+        surface_properties = {
+            -- Charon (冥卫一)
+            ["day-night-cycle"] = 0.37681889586 * day, -- 冥卫一昼夜周期：约153小时
+            ["magnetic-field"] = 0, -- 冥卫一几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.028, -- 重力极低
         },
     },
     {
@@ -676,6 +808,34 @@ local space_connections = {
     },
     {
         type = "space-connection",
+        name = "jupiter-europa", -- 木星到木卫二
+        subgroup = "planet-connections",
+        from = "jupiter",
+        to = "europa",
+        order = "p[jupiter]-q[europa]",
+        length = 2.8,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.2, b = 0.5 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.4 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "jupiter-ganymede", -- 木星到木卫三
+        subgroup = "planet-connections",
+        from = "jupiter",
+        to = "ganymede",
+        order = "p[jupiter]-s[ganymede]",
+        length = 3.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.5, g = 0.4, b = 0.7 },
+            particle_color = { r = 0.4, g = 0.3, b = 0.6 }
+        }
+    },
+    {
+        type = "space-connection",
         name = "jupiter-saturn", -- 木星到土星
         subgroup = "planet-connections",
         from = "jupiter",
@@ -687,6 +847,34 @@ local space_connections = {
         space_effects = {
             background_color = { r = 0.2, g = 0.4, b = 0.3 },
             particle_color = { r = 0.5, g = 0.2, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "saturn-enceladus", -- 土星到土卫二
+        subgroup = "planet-connections",
+        from = "saturn",
+        to = "enceladus",
+        order = "n[saturn]-o[enceladus]",
+        length = 3.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.2, b = 0.4 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "saturn-titan", -- 土星到土卫六
+        subgroup = "planet-connections",
+        from = "saturn",
+        to = "titan",
+        order = "n[saturn]-r[titan]",
+        length = 4.2,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.6 },
+            particle_color = { r = 0.5, g = 0.4, b = 0.5 }
         }
     },
     {
@@ -717,6 +905,20 @@ local space_connections = {
         space_effects = {
             background_color = { r = 0.2, g = 0.3, b = 0.5 },
             particle_color = { r = 0.3, g = 0.5, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "neptune-triton", -- 海王星到海卫一
+        subgroup = "planet-connections",
+        from = "neptune",
+        to = "triton",
+        order = "t[neptune]-u[triton]",
+        length = 5.0,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.6, g = 0.5, b = 0.8 },
+            particle_color = { r = 0.3, g = 0.2, b = 0.7 }
         }
     },
     {
@@ -807,7 +1009,20 @@ local space_connections = {
             particle_color = { r = 0.7, g = 0.6, b = 0.4 }
         }
     },
-
+    {
+        type = "space-connection",
+        name = "pluto-charon", -- 冥王星到冥卫一
+        subgroup = "planet-connections",
+        from = "pluto",
+        to = "charon",
+        order = "j[pluto]-v[charon]",
+        length = 1.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.7, g = 0.6, b = 0.9 },
+            particle_color = { r = 0.2, g = 0.1, b = 0.8 }
+        }
+    },
     {
         type = "space-connection",
         name = "gonggong-pluto", -- 共工星到冥王星

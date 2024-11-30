@@ -201,6 +201,42 @@ function MapGen.gonggong()
     return map_gen_setting
 end
 
+function MapGen.europa()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.titan()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.ganymede()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.triton()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.charon()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
+function MapGen.enceladus()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 -- 木星：没有固态表面，仅供空间资源探索
 -- 木星：气态巨星，特殊大气采集站
 function MapGen.jupiter()
