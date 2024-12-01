@@ -67,7 +67,7 @@ local planets = {
         type = "planet",
         name = "earth", -- 地球
         icon = "__real-starry-universe__/graphics/earth.png",
-        icon_size = 512,
+        icon_size = 1024,
         gravity_pull = 9.8,
         distance = 15, -- 1 AU
         orientation = 120 / 360,
@@ -143,11 +143,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Phobos
-            ["day-night-cycle"] = 0.318912037 * day, -- Day night cycle of phobos.
+            ["day-night-cycle"] = 0.32 * day, -- Day night cycle of phobos.
             ["magnetic-field"] = 0, -- Phobos has no significant magnetic field.
-            ["solar-power"] = 43.073785011, -- Aproximate solar power recieved on phobos. Consistent with the solar power recieved on mars, so likely correct(ish).
+            ["solar-power"] = 43.07 , -- Aproximate solar power recieved on phobos. Consistent with the solar power recieved on mars, so likely correct(ish).
             pressure = 0, -- Phobos is an asteroid-like moon and has no atmosphere.
-            gravity = 0.0057, -- This is in m/s, convert as necessary.
+            gravity = 0.01, -- This is in m/s, convert as necessary.
         },
     },
     {
@@ -167,9 +167,9 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Deimos
-            ["day-night-cycle"] = 0.3125 * day, -- Day night cycle of deimos.
+            ["day-night-cycle"] = 0.31 * day, -- Day night cycle of deimos.
             ["magnetic-field"] = 0, -- Deimos has no significant magnetic field.
-            ["solar-power"] = 43.046800236, -- Aproximate solar power recieved on deimos. Consistent with the solar power recieved on mars, so likely correct(ish).
+            ["solar-power"] = 43.04, -- Aproximate solar power recieved on deimos. Consistent with the solar power recieved on mars, so likely correct(ish).
             pressure = 0, -- Deimos is an asteroid-like moon and has no atmosphere.
             gravity = 0.003, -- This is in m/s, convert as necessary.
         },
@@ -179,8 +179,7 @@ local planets = {
         name = "asteroid-belt-inner",
         icon = "__real-starry-universe__/graphics/asteroid-belt-inner.png",
         icon_size = 512,
-        gravity_pull = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
-
+        gravity_pull = 0.01, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
         distance = 27, -- 2.7 AU (centre of the inner asteroid belt)
         orientation = 185 / 360,
         magnitude = 1,
@@ -188,11 +187,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Inner Asteroid Belt (Between Mars and Jupiter)
-            ["day-night-cycle"] = 0.37681889586 * day, -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
+            ["day-night-cycle"] = 0.37  * day, -- Aproximate day-night cycle for a specific asteroid (which will right now represnent all asteroids)
             ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
             ["solar-power"] = 13.717, -- Percentage of solar power compared to that on earth? Seems to fit with the data of jupiter and mars, being about in between.
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
-            gravity = 0.0000137200167, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
+            gravity = 0.01, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
         },
     },
     {
@@ -208,7 +207,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Ceres (谷神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 谷神星昼夜周期：约9小时
+            ["day-night-cycle"] = 0.37  * day, -- 谷神星昼夜周期：约9小时
             ["magnetic-field"] = 0, -- 谷神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -229,7 +228,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Vesta (灶神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 灶神星昼夜周期：约5.3小时
+            ["day-night-cycle"] = 0.37  * day, -- 灶神星昼夜周期：约5.3小时
             ["magnetic-field"] = 0, -- 灶神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -250,7 +249,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Pallas (智神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 智神星昼夜周期：约7.8小时
+            ["day-night-cycle"] = 0.37  * day, -- 智神星昼夜周期：约7.8小时
             ["magnetic-field"] = 0, -- 智神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -270,7 +269,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Hygiea (健神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 健神星昼夜周期：约13小时
+            ["day-night-cycle"] = 0.37 * day, -- 健神星昼夜周期：约13小时
             ["magnetic-field"] = 0, -- 健神星几乎没有磁场
             ["solar-power"] = 13.717, -- 太阳能效率较低
             pressure = 0, -- 大气压为零
@@ -319,6 +318,26 @@ local planets = {
             gravity = 1.796502844, -- This is in m/s, convert as necessary.
         },
     },
+        name = "europa", -- 木卫二
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/europa.png",
+        icon_size = 512,
+        gravity_pull = 0.134,
+        distance = 82 / 2, -- 0.67 AU (relative to Jupiter)
+        orientation = 220 / 360,
+        magnitude = 0.3, -- Europa (木卫二)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.europa(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Europa (木卫二)
+            ["day-night-cycle"] = 0.37 * day, -- 木卫二昼夜周期：约3.5天
+            ["magnetic-field"] = 0, -- 木卫二几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.134, -- 重力较低
+        },
+    },
     {
         type = "planet",
         name = "callisto", -- Callisto
@@ -339,6 +358,28 @@ local planets = {
             ["solar-power"] = 3.69396135946, -- Solar power on callisto, similar to that of jupiter - so hopefully accurate
             pressure = 0, -- Callisto doesn't have an atmosphere
             gravity = 1.235, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        name = "ganymede", -- 木卫三
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/ganymede.png",
+        icon_size = 512,
+        gravity_pull = 0.146,
+        distance = 100 / 2, -- 1.07 AU (relative to Jupiter)
+        orientation = 248 / 360,
+        magnitude = 0.42, -- Ganymede (木卫三)
+        label_orientation = 270 / 360,
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.ganymede(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Ganymede (木卫三)
+            ["day-night-cycle"] = 0.37 * day, -- 木卫三昼夜周期：约7.15天
+            ["magnetic-field"] = 0, -- 木卫三几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.146, -- 重力较低
         },
     },
     {
@@ -381,6 +422,27 @@ local planets = {
             ["solar-power"] = 1.09561205118, -- Solar power on mimas, similar to that of saturn - so hopefully accurate
             pressure = 0, -- Mimas doesn't have an atmosphere
             gravity = 0.064, -- This is in m/s, convert as necessary.
+        },
+  },
+  {
+        name = "enceladus", -- 土卫二
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/enceladus.png",
+        icon_size = 512,
+        gravity_pull = 0.011,
+        distance = 136 / 3, -- 1.51 AU (relative to Saturn)
+        orientation = 290 / 360,
+        magnitude = 0.2, -- Enceladus (土卫二)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.enceladus(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Enceladus (土卫二)
+            ["day-night-cycle"] = 0.37  * day, -- 土卫二昼夜周期：约1.4天
+            ["magnetic-field"] = 0, -- 土卫二几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.011, -- 重力极低
         },
     },
     {
@@ -469,6 +531,27 @@ local planets = {
             ["solar-power"] = 1.10028291447, -- Solar power on iapetus, similar to that of saturn - so hopefully accurate
             pressure = 0, -- Iapetus doesn't have an atmosphere
             gravity = 0.223, -- This is in m/s, convert as necessary.
+        },
+     },
+     {
+        name = "titan", -- 土卫六
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/titan.png",
+        icon_size = 512,
+        gravity_pull = 0.14,
+        distance = 130 / 3, -- 1.22 AU (relative to Saturn)
+        orientation = 270 / 360,
+        magnitude = 0.4, -- Titan (土卫六)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.titan(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Titan (土卫六)
+            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
+            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 146700, -- 大气压极高（单位：Pa）
+            gravity = 0.14, -- 重力较低
         },
     },
     {
@@ -623,6 +706,27 @@ local planets = {
     },
     {
         type = "planet",
+        name = "triton", -- 海卫一
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/triton.png",
+        icon_size = 512,
+        gravity_pull = 0.079,
+        distance = 420 / 5, -- 3.54 AU (relative to Neptune)
+        orientation = 354 / 360,
+        magnitude = 0.24, -- Triton (海卫一)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.triton(),
+        surface_properties = {
+            -- Triton (海卫一)
+            ["day-night-cycle"] = 0.37  * day, -- 海卫一昼夜周期：约14.1小时
+            ["magnetic-field"] = 0, -- 海卫一几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 1400, -- 大气压较低（单位：Pa）
+            gravity = 0.079, -- 重力极低
+        },
+    },
+    {
+        type = "planet",
         name = "pluto", -- Pluto (冥王星)
         icon = "__real-starry-universe__/graphics/pluto.png",
         icon_size = 512,
@@ -642,11 +746,33 @@ local planets = {
         },
     },
     {
+        type = "planet",
+        name = "charon", -- 冥卫一
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/charon.png",
+        icon_size = 512,
+        gravity_pull = 0.028,
+        distance = 116, -- 39.5 AU (relative to Pluto)
+        orientation = 290 / 360,
+        magnitude = 0.15, -- Charon (冥卫一)
+        label_orientation = 90 / 360,
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.charon(),
+        surface_properties = {
+            -- Charon (冥卫一)
+            ["day-night-cycle"] = 0.37 * day, -- 冥卫一昼夜周期：约153小时
+            ["magnetic-field"] = 0, -- 冥卫一几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.028, -- 重力极低
+        },
+    },
+    {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must land on one of it like pluto.
         name = "asteroid-belt-outer",
         icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png",
         icon_size = 1024,
-        gravity_pull = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
+        gravity_pull = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 120, -- 40 AU (centre of the outer asteroid belt)
         orientation = 359 / 360,
         magnitude = 0.4,
@@ -654,11 +780,11 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Outer Asteroid Belt (Between Neptune and Solar System Edge)
-            ["day-night-cycle"] = 0.28449826615 * day, -- Aproximate day-night cycle for asteroids in the outer asteroid belt (also known as kuiper belt)
+            ["day-night-cycle"] = 0.28 * day, -- Aproximate day-night cycle for asteroids in the outer asteroid belt (also known as kuiper belt)
             ["magnetic-field"] = 0, -- Asteroids tend to have a very, very weak magnetic field. This is aproximated by 0 here.
-            ["solar-power"] = 0.8625, -- Percentage of solar power compared to that on earth? Seems to fit with the data of pluto, being around the same.
+            ["solar-power"] = 0.86, -- Percentage of solar power compared to that on earth? Seems to fit with the data of pluto, being around the same.
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
-            gravity = 0.0000517472925, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
+            gravity = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
     {
@@ -674,7 +800,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Makemake (鸟神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 鸟神星昼夜周期：约22.5小时
+            ["day-night-cycle"] = 0.37 * day, -- 鸟神星昼夜周期：约22.5小时
             ["magnetic-field"] = 0, -- 鸟神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -694,7 +820,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Haumea (妊神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 妊神星昼夜周期：约3.9小时
+            ["day-night-cycle"] = 0.37 * day, -- 妊神星昼夜周期：约3.9小时
             ["magnetic-field"] = 0, -- 妊神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -714,7 +840,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Eris (阋神星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 阋神星昼夜周期：约15.8小时
+            ["day-night-cycle"] = 0.37 * day, -- 阋神星昼夜周期：约15.8小时
             ["magnetic-field"] = 0, -- 阋神星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -734,7 +860,7 @@ local planets = {
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Gonggong (共工星)
-            ["day-night-cycle"] = 0.37681889586 * day, -- 共工星昼夜周期：约25小时
+            ["day-night-cycle"] = 0.37 * day, -- 共工星昼夜周期：约25小时
             ["magnetic-field"] = 0, -- 共工星几乎没有磁场
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
@@ -1027,16 +1153,46 @@ local space_connections = {
             background_color = { r = 0.2, g = 0.4, b = 0.3 },
             particle_color = { r = 0.5, g = 0.2, b = 0.7 }
         }
+     },
+     {
+        type = "space-connection",
+        name = "io-europa", -- Io to Europa.
+        subgroup = "planet-connections",
+        from = "jupiter",
+        to = "europa",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "p[jupiter]-q[europa]",
+        length = 2493,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.2, b = 0.5 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.4 }
+        }
     },
     {
         type = "space-connection",
-        name = "io-callisto", -- Io to Callisto.
+        name = "europa-ganymede", -- Europa to Ganymede
         subgroup = "planet-connections",
-        from = "io",
+        from = "europa",
+        to = "ganymede",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "p[europa]-s[ganymede]",
+        length = 3993,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.5, g = 0.4, b = 0.7 },
+            particle_color = { r = 0.4, g = 0.3, b = 0.6 }
+        }
+     },
+     {
+        type = "space-connection",
+        name = "ganymede-callisto", -- Ganymede to Callisto.
+        subgroup = "planet-connections",
+        from = "ganymede",
         to = "callisto",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "f[io]-g[callisto]",
-        length = 14609,
+        order = "f[ganymede]-g[callisto]",
+        length = 8123,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1072,6 +1228,20 @@ local space_connections = {
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
             background_color = { r = 0.3, g = 0.5, b = 0.2 },
+        }
+    },
+    {
+        type = "space-connection",
+        name = "mimas-enceladus", -- Mimas to Enceladus
+        subgroup = "planet-connections",
+        from = "mimas",
+        to = "enceladus",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "n[mimas]-o[enceladus]",
+        length = 525,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.2, b = 0.4 },
             particle_color = { r = 0.7, g = 0.6, b = 0.3 }
         }
     },
@@ -1125,18 +1295,32 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "rhea-iapetus", -- Rhea to Iapetus.
+        name = "rhea-titan", -- Rhea to Titan.
         subgroup = "planet-connections",
         from = "rhea",
-        to = "iapetus",
+        to = "titan",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "g[dione]-h[rhea]",
+        order = "g[rhea]-h[titan]",
         length = 6948,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
             background_color = { r = 0.3, g = 0.5, b = 0.2 },
             particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        name = "titan-iapetus", -- Titan to Iapetus.
+        subgroup = "planet-connections",
+        from = "titan",
+        to = "iapetus",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "n[titan]-r[iapetus]",
+        length = 23389.7,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.6 },
+            particle_color = { r = 0.5, g = 0.4, b = 0.5 }
         }
     },
     {
@@ -1251,6 +1435,20 @@ local space_connections = {
     },
     {
         type = "space-connection",
+        name = "neptune-triton", -- 海王星到海卫一
+        subgroup = "planet-connections",
+        from = "neptune",
+        to = "triton",
+        order = "t[neptune]-u[triton]",
+        length = 5.0,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.6, g = 0.5, b = 0.8 },
+            particle_color = { r = 0.3, g = 0.2, b = 0.7 }
+        }
+    },
+    {
+        type = "space-connection",
         name = "neptune-asteroid-belt-outer",
         subgroup = "planet-connections",
         from = "neptune",
@@ -1337,7 +1535,20 @@ local space_connections = {
             particle_color = { r = 0.7, g = 0.6, b = 0.4 }
         }
     },
-
+    {
+        type = "space-connection",
+        name = "pluto-charon", -- 冥王星到冥卫一
+        subgroup = "planet-connections",
+        from = "pluto",
+        to = "charon",
+        order = "j[pluto]-v[charon]",
+        length = 1.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.7, g = 0.6, b = 0.9 },
+            particle_color = { r = 0.2, g = 0.1, b = 0.8 }
+        }
+    },
     {
         type = "space-connection",
         name = "gonggong-pluto", -- 共工星到冥王星
@@ -1379,6 +1590,7 @@ end
 
 data:extend(space_connections)
 
+-- Needs fixing to work with main-branch
 local PlanetTechnologies = {
     { "sol", "太阳轨道", { "planet-discovery-mercury", "space-platform-thruster" }, true },
     { "mercury", "水星", { "planet-discovery-venus", "space-platform-thruster" }, false },
@@ -1396,40 +1608,6 @@ local PlanetTechnologies = {
     { "pluto", "冥王星", { "planet-discovery-neptune", "space-platform-thruster" }, false },
     { "asteroid-belt-outer", "柯伊伯带", { "planet-discovery-pluto", "space-platform-thruster" }, false }
 }
-
-for i, planet in ipairs(PlanetTechnologies) do
-    local planet_name = planet[1]
-    local planet_description = planet[2]
-    local prerequisites = planet[3]
-    local IconIsBlank = planet[4]
-    local Icon = IconIsBlank and placeholder_png or "__real-starry-universe__/graphics/" .. planet_name .. ".png"
-
-    data:extend({
-        {
-            type = "technology",
-            name = "planet-discovery-" .. planet_name,
-            icon = Icon, -- 替换为行星对应的图标路径
-            icon_size = 512,
-            essential = true,
-            effects = {
-                {
-                    type = "unlock-space-location",
-                    space_location = planet_name,
-                    use_icon_overlay_constant = true
-                }
-            },
-            prerequisites = prerequisites,
-            unit = {
-                count = 10,
-                ingredients = {
-                    { "automation-science-pack", 1 },
-                },
-                time = 60
-            }
-        }
-    })
-end
-
 
 -- 定义灵石矿种类
 local kuang = {
