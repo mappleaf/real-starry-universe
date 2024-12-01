@@ -1156,6 +1156,86 @@ local space_connections = {
     },
     {
         type = "space-connection",
+        name = "uranus-ariel", -- Uranus to Ariel.
+        subgroup = "planet-connections",
+        from = "uranus",
+        to = "ariel",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[uranus]-i[ariel]",
+        length = 1909,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "ariel-umbriel", -- Ariel to Umbirel.
+        subgroup = "planet-connections",
+        from = "ariel",
+        to = "umbriel",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[ariel]-i[umbriel]",
+        length = 751,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "umbriel-titania", -- Umbirel to Titania.
+        subgroup = "planet-connections",
+        from = "umbirel",
+        to = "titania",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[umbirel]-i[titania]",
+        length = 1703,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "titania-oberon", -- Titania to Oberon.
+        subgroup = "planet-connections",
+        from = "titania",
+        to = "oberon",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[titania]-i[oberon]",
+        length = 1472,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "oberon-miranda", -- Oberon to Miranda.
+        subgroup = "planet-connections",
+        from = "oberon",
+        to = "miranda",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[oberon]-i[miranda]",
+        length = 4536,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
         name = "uranus-neptune", -- 天王星到海王星
         subgroup = "planet-connections",
         from = "uranus",
