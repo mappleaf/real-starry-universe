@@ -318,6 +318,7 @@ local planets = {
             gravity = 1.796502844, -- This is in m/s, convert as necessary.
         },
     },
+    {
         name = "europa", -- 木卫二
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/europa.png",
@@ -1589,25 +1590,6 @@ for i, SpaceConnection in pairs(space_connections) do
 end
 
 data:extend(space_connections)
-
--- Needs fixing to work with main-branch
-local PlanetTechnologies = {
-    { "sol", "太阳轨道", { "planet-discovery-mercury", "space-platform-thruster" }, true },
-    { "mercury", "水星", { "planet-discovery-venus", "space-platform-thruster" }, false },
-    { "venus", "金星", { "planet-discovery-luna", "space-platform-thruster" }, false },
-    { "earth", "地球", { "space-platform-thruster" }, false },
-    { "luna", "月球", { "planet-discovery-earth", "space-platform-thruster" }, false },
-    { "mars", "火星", { "planet-discovery-luna", "space-platform-thruster" }, false },
-    { "phobos", "火卫一", { "planet-discovery-mars", "space-platform-thruster" }, true },
-    { "deimos", "火卫二", { "planet-discovery-mars", "space-platform-thruster" }, true },
-    { "asteroid-belt-inner", "内小行星带", { "planet-discovery-mars", "space-platform-thruster" }, false },
-    { "jupiter", "木星", { "planet-discovery-asteroid-belt-inner", "space-platform-thruster" }, false },
-    { "saturn", "土星", { "planet-discovery-jupiter", "space-platform-thruster" }, false },
-    { "uranus", "天王星", { "planet-discovery-saturn", "space-platform-thruster" }, false },
-    { "neptune", "海王星", { "planet-discovery-uranus", "space-platform-thruster" }, false },
-    { "pluto", "冥王星", { "planet-discovery-neptune", "space-platform-thruster" }, false },
-    { "asteroid-belt-outer", "柯伊伯带", { "planet-discovery-pluto", "space-platform-thruster" }, false }
-}
 
 -- 定义灵石矿种类
 local kuang = {
