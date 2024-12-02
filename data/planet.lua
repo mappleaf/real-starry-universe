@@ -885,15 +885,16 @@ local planets = {
 }
 
 for i, Planet in pairs(planets) do
-    if Planet.moon == true then
-        if Planet.label_orientation == nil then
-            log("Changed label orientation of \"" .. Planet.name .. "\" from \"" .. tostring(Planet.label_orientation) .. "\" to " .. tostring(270 / 360) .. "\".")
+    if Planet.moon then
+        if not Planet.label_orientation then
+            log("Changed label orientation of \"" .. Planet.name .. "\" from nil to 270°")
             Planet.label_orientation = 270 / 360
         end
-        if Planet.draw_orbit == nil then
+        if not Planet.draw_orbit then
             Planet.draw_orbit = false
         end
-        if Planet.orientation == nil then
+        if not Planet.orientation then
+            --need parent's orientation
             Planet.orientation = 270 / 360
         end
         local ParentObject = nil
@@ -923,14 +924,8 @@ for i, Planet in pairs(planets) do
         Planet.starmap_icon_size = Planet.icon_size
     end
 
-    if Planet.subgroup == nil then
+    if not Planet.subgroup then
         Planet.subgroup = "planets"
-    end
-
-    if Planet == nil then
-        log("Planet nillified!")
-    else
-        planets[i] = Planet
     end
 
 end
@@ -1585,7 +1580,7 @@ local ScaleFactor = 10000 -- Scale each non-moon space connection down by this f
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
 
-    if SpaceConnection.moon == true then
+    if SpaceConnection.moon then
         SpaceConnection.length = SpaceConnection.length / MoonScaleFactor -- Divide each length by the Moon Scale Factor.
     else
         SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
