@@ -17,6 +17,9 @@ local function Unrelate(Planet, ParentObject)
 
     Planet.orientation = AB_AC + ParentObject.orientation
     Planet.distance = AC + ParentObject.magnitude
+    if Planet.orientation > 1 then
+        Planet.orientation = Planet.orientation % 1 -- Orientation cannot be greater than 1.
+    end
     return Planet
 end
 

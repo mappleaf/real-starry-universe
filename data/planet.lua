@@ -20,7 +20,7 @@ local planets = {
         gravity_pull = 21.7, -- The surface gravity of the sun, equal to 217 m/s. This shouldn't be 217, because 217 km/s is too fast for the average player's space platform or 2.17, because 2.17 doesn't add much challenge.
         distance = 0, -- The sun is 0 distance away from the sun, so this should be 0.
         orientation = 0 / 360, -- Orinetation doesn't matter for the sun.
-        magnitude = 1, -- Magnitude doesn't seem to do anything. It might need changing though.
+        magnitude = 5, -- Magnitude does seem to do anything. It still might need changing though.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
     },
     {
@@ -137,7 +137,6 @@ local planets = {
         distance = 1, -- New distance from mars instead of the sun.
         orientation = 270 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 180 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false. all moon need this.
         map_gen_settings = planet_map_gen.phobos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -159,9 +158,8 @@ local planets = {
         icon_size = 512,
         gravity_pull = 0.003, -- This is in m/s, convert as necessary.
         distance = 2, -- New distance from mars instead of the sun.
-        orientation = 290 / 360, -- New orientation relative to mars instead of the sun.
+        orientation = 180 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.deimos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -346,7 +344,7 @@ local planets = {
         type = "planet",
         name = "ganymede", -- 木卫三
         moon = true, -- This is a moon.
-        parent_object = "saturn", -- Ganymede orbits jupiter.
+        parent_object = "jupiter", -- Ganymede orbits jupiter.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/ganymede.png",
         icon_size = 512,
@@ -354,7 +352,6 @@ local planets = {
         distance = 3, -- 1.07 AU (relative to Jupiter)
         orientation = 180 / 360,
         magnitude = 0.42, -- Ganymede (木卫三)
-        label_orientation = 180 / 360,
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.ganymede(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -522,20 +519,21 @@ local planets = {
         },
     },
     {
-       name = "titan", -- 土卫六
-       icon = placeholder_png,
-       moon = true, -- This is a moon.
-       parent_object = "saturn", -- Titan orbits saturn.
-       --icon = "__real-starry-universe__/graphics/titan.png",
-       icon_size = 512,
-       gravity_pull = 0.14,
-       distance = 6, -- 1.22 AU (relative to Saturn)
-       orientation = 180 / 360,
-       magnitude = 0.4, -- Titan (土卫六)
-       draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-       map_gen_settings = planet_map_gen.titan(),
-       asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
-       surface_properties = {
+        type = "planet",
+        name = "titan", -- 土卫六
+        icon = placeholder_png,
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Titan orbits saturn.
+        --icon = "__real-starry-universe__/graphics/titan.png",
+        icon_size = 512,
+        gravity_pull = 0.14,
+        distance = 6, -- 1.22 AU (relative to Saturn)
+        orientation = 180 / 360,
+        magnitude = 0.4, -- Titan (土卫六)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.titan(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
            -- Titan (土卫六)
            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
@@ -546,13 +544,37 @@ local planets = {
     },
     {
         type = "planet",
+        name = "hyperion", -- Hyperion
+        icon = placeholder_png,
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Hyperion orbits saturn.
+        --icon = "__real-starry-universe__/graphics/hyperion.png",
+        icon_size = 512,
+        gravity_pull = 0.02, -- This is in m/s, convert as necessary. Average surface gravity across the whole unround moon.
+        distance = 7,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.hyperion(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+           -- Hyperion
+           ["day-night-cycle"] = 13 * day, -- Length of a day on hyperion, aproximately 13 earth days.
+           ["magnetic-field"] = 0, -- Hyperion doesn't have a significant magnetic field.
+           ["solar-power"] = 1.1, -- Solar power on hyperion, similar to that of saturn - so hopefully accurate
+           pressure = 0, -- Hyperion doesn't have an atmosphere. (How could it, not being gravitationally rounded?)
+           gravity = 0.02, -- This is in m/s, convert as necessary. Average surface gravity across the whole unround moon.
+       },
+    },
+    {
+        type = "planet",
         name = "iapetus", -- Iapetus
         moon = true, -- This is a moon.
         parent_object = "saturn", -- Iapetus orbits saturn.
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.223, -- This is in m/s, convert as necessary.
-        distance = 7,
+        distance = 8,
         orientation = 180 / 360,
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
         map_gen_settings = planet_map_gen.iapetus(),
@@ -619,7 +641,7 @@ local planets = {
         distance = 2,
         orientation = 180 / 360,
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        map_gen_settings = planet_map_gen.umbirel(),
+        map_gen_settings = planet_map_gen.umbriel(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Umbriel
@@ -725,8 +747,8 @@ local planets = {
         --icon = "__real-starry-universe__/graphics/triton.png",
         icon_size = 512,
         gravity_pull = 0.079,
-        distance = 420 / 5, -- 3.54 AU (relative to Neptune)
-        orientation = 354 / 360,
+        distance = 1, -- 3.54 AU (relative to Neptune)
+        orientation = 180 / 360,
         magnitude = 0.24, -- Triton (海卫一)
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.triton(),
@@ -888,7 +910,10 @@ for i, Planet in pairs(planets) do
     if Planet.moon then
         if not Planet.label_orientation then
             log("Changed label orientation of \"" .. Planet.name .. "\" from nil to 270°")
-            Planet.label_orientation = 270 / 360
+            Planet.label_orientation = ( 270 / 360 + Planet.orientation )
+            if Planet.label_orientation > 1 then
+                Planet.label_orientation = Planet.label_orientation % 1 -- Label orientation cannot be greater than 1.
+            end
         end
         if not Planet.draw_orbit then
             Planet.draw_orbit = false
@@ -1319,6 +1344,7 @@ local space_connections = {
         }
     },
     {
+        type = "space-connection",
         name = "titan-iapetus", -- Titan to Iapetus.
         subgroup = "planet-connections",
         from = "titan",
@@ -1365,7 +1391,7 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "ariel-umbriel", -- Ariel to Umbirel.
+        name = "ariel-umbriel", -- Ariel to Umbriel.
         subgroup = "planet-connections",
         from = "ariel",
         to = "umbriel",
@@ -1381,12 +1407,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "umbriel-titania", -- Umbirel to Titania.
+        name = "umbriel-titania", -- Umbriel to Titania.
         subgroup = "planet-connections",
-        from = "umbirel",
+        from = "umbriel",
         to = "titania",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "h[umbirel]-i[titania]",
+        order = "h[umbriel]-i[titania]",
         length = 1703,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
@@ -1574,7 +1600,7 @@ local space_connections = {
     },
 }
 
-local MoonScaleFactor = 10 -- Scale each moon space connection down by this factor.
+local MoonScaleFactor = 100 -- Scale each moon space connection down by this factor.
 local ScaleFactor = 10000 -- Scale each non-moon space connection down by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
@@ -1592,6 +1618,46 @@ for i, SpaceConnection in pairs(space_connections) do
 
     if SpaceConnection.length < 100 then
         SpaceConnection.length = 100 -- Set the length to 100 if the length is less than 100. In my testing, anything less than 100 breaks at speeds reached in the base game.
+    end
+
+    if SpaceConnection.icons == nil and SpaceConnection.icon == nil then
+        
+        SpaceConnection.icons = {}
+        table.insert(SpaceConnection.icons, {icon = "__space-age__/graphics/icons/planet-route.png"})
+        local From = {}
+        local To = {}
+        for _,Planet in pairs(planets) do
+            if Planet.name == SpaceConnection.from then
+                From = Planet
+            end
+            if Planet.name == SpaceConnection.to then
+                To = Planet
+            end
+        end
+        if From.icon ~= nil then
+            local IconSize = From.icon_size or 64
+            table.insert(SpaceConnection.icons, {
+                icon = From.icon,
+                icon_size = IconSize,
+                scale = 0.33300000000000001,
+                shift = {
+                    -6,
+                    -6
+                }
+            })
+        end
+        if To.icon ~= nil then
+            local IconSize = To.icon_size or 64
+            table.insert(SpaceConnection.icons, {
+                icon = To.icon,
+                icon_size = IconSize,
+                scale = 0.33300000000000001,
+                shift = {
+                    -6,
+                    -6
+                }
+            })
+        end
     end
 
     space_connections[i] = SpaceConnection -- Set the new space connection to the modified one.
