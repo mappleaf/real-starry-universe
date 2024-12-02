@@ -3,6 +3,7 @@ local placeholder_png = "__real-starry-universe__/graphics/planet.png"
 
 
 local PlanetTechnologies = {
+    { "sol", "太阳轨道", { "planet-discovery-mercury", "space-platform-thruster" }, true },
     { "mercury", "水星", { "planet-discovery-venus", "space-platform-thruster" }, false },
     { "venus", "金星", { "planet-discovery-luna", "space-platform-thruster" }, false },
     { "earth", "地球", { "space-platform-thruster" }, false },
