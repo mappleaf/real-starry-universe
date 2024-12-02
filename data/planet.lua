@@ -93,7 +93,7 @@ local planets = {
         icon_size = 512,
         gravity_pull = 1.62, -- 月球的重力
         distance = 1, -- New distance from earth instead of the sun.
-        orientation = 270 / 360, -- New orientation relative to earth instead of the sun.
+        orientation = 180 / 360, -- New orientation relative to earth instead of the sun.
         magnitude = 0.273, -- Luna (月球)
         map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -135,7 +135,7 @@ local planets = {
         icon_size = 512,
         gravity_pull = 0.0057, -- This is in m/s, convert as necessary.
         distance = 1, -- New distance from mars instead of the sun.
-        orientation = 270 / 360, -- New orientation relative to mars instead of the sun.
+        orientation = 180 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false. all moon need this.
         map_gen_settings = planet_map_gen.phobos(),
@@ -907,7 +907,26 @@ local planets = {
 }
 
 for i, Planet in pairs(planets) do
-    if Planet.moon then
+    if not Planet.moon then
+        local CurvingFactor = 10 / 360
+        local Moons = {}
+        for j, Object in pairs(planets) do
+            if Object.moon and Object.parent_object == Planet.name then
+                table.insert(Moons, j, Object)
+            end
+        end
+
+        for j, Moon in pairs(Moons) do
+            log("Scanning moon \"" .. Moon.name .. "\" of planet \"" .. Planet.name .. "\". Distance: " .. tostring(Moon.distance) .. ", Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360") 
+            Moon.orientation = Moon.orientation + ( CurvingFactor * Moon.distance )
+            if Moon.orientation > 1 then
+                log("Modulizating moon. Current orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
+                Moon.orientation = Moon.orientation % 1 -- Label orientation cannot be greater than 1.
+                log("Moon modulized. New orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
+            end
+            log("New Distance: " .. tostring(Moon.distance) .. ", New Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360") 
+        end
+    else
         if not Planet.label_orientation then
             log("Changed label orientation of \"" .. Planet.name .. "\" from nil to 270°")
             Planet.label_orientation = ( 270 / 360 + Planet.orientation )
@@ -931,16 +950,12 @@ for i, Planet in pairs(planets) do
             end
         end
         if ParentObject ~= nil then
-            local TransititionedPlanet = rotation_util.Unrelate(Planet, ParentObject)
-            if TransititionedPlanet ~= nil then
-                Planet = TransititionedPlanet
-            else
-                log("Planet \"" .. Planet.name .. "\" was nillified by the Unrelate function!")
-            end
+            rotation_util.Unrelate(Planet, ParentObject)
         else
             log("ParentObject of moon \"" .. Planet.name .. "\" is nil! Intended object was \"" .. Planet.parent_object .. "\". Is this correct?")
         end
     end
+
     -- Check if the planet has an icon but does not have a starmap_icon
     if Planet.icon and not Planet.starmap_icon then
         -- Set the starmap_icon to be the same as the planet's icon
@@ -955,7 +970,7 @@ for i, Planet in pairs(planets) do
 
 end
 
-log("Extending planets! \"" .. serpent.block(planets))
+log("Extending planets! " .. serpent.block(planets))
 
 data:extend(planets)
 
@@ -1192,10 +1207,10 @@ local space_connections = {
         type = "space-connection",
         name = "io-europa", -- Io to Europa.
         subgroup = "planet-connections",
-        from = "jupiter",
+        from = "io",
         to = "europa",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "p[jupiter]-q[europa]",
+        order = "p[io]-q[europa]",
         length = 2493,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
@@ -1281,13 +1296,13 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "mimas-tethys", -- Mimas to Tethys.
+        name = "enceladus-tethys", -- Enceladus to Tethys.
         subgroup = "planet-connections",
-        from = "mimas",
+        from = "enceladus",
         to = "tethys",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "g[mimas]-h[tethys]",
-        length = 1091.3,
+        order = "g[enceladus]-h[tethys]",
+        length = 566.3,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1345,13 +1360,28 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "titan-iapetus", -- Titan to Iapetus.
+        name = "titan-hyperion", -- Titan to Hyperion.
         subgroup = "planet-connections",
         from = "titan",
+        to = "hyperion",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "n[titan]-r[hyperion]",
+        length = 2790.1,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.6 },
+            particle_color = { r = 0.5, g = 0.4, b = 0.5 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "hyperion-iapetus", -- Hyperion to Iapetus.
+        subgroup = "planet-connections",
+        from = "hyperion",
         to = "iapetus",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
-        order = "n[titan]-r[iapetus]",
-        length = 23389.7,
+        order = "n[hyperion]-r[iapetus]",
+        length = 20599.60,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.6 },
