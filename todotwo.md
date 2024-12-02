@@ -1,11 +1,11 @@
 # A simple list of things to do and order in which to do them.
 *Note: This may or may not replace the other todo list.*
 ## Urgent Goals
-- [ ] Fix the issue where changes I make have no effect on the game.
+*There's currently nothing here. You could change that...*
 ## Short Term Goals
 - [X] Create the sun, known as sol.
 - [X] Create a new system for allowing moons to be defined relative to the planets they orbit.
-- [ ] Add the moons of jupiter, saturn, uranus and neptune.
+- [X] Add the moons of jupiter, saturn, uranus and neptune.
 - [ ] Create a list of ideas for new star systems and challenges.
 
 ## Medium Term Goals
