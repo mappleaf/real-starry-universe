@@ -327,6 +327,12 @@ function MapGen.rhea()
     return map_gen_setting
 end
 
+function MapGen.hyperion()
+    local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    return map_gen_setting
+end
+
 function MapGen.iapetus()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
@@ -368,7 +374,7 @@ function MapGen.ariel()
     return map_gen_setting
 end
 
-function MapGen.umbirel()
+function MapGen.umbriel()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
     return map_gen_setting
