@@ -10,7 +10,7 @@
 
 ## Short-Term Goals
 
-1. **Additional Planets:**
+1. **Additional Planets, Moons and other objects:**
     - Research and define more dwarf planets and celestial bodies to add to the game.
     - Prioritize objects with interesting characteristics or historical significance.
     - 土卫二（Enceladus）
@@ -18,8 +18,7 @@
     - 土卫六（Titan）
     - 木卫三（Ganymede）
     - 海卫一（Triton）
-    - 冥卫一（Charon）
-    - 
+    - 冥卫一（Charon)
 
 2. **Enhanced Space Effects:**
     - Develop more varied and visually appealing space effects for different regions of the solar system.
@@ -39,13 +38,14 @@
     - Develop new gameplay mechanics focused on space exploration, such as building space stations or mining asteroids.
     - Create unique challenges and rewards for players who venture into the depths of space.
 
-3. **Multiplayer Support:**
-    - Investigate the possibility of adding multiplayer support to allow players to explore and interact with the solar system together.
-    - Consider features like cooperative missions or competitive challenges.
-
-4. **Educational Content:**
+3. **Educational Content:**
     - Collaborate with educators or space enthusiasts to add educational content to the mod, such as information about planetary science or space history.
     - Create in-game tools or features that encourage players to learn more about the solar system.
+
+4. **Additional Star Systems:**
+    - Add additional star systems to increase the scale of the factorio universe.
+    - Consider adding new thrusters and other propulsion devices to explore the greater galaxy.
+    - Consider offering a choice of star system if multiple star systems aren't wanted.
 
 ## Community Engagement
 

@@ -2,6 +2,7 @@ local effects = require("__core__.lualib.surface-render-parameter-effects")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions") -- The original asteroid spawn definitions from Space Age. Should be replaced as soon as possible to allow custom spawn definitions.
 -- local asteroid_util = require("asteroid_definitions.asteroid_util") -- New asteroid spawn definitions for when there's new definitions. It isn't ready yet.
 local planet_catalogue_gleba = require("__space-age__.prototypes.planet.procession-catalogue-gleba")
+local rotation_util = require("data.rotation_util")
 
 local planet_map_gen = require("data.planet-map-gen")
 local day = 24 * hour
@@ -9,6 +10,19 @@ local day = 24 * hour
 local placeholder_png = "__real-starry-universe__/graphics/planet.png"
 
 local planets = {
+    {
+        type = "space-location", -- This may need to be changed to "planet".
+        name = "sol", -- Similar to how the moon is called luna, the sun is called sol. This is actually more commonly used than luna as the word solar is derived from the word sol.
+        icon = "__real-starry-universe__/graphics/blank512.png", -- This should eventually be replaced with a proper image.
+        icon_size = 512,
+        starmap_icon = "__core__/graphics/icons/starmap-star.png",
+        starmap_icon_size = 512,
+        gravity_pull = 21.7, -- The surface gravity of the sun, equal to 217 m/s. This shouldn't be 217, because 217 km/s is too fast for the average player's space platform or 2.17, because 2.17 doesn't add much challenge.
+        distance = 0, -- The sun is 0 distance away from the sun, so this should be 0.
+        orientation = 0 / 360, -- Orinetation doesn't matter for the sun.
+        magnitude = 1, -- Magnitude doesn't seem to do anything. It might need changing though.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+    },
     {
         type = "planet",
         name = "mercury", -- 水星
@@ -73,14 +87,14 @@ local planets = {
     {
         type = "planet",
         name = "luna",
+        moon = true, -- This is a moon.
+        parent_object = "earth", -- The object this moon orbits.
         icon = "__real-starry-universe__/graphics/luna.png",
         icon_size = 512,
         gravity_pull = 1.62, -- 月球的重力
-        distance = 15, -- 距离地球非常近
-        orientation = 124 / 360, -- 地球轨道附近
+        distance = 1, -- New distance from earth instead of the sun.
+        orientation = 270 / 360, -- New orientation relative to earth instead of the sun.
         magnitude = 0.273, -- Luna (月球)
-        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         map_gen_settings = planet_map_gen.luna(), -- 使用月球专属生成方法
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
@@ -115,13 +129,15 @@ local planets = {
     {
         type = "planet",
         name = "phobos", -- Phobos, the first moon of mars.
+        moon = true, -- This is a moon.
+        parent_object = "mars", -- The object this moon orbits.
         icon = placeholder_png,
         icon_size = 512,
-        gravity_pull = 0.01, -- This is in m/s, convert as necessary.
-        distance = 22.8, -- 0.0000626747 AU, or 9376 km from mars, added to the distance of mars from the sun.
-        orientation = 163 / 360, -- The orientation of mars, may need to be changed.
+        gravity_pull = 0.0057, -- This is in m/s, convert as necessary.
+        distance = 1, -- New distance from mars instead of the sun.
+        orientation = 270 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
+        label_orientation = 180 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false. all moon need this.
         map_gen_settings = planet_map_gen.phobos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -136,14 +152,16 @@ local planets = {
     },
     {
         type = "planet",
-        name = "deimos", -- Deimos, the second moon of mars. 火卫二
+        name = "deimos", -- Deimos, the second moon of mars.
+        moon = true, -- This is a moon.
+        parent_object = "mars", -- The object this moon orbits.
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.003, -- This is in m/s, convert as necessary.
-        distance = 21.8, -- 0.0001568418046 AU, or 23463.2 km from mars, added to the distance of mars from the sun.
-        orientation = 160 / 360, -- The orientation of mars, may need to be changed.
+        distance = 2, -- New distance from mars instead of the sun.
+        orientation = 290 / 360, -- New orientation relative to mars instead of the sun.
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
-        label_orientation = 10 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
+        label_orientation = 270 / 360, -- The text labels for all satellites are recommended to be on the left, which is 270°.
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.deimos(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -238,7 +256,6 @@ local planets = {
             gravity = 0.020, -- 重力极低
         },
     },
-
     {
         type = "planet",
         name = "hygiea", -- 健神星
@@ -281,13 +298,37 @@ local planets = {
     },
     {
         type = "planet",
+        name = "io", -- Io
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Io orbits jupiter.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 1.796502844, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.io(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Io
+            ["day-night-cycle"] = 1.75 * day, -- Length of a day on io, aproximately 1.75 earth days.
+            ["magnetic-field"] = 0, -- Io doesn't have a significant magnetic field.
+            ["solar-power"] = 3.69735907899, -- Solar power on io, similar to that of jupiter - so hopefully accurate
+            pressure = 0, -- Io doesn't have an atmosphere
+            gravity = 1.796502844, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
         name = "europa", -- 木卫二
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Europa orbits jupiter.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/europa.png",
         icon_size = 512,
         gravity_pull = 0.134,
-        distance = 82 / 2, -- 0.67 AU (relative to Jupiter)
-        orientation = 220 / 360,
+        distance = 2, -- 0.67 AU (relative to Jupiter)
+        orientation = 180 / 360,
         magnitude = 0.3, -- Europa (木卫二)
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.europa(),
@@ -304,14 +345,16 @@ local planets = {
     {
         type = "planet",
         name = "ganymede", -- 木卫三
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Ganymede orbits jupiter.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/ganymede.png",
         icon_size = 512,
         gravity_pull = 0.146,
-        distance = 100 / 2, -- 1.07 AU (relative to Jupiter)
-        orientation = 248 / 360,
+        distance = 3, -- 1.07 AU (relative to Jupiter)
+        orientation = 180 / 360,
         magnitude = 0.42, -- Ganymede (木卫三)
-        label_orientation = 270 / 360,
+        label_orientation = 180 / 360,
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.ganymede(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
@@ -322,6 +365,28 @@ local planets = {
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
             gravity = 0.146, -- 重力较低
+        },
+    },
+    {
+        type = "planet",
+        name = "callisto", -- Callisto
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Callisto orbits jupiter.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 1.235, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.callisto(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Callisto
+            ["day-night-cycle"] = 16.7 * day, -- Length of a day on callisto, aproximately 16.7 earth days.
+            ["magnetic-field"] = 0, -- Callisto doesn't have a significant magnetic field.
+            ["solar-power"] = 3.69396135946, -- Solar power on callisto, similar to that of jupiter - so hopefully accurate
+            pressure = 0, -- Callisto doesn't have an atmosphere
+            gravity = 1.235, -- This is in m/s, convert as necessary.
         },
     },
     {
@@ -346,13 +411,37 @@ local planets = {
     },
     {
         type = "planet",
+        name = "mimas", -- Mimas
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Mimas orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.064, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.mimas(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Mimas
+            ["day-night-cycle"] = 0.9375 * day, -- Length of a day on mimas, aproximately 0.9375 earth days.
+            ["magnetic-field"] = 0, -- Mimas doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09561205118, -- Solar power on mimas, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Mimas doesn't have an atmosphere
+            gravity = 0.064, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
         name = "enceladus", -- 土卫二
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Enceladus orbits saturn.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/enceladus.png",
         icon_size = 512,
         gravity_pull = 0.011,
-        distance = 136 / 3, -- 1.51 AU (relative to Saturn)
-        orientation = 290 / 360,
+        distance = 2, -- 1.51 AU (relative to Saturn)
+        orientation = 180 / 360,
         magnitude = 0.2, -- Enceladus (土卫二)
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.enceladus(),
@@ -368,26 +457,115 @@ local planets = {
     },
     {
         type = "planet",
-        name = "titan", -- 土卫六
+        name = "tethys", -- Tethys
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Tethys orbits saturn.
         icon = placeholder_png,
-        --icon = "__real-starry-universe__/graphics/titan.png",
         icon_size = 512,
-        gravity_pull = 0.14,
-        distance = 130 / 3, -- 1.22 AU (relative to Saturn)
-        orientation = 270 / 360,
-        magnitude = 0.4, -- Titan (土卫六)
-        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-        map_gen_settings = planet_map_gen.titan(),
+        gravity_pull = 0.145, -- This is in m/s, convert as necessary.
+        distance = 3,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.tethys(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
-            -- Titan (土卫六)
-            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
-            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
-            ["solar-power"] = 3.7, -- 太阳能效率非常低
-            pressure = 146700, -- 大气压极高（单位：Pa）
-            gravity = 0.14, -- 重力较低
+            -- Tethys
+            ["day-night-cycle"] = 1.888 * day, -- Length of a day on tethys, aproximately 1.888 earth days.
+            ["magnetic-field"] = 0, -- Tethys doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09577261991, -- Solar power on tethys, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Tethys doesn't have an atmosphere
+            gravity = 0.145, -- This is in m/s, convert as necessary.
         },
     },
+    {
+        type = "planet",
+        name = "dione", -- Dione
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Dione orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.212, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.dione(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Dione
+            ["day-night-cycle"] = 0.212 * day, -- Length of a day on dione, aproximately 0.212 earth days.
+            ["magnetic-field"] = 0, -- Dione doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09588733347, -- Solar power on dione, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Dione doesn't have an atmosphere
+            gravity = 0.212, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "rhea", -- Rhea
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Rhea orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.26, -- This is in m/s, convert as necessary.
+        distance = 5,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.rhea(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Rhea
+            ["day-night-cycle"] = 4.518212 * day, -- Length of a day on rhea, aproximately 4.518212 earth days.
+            ["magnetic-field"] = 0, -- Rhea doesn't have a significant magnetic field.
+            ["solar-power"] = 1.09609386328, -- Solar power on rhea, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Rhea doesn't have an atmosphere
+            gravity = 0.26, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+       name = "titan", -- 土卫六
+       icon = placeholder_png,
+       moon = true, -- This is a moon.
+       parent_object = "saturn", -- Titan orbits saturn.
+       --icon = "__real-starry-universe__/graphics/titan.png",
+       icon_size = 512,
+       gravity_pull = 0.14,
+       distance = 6, -- 1.22 AU (relative to Saturn)
+       orientation = 180 / 360,
+       magnitude = 0.4, -- Titan (土卫六)
+       draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+       map_gen_settings = planet_map_gen.titan(),
+       asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+       surface_properties = {
+           -- Titan (土卫六)
+           ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
+           ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
+           ["solar-power"] = 3.7, -- 太阳能效率非常低
+           pressure = 146700, -- 大气压极高（单位：Pa）
+           gravity = 0.14, -- 重力较低
+       },
+    },
+    {
+        type = "planet",
+        name = "iapetus", -- Iapetus
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Iapetus orbits saturn.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.223, -- This is in m/s, convert as necessary.
+        distance = 7,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.iapetus(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Iapetus
+            ["day-night-cycle"] = 79.3215 * day, -- Length of a day on iapetus, aproximately 79.3215 earth days.
+            ["magnetic-field"] = 0, -- Iapetus doesn't have a significant magnetic field.
+            ["solar-power"] = 1.10028291447, -- Solar power on iapetus, similar to that of saturn - so hopefully accurate
+            pressure = 0, -- Iapetus doesn't have an atmosphere
+            gravity = 0.223, -- This is in m/s, convert as necessary.
+        },
+     },
     {
         type = "planet",
         name = "uranus", -- 天王星
@@ -406,6 +584,116 @@ local planets = {
             ["solar-power"] = 0.3, -- 距太阳非常远
             pressure = 80000000, -- 大气压较高（单位：Pa）
             gravity = 8.69, -- 类似地球的重力
+        },
+    },
+    {
+        type = "planet",
+        name = "ariel", -- Ariel
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Ariel orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.246, -- This is in m/s, convert as necessary.
+        distance = 1,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.ariel(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Ariel
+            ["day-night-cycle"] = 2.52 * day, -- Length of a day on ariel, aproximately 2.52 earth days.
+            ["magnetic-field"] = 0, -- Ariel doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27155015219, -- Solar power on ariel, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Ariel doesn't have an atmosphere
+            gravity = 0.246, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "umbriel", -- Umbriel
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Umbriel orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.195, -- This is in m/s, convert as necessary.
+        distance = 2,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.umbirel(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Umbriel
+            ["day-night-cycle"] = 4.1 * day, -- Length of a day on umbriel, aproximately 4.1 earth days.
+            ["magnetic-field"] = 0, -- Umbriel doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27156430335, -- Solar power on umbriel, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Umbriel doesn't have an atmosphere
+            gravity = 0.195, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "titania", -- Titania
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Titania orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.371, -- This is in m/s, convert as necessary.
+        distance = 3,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.titania(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Titania
+            ["day-night-cycle"] = 8.7 * day, -- Length of a day on titania, aproximately 8.7 earth days.
+            ["magnetic-field"] = 0, -- Titania doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27159260899, -- Solar power on titania, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Titania doesn't have an atmosphere
+            gravity = 0.371, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "oberon", -- Oberon
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Oberon orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.358, -- This is in m/s, convert as necessary.
+        distance = 4,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.oberon(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Oberon
+            ["day-night-cycle"] = 13.46 * day, -- Length of a day on oberon, aproximately 13.46 earth days.
+            ["magnetic-field"] = 0, -- Oberon doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27161808784, -- Solar power on oberon, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Oberon doesn't have an atmosphere
+            gravity = 0.358, -- This is in m/s, convert as necessary.
+        },
+    },
+    {
+        type = "planet",
+        name = "miranda", -- Miranda
+        moon = true, -- This is a moon.
+        parent_object = "uranus", -- Miranda orbits Uranus.
+        icon = placeholder_png,
+        icon_size = 512,
+        gravity_pull = 0.076, -- This is in m/s, convert as necessary.
+        distance = 5,
+        orientation = 180 / 360,
+        magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
+        map_gen_settings = planet_map_gen.miranda(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Miranda
+            ["day-night-cycle"] = 1.41 * day, -- Length of a day on miranda, aproximately 1.41 earth days.
+            ["magnetic-field"] = 0, -- Miranda doesn't have a significant magnetic field.
+            ["solar-power"] = 0.27154166202, -- Solar power on miranda, similar to that of uranus - so hopefully accurate
+            pressure = 0, -- Miranda doesn't have an atmosphere
+            gravity = 0.076, -- This is in m/s, convert as necessary.
         },
     },
     {
@@ -431,6 +719,8 @@ local planets = {
     {
         type = "planet",
         name = "triton", -- 海卫一
+        moon = true, -- This is a moon.
+        parent_object = "neptune", -- Triton orbits Neptune.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/triton.png",
         icon_size = 512,
@@ -511,7 +801,6 @@ local planets = {
             gravity = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
     },
-
     {
         type = "planet",
         name = "makemake", -- 鸟神星
@@ -532,7 +821,6 @@ local planets = {
             gravity = 0.05, -- 重力极低
         },
     },
-
     {
         type = "planet",
         name = "haumea", -- 妊神星
@@ -596,20 +884,76 @@ local planets = {
 
 }
 
-for _, planet in pairs(planets) do
-    -- Check if the planet has an icon but does not have a starmap_icon
-    if planet.icon and not planet.starmap_icon then
-        -- Set the starmap_icon to be the same as the planet's icon
-        planet.starmap_icon = planet.icon
-        -- Set the starmap_icon_size to be the same as the planet's icon_size
-        planet.starmap_icon_size = planet.icon_size
+for i, Planet in pairs(planets) do
+    if Planet.moon == true then
+        if Planet.label_orientation == nil then
+            log("Changed label orientation of \"" .. Planet.name .. "\" from \"" .. tostring(Planet.label_orientation) .. "\" to " .. tostring(270 / 360) .. "\".")
+            Planet.label_orientation = 270 / 360
+        end
+        if Planet.draw_orbit == nil then
+            Planet.draw_orbit = false
+        end
+        if Planet.orientation == nil then
+            Planet.orientation = 270 / 360
+        end
+        local ParentObject = nil
+        if Planet.parent_object ~= nil then
+            for _,Object in pairs(planets) do
+                if Planet.parent_object == Object.name then
+                    ParentObject = Object
+                end
+            end
+        end
+        if ParentObject ~= nil then
+            local TransititionedPlanet = rotation_util.Unrelate(Planet, ParentObject)
+            if TransititionedPlanet ~= nil then
+                Planet = TransititionedPlanet
+            else
+                log("Planet \"" .. Planet.name .. "\" was nillified by the Unrelate function!")
+            end
+        else
+            log("ParentObject of moon \"" .. Planet.name .. "\" is nil! Intended object was \"" .. Planet.parent_object .. "\". Is this correct?")
+        end
     end
+    -- Check if the planet has an icon but does not have a starmap_icon
+    if Planet.icon and not Planet.starmap_icon then
+        -- Set the starmap_icon to be the same as the planet's icon
+        Planet.starmap_icon = Planet.icon
+        -- Set the starmap_icon_size to be the same as the planet's icon_size
+        Planet.starmap_icon_size = Planet.icon_size
+    end
+
+    if Planet.subgroup == nil then
+        Planet.subgroup = "planets"
+    end
+
+    if Planet == nil then
+        log("Planet nillified!")
+    else
+        planets[i] = Planet
+    end
+
 end
+
+log("Extending planets! \"" .. serpent.block(planets))
 
 data:extend(planets)
 
 --https://lua-api.factorio.com/latest/prototypes/SpaceConnectionPrototype.html
 local space_connections = {
+    {
+        type = "space-connection",
+        name = "sol-mercury", -- The sun to mercury.
+        subgroup = "planet-connections",
+        from = "sol",
+        to = "mercury",
+        order = "0[sol]-a[mercury]",
+        length = 510100, -- A safe distance from the sun subtracted from the orbital distance of mercury in units of 100 kilometers.
+        space_effects = {
+            background_color = { r = 0.2, g = 0.1, b = 0.3 },
+            particle_color = { r = 0.6, g = 0.4, b = 0.2 }
+        }
+    },
     {
         type = "space-connection",
         name = "mercury-venus", -- 水星到金星
@@ -661,6 +1005,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "earth",
         to = "luna",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "z[a]",
         length = 3843.99, -- Average distance between earth and luna in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -690,6 +1035,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "mars",
         to = "phobos",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "d[mars]-e[phobos]",
         length = 93.76, -- Average distance between mars and phobos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -705,6 +1051,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "phobos",
         to = "deimos",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "e[phobos]-f[deimos]",
         length = 180.06, -- Average distance between phobos and deimos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -807,12 +1154,29 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "jupiter-europa", -- 木星到木卫二
+        name = "jupiter-io", -- Jupiter to Io.
+        subgroup = "planet-connections",
+        from = "jupiter",
+        to = "io",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "f[jupiter]-g[io]",
+        length = 4218,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.4, b = 0.3 },
+            particle_color = { r = 0.5, g = 0.2, b = 0.7 }
+        }
+     },
+     {
+        type = "space-connection",
+        name = "io-europa", -- Io to Europa.
         subgroup = "planet-connections",
         from = "jupiter",
         to = "europa",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "p[jupiter]-q[europa]",
-        length = 2.8,
+        length = 2493,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.3, g = 0.2, b = 0.5 },
@@ -821,16 +1185,33 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "jupiter-ganymede", -- 木星到木卫三
+        name = "europa-ganymede", -- Europa to Ganymede
         subgroup = "planet-connections",
-        from = "jupiter",
+        from = "europa",
         to = "ganymede",
-        order = "p[jupiter]-s[ganymede]",
-        length = 3.5,
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "p[europa]-s[ganymede]",
+        length = 3993,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.5, g = 0.4, b = 0.7 },
             particle_color = { r = 0.4, g = 0.3, b = 0.6 }
+        }
+     },
+     {
+        type = "space-connection",
+        name = "ganymede-callisto", -- Ganymede to Callisto.
+        subgroup = "planet-connections",
+        from = "ganymede",
+        to = "callisto",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "f[ganymede]-g[callisto]",
+        length = 8123,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.4, b = 0.3 },
+            particle_color = { r = 0.5, g = 0.2, b = 0.7 }
         }
     },
     {
@@ -850,12 +1231,28 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "saturn-enceladus", -- 土星到土卫二
+        name = "saturn-mimas", -- Saturn to Mimas.
         subgroup = "planet-connections",
         from = "saturn",
+        to = "mimas",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[saturn]-h[mimas]",
+        length = 1855.4,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+        }
+    },
+    {
+        type = "space-connection",
+        name = "mimas-enceladus", -- Mimas to Enceladus
+        subgroup = "planet-connections",
+        from = "mimas",
         to = "enceladus",
-        order = "n[saturn]-o[enceladus]",
-        length = 3.5,
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "n[mimas]-o[enceladus]",
+        length = 525,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.2, g = 0.2, b = 0.4 },
@@ -864,12 +1261,76 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "saturn-titan", -- 土星到土卫六
+        name = "mimas-tethys", -- Mimas to Tethys.
         subgroup = "planet-connections",
-        from = "saturn",
+        from = "mimas",
+        to = "tethys",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[mimas]-h[tethys]",
+        length = 1091.3,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "tethys-dione", -- Tethys to Dione.
+        subgroup = "planet-connections",
+        from = "tethys",
+        to = "dione",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[tethys]-h[dione]",
+        length = 827.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "dione-rhea", -- Dione to Rhea.
+        subgroup = "planet-connections",
+        from = "dione",
+        to = "rhea",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[dione]-h[rhea]",
+        length = 1496.5,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "rhea-titan", -- Rhea to Titan.
+        subgroup = "planet-connections",
+        from = "rhea",
         to = "titan",
-        order = "n[saturn]-r[titan]",
-        length = 4.2,
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "g[rhea]-h[titan]",
+        length = 6948,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        name = "titan-iapetus", -- Titan to Iapetus.
+        subgroup = "planet-connections",
+        from = "titan",
+        to = "iapetus",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "n[titan]-r[iapetus]",
+        length = 23389.7,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.6 },
@@ -884,6 +1345,86 @@ local space_connections = {
         to = "uranus",
         order = "g[saturn]-h[uranus]",
         length = 144.0,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "uranus-ariel", -- Uranus to Ariel.
+        subgroup = "planet-connections",
+        from = "uranus",
+        to = "ariel",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[uranus]-i[ariel]",
+        length = 1909,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "ariel-umbriel", -- Ariel to Umbirel.
+        subgroup = "planet-connections",
+        from = "ariel",
+        to = "umbriel",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[ariel]-i[umbriel]",
+        length = 751,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "umbriel-titania", -- Umbirel to Titania.
+        subgroup = "planet-connections",
+        from = "umbirel",
+        to = "titania",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[umbirel]-i[titania]",
+        length = 1703,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "titania-oberon", -- Titania to Oberon.
+        subgroup = "planet-connections",
+        from = "titania",
+        to = "oberon",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[titania]-i[oberon]",
+        length = 1472,
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
+        space_effects = {
+            background_color = { r = 0.3, g = 0.5, b = 0.2 },
+            particle_color = { r = 0.7, g = 0.6, b = 0.3 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "oberon-miranda", -- Oberon to Miranda.
+        subgroup = "planet-connections",
+        from = "oberon",
+        to = "miranda",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
+        order = "h[oberon]-i[miranda]",
+        length = 4536,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1038,12 +1579,17 @@ local space_connections = {
     },
 }
 
-local ScaleFactor = 100000 -- Scale each space connection by this factor.
+local MoonScaleFactor = 10 -- Scale each moon space connection down by this factor.
+local ScaleFactor = 10000 -- Scale each non-moon space connection down by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
 
-    SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
+    if SpaceConnection.moon == true then
+        SpaceConnection.length = SpaceConnection.length / MoonScaleFactor -- Divide each length by the Moon Scale Factor.
+    else
+        SpaceConnection.length = SpaceConnection.length / ScaleFactor -- Divide each length by the Scale Factor.
+    end
 
     if math.ceil(SpaceConnection.length) ~= SpaceConnection.length then
         SpaceConnection.length = math.ceil(SpaceConnection.length) -- Round up to the nearest integer.
@@ -1057,7 +1603,6 @@ for i, SpaceConnection in pairs(space_connections) do
 end
 
 data:extend(space_connections)
-
 
 -- 定义灵石矿种类
 local kuang = {
