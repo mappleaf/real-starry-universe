@@ -522,20 +522,21 @@ local planets = {
         },
     },
     {
-       name = "titan", -- 土卫六
-       icon = placeholder_png,
-       moon = true, -- This is a moon.
-       parent_object = "saturn", -- Titan orbits saturn.
-       --icon = "__real-starry-universe__/graphics/titan.png",
-       icon_size = 512,
-       gravity_pull = 0.14,
-       distance = 6, -- 1.22 AU (relative to Saturn)
-       orientation = 180 / 360,
-       magnitude = 0.4, -- Titan (土卫六)
-       draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-       map_gen_settings = planet_map_gen.titan(),
-       asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
-       surface_properties = {
+        type = "planet",
+        name = "titan", -- 土卫六
+        icon = placeholder_png,
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Titan orbits saturn.
+        --icon = "__real-starry-universe__/graphics/titan.png",
+        icon_size = 512,
+        gravity_pull = 0.14,
+        distance = 6, -- 1.22 AU (relative to Saturn)
+        orientation = 180 / 360,
+        magnitude = 0.4, -- Titan (土卫六)
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.titan(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
            -- Titan (土卫六)
            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
