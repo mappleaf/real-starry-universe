@@ -319,13 +319,16 @@ local planets = {
         },
     },
     {
+        type = "planet",
         name = "europa", -- 木卫二
+        moon = true, -- This is a moon.
+        parent_object = "jupiter", -- Europa orbits jupiter.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/europa.png",
         icon_size = 512,
         gravity_pull = 0.134,
-        distance = 82 / 2, -- 0.67 AU (relative to Jupiter)
-        orientation = 220 / 360,
+        distance = 2, -- 0.67 AU (relative to Jupiter)
+        orientation = 180 / 360,
         magnitude = 0.3, -- Europa (木卫二)
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.europa(),
@@ -337,6 +340,31 @@ local planets = {
             ["solar-power"] = 3.7, -- 太阳能效率非常低
             pressure = 0, -- 大气压为零
             gravity = 0.134, -- 重力较低
+        },
+    },
+    {
+        type = "planet",
+        name = "ganymede", -- 木卫三
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Ganymede orbits jupiter.
+        icon = placeholder_png,
+        --icon = "__real-starry-universe__/graphics/ganymede.png",
+        icon_size = 512,
+        gravity_pull = 0.146,
+        distance = 3, -- 1.07 AU (relative to Jupiter)
+        orientation = 180 / 360,
+        magnitude = 0.42, -- Ganymede (木卫三)
+        label_orientation = 180 / 360,
+        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+        map_gen_settings = planet_map_gen.ganymede(),
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        surface_properties = {
+            -- Ganymede (木卫三)
+            ["day-night-cycle"] = 0.37 * day, -- 木卫三昼夜周期：约7.15天
+            ["magnetic-field"] = 0, -- 木卫三几乎没有磁场
+            ["solar-power"] = 3.7, -- 太阳能效率非常低
+            pressure = 0, -- 大气压为零
+            gravity = 0.146, -- 重力较低
         },
     },
     {
@@ -359,28 +387,6 @@ local planets = {
             ["solar-power"] = 3.69396135946, -- Solar power on callisto, similar to that of jupiter - so hopefully accurate
             pressure = 0, -- Callisto doesn't have an atmosphere
             gravity = 1.235, -- This is in m/s, convert as necessary.
-        },
-    },
-    {
-        name = "ganymede", -- 木卫三
-        icon = placeholder_png,
-        --icon = "__real-starry-universe__/graphics/ganymede.png",
-        icon_size = 512,
-        gravity_pull = 0.146,
-        distance = 100 / 2, -- 1.07 AU (relative to Jupiter)
-        orientation = 248 / 360,
-        magnitude = 0.42, -- Ganymede (木卫三)
-        label_orientation = 270 / 360,
-        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-        map_gen_settings = planet_map_gen.ganymede(),
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
-        surface_properties = {
-            -- Ganymede (木卫三)
-            ["day-night-cycle"] = 0.37 * day, -- 木卫三昼夜周期：约7.15天
-            ["magnetic-field"] = 0, -- 木卫三几乎没有磁场
-            ["solar-power"] = 3.7, -- 太阳能效率非常低
-            pressure = 0, -- 大气压为零
-            gravity = 0.146, -- 重力较低
         },
     },
     {
@@ -424,15 +430,18 @@ local planets = {
             pressure = 0, -- Mimas doesn't have an atmosphere
             gravity = 0.064, -- This is in m/s, convert as necessary.
         },
-  },
-  {
+    },
+    {
+        type = "planet",
         name = "enceladus", -- 土卫二
+        moon = true, -- This is a moon.
+        parent_object = "saturn", -- Enceladus orbits saturn.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/enceladus.png",
         icon_size = 512,
         gravity_pull = 0.011,
-        distance = 136 / 3, -- 1.51 AU (relative to Saturn)
-        orientation = 290 / 360,
+        distance = 2, -- 1.51 AU (relative to Saturn)
+        orientation = 180 / 360,
         magnitude = 0.2, -- Enceladus (土卫二)
         draw_orbit = false, -- It does not draw the orbit around the Sun if false.
         map_gen_settings = planet_map_gen.enceladus(),
@@ -513,6 +522,29 @@ local planets = {
         },
     },
     {
+       name = "titan", -- 土卫六
+       icon = placeholder_png,
+       moon = true, -- This is a moon.
+       parent_object = "saturn", -- Titan orbits saturn.
+       --icon = "__real-starry-universe__/graphics/titan.png",
+       icon_size = 512,
+       gravity_pull = 0.14,
+       distance = 6, -- 1.22 AU (relative to Saturn)
+       orientation = 180 / 360,
+       magnitude = 0.4, -- Titan (土卫六)
+       draw_orbit = false, -- It does not draw the orbit around the Sun if false.
+       map_gen_settings = planet_map_gen.titan(),
+       asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+       surface_properties = {
+           -- Titan (土卫六)
+           ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
+           ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
+           ["solar-power"] = 3.7, -- 太阳能效率非常低
+           pressure = 146700, -- 大气压极高（单位：Pa）
+           gravity = 0.14, -- 重力较低
+       },
+    },
+    {
         type = "planet",
         name = "iapetus", -- Iapetus
         moon = true, -- This is a moon.
@@ -520,7 +552,7 @@ local planets = {
         icon = placeholder_png,
         icon_size = 512,
         gravity_pull = 0.223, -- This is in m/s, convert as necessary.
-        distance = 6,
+        distance = 7,
         orientation = 180 / 360,
         magnitude = 0.22, -- Not sure what magnitude, so just that of ceres for now.
         map_gen_settings = planet_map_gen.iapetus(),
@@ -534,27 +566,6 @@ local planets = {
             gravity = 0.223, -- This is in m/s, convert as necessary.
         },
      },
-     {
-        name = "titan", -- 土卫六
-        icon = placeholder_png,
-        --icon = "__real-starry-universe__/graphics/titan.png",
-        icon_size = 512,
-        gravity_pull = 0.14,
-        distance = 130 / 3, -- 1.22 AU (relative to Saturn)
-        orientation = 270 / 360,
-        magnitude = 0.4, -- Titan (土卫六)
-        draw_orbit = false, -- It does not draw the orbit around the Sun if false.
-        map_gen_settings = planet_map_gen.titan(),
-        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
-        surface_properties = {
-            -- Titan (土卫六)
-            ["day-night-cycle"] = 0.37  * day, -- 土卫六昼夜周期：约15.9天
-            ["magnetic-field"] = 0, -- 土卫六几乎没有磁场
-            ["solar-power"] = 3.7, -- 太阳能效率非常低
-            pressure = 146700, -- 大气压极高（单位：Pa）
-            gravity = 0.14, -- 重力较低
-        },
-    },
     {
         type = "planet",
         name = "uranus", -- 天王星
@@ -708,6 +719,8 @@ local planets = {
     {
         type = "planet",
         name = "triton", -- 海卫一
+        moon = true, -- This is a moon.
+        parent_object = "neptune", -- Triton orbits Neptune.
         icon = placeholder_png,
         --icon = "__real-starry-universe__/graphics/triton.png",
         icon_size = 512,
