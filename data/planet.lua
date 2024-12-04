@@ -4,6 +4,8 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 local planet_catalogue_gleba = require("__space-age__.prototypes.planet.procession-catalogue-gleba")
 local rotation_util = require("data.rotation_util")
 
+require("data.mod-compat-planet")
+
 local planet_map_gen = require("data.planet-map-gen")
 local day = 24 * hour
 
@@ -1013,7 +1015,7 @@ for i, Planet in pairs(planets) do
     if not Planet.solar_power_in_space then
         local distance = Planet.distance -- Distance in map coordinates between the sun and the planet.
         local distance_au = distance / 15 -- Distance in AU between the sun and the planet.
-        
+
         if distance_au == 0 then -- Check if the distance is equal to 0 and apply a small change so that the solar power is not infinity.
             distance_au = 0.04623
         end
