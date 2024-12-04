@@ -996,7 +996,7 @@ local space_connections = {
         from = "mercury",
         to = "venus",
         order = "a[mercury]-b[venus]",
-        length = 869585.66, -- Average distance between mercury and venus in units of 100 kilometers.
+        length = 513.12, -- Average distance between mercury and venus in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
@@ -1011,7 +1011,7 @@ local space_connections = {
         from = "venus",
         to = "earth",
         order = "b[venus]-c[earth]",
-        length = 1305758.64, -- Average distance between venus and earth in units of 100 kilometers.
+        length = 408.41, -- Average distance between venus and earth in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.medium_asteroids),
         space_effects = {
@@ -1026,7 +1026,7 @@ local space_connections = {
         from = "nauvis",
         to = "earth",
         order = "b[venus]-c[earth]",
-        length = 5,
+        length = 493.67,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.medium_asteroids),
         space_effects = {
@@ -1042,7 +1042,7 @@ local space_connections = {
         to = "luna",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "z[a]",
-        length = 3843.99, -- Average distance between earth and luna in units of 100 kilometers.
+        length = 39.04, -- Average distance between earth and luna in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.8, g = 0.8, b = 0.9 },
@@ -1056,7 +1056,7 @@ local space_connections = {
         from = "earth",
         to = "mars",
         order = "c[earth]-d[mars]",
-        length = 1928802.33, -- Average distance between earth and mars in units of 100 kilometers.
+        length = 827.27, -- Average distance between earth and mars in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.large_asteroids),
         space_effects = {
@@ -1072,7 +1072,7 @@ local space_connections = {
         to = "phobos",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "d[mars]-e[phobos]",
-        length = 93.76, -- Average distance between mars and phobos in units of 100 kilometers.
+        length = 6.39, -- Average distance between mars and phobos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1088,7 +1088,7 @@ local space_connections = {
         to = "deimos",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "e[phobos]-f[deimos]",
-        length = 180.06, -- Average distance between phobos and deimos in units of 100 kilometers.
+        length = 20.06, -- Average distance between phobos and deimos in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1103,7 +1103,7 @@ local space_connections = {
         from = "mars",
         to = "asteroid-belt-inner",
         order = "d[mars]-e[asteroid-belt-inner]",
-        length = 3283879.68, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        length = 1107.02, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1119,7 +1119,7 @@ local space_connections = {
         from = "asteroid-belt-inner",
         to = "ceres",
         order = "d[asteroid-belt-inner]-e[ceres]",
-        length = 3.0, -- 小行星带内侧到谷神星的距离，比例单位
+        length = 388.96, -- 小行星带内侧到谷神星的距离，比例单位
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.1, g = 0.1, b = 0.2 },
@@ -1134,7 +1134,7 @@ local space_connections = {
         from = "ceres",
         to = "vesta",
         order = "e[ceres]-f[vesta]",
-        length = 2.5,
+        length = 209.44,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.1, g = 0.2, b = 0.3 },
@@ -1149,7 +1149,7 @@ local space_connections = {
         from = "vesta",
         to = "pallas",
         order = "f[vesta]-g[pallas]",
-        length = 2.8,
+        length = 329.11,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.2, b = 0.3 },
@@ -1164,7 +1164,7 @@ local space_connections = {
         from = "pallas",
         to = "hygiea",
         order = "g[pallas]-h[hygiea]",
-        length = 3.2,
+        length = 1436.14,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.3, b = 0.4 },
@@ -1179,7 +1179,7 @@ local space_connections = {
         from = "asteroid-belt-inner",
         to = "jupiter",
         order = "e[asteroid-belt-inner]-f[jupiter]",
-        length = 6216252.06, -- Average distance between the center of the inner asteroid belt and jupiter in units of 100 kilometers.
+        length = 3994.27, -- Average distance between the center of the inner asteroid belt and jupiter in units of 100 kilometers.
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1256,7 +1256,7 @@ local space_connections = {
         from = "jupiter",
         to = "saturn",
         order = "f[jupiter]-g[saturn]",
-        length = 65.5,
+        length = 7315.34,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1490,7 +1490,7 @@ local space_connections = {
         from = "uranus",
         to = "neptune",
         order = "h[uranus]-i[neptune]",
-        length = 162.6,
+        length = 15258.98,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1505,7 +1505,7 @@ local space_connections = {
         from = "neptune",
         to = "triton",
         order = "t[neptune]-u[triton]",
-        length = 5.0,
+        length = 3.29,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.6, g = 0.5, b = 0.8 },
@@ -1519,7 +1519,7 @@ local space_connections = {
         from = "neptune",
         to = "asteroid-belt-outer",
         order = "i[neptune]-j[asteroid-belt-outer]",
-        length = 300,
+        length = 4487.93,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.7, g = 0.4, b = 0.9 },
@@ -1533,7 +1533,7 @@ local space_connections = {
         from = "asteroid-belt-outer",
         to = "pluto",
         order = "j[asteroid-belt-outer]-k[pluto]",
-        length = 300,
+        length = 2692.77,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.7, g = 0.4, b = 0.9 },
@@ -1548,7 +1548,7 @@ local space_connections = {
         from = "makemake",
         to = "pluto",
         order = "i[makemake]-j[pluto]",
-        length = 4.5,
+        length = 26778.01,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.1, g = 0.1, b = 0.3 },
@@ -1563,7 +1563,7 @@ local space_connections = {
         from = "haumea",
         to = "pluto",
         order = "k[haumea]-j[pluto]",
-        length = 4.2,
+        length = 23038.07,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.1, b = 0.4 },
@@ -1578,7 +1578,7 @@ local space_connections = {
         from = "eris",
         to = "pluto",
         order = "l[eris]-j[pluto]",
-        length = 5.0,
+        length = 49816.09,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.3, g = 0.1, b = 0.5 },
@@ -1593,7 +1593,7 @@ local space_connections = {
         from = "gonggong",
         to = "eris",
         order = "m[gonggong]-l[eris]",
-        length = 3.5,
+        length = 747.99,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.2, g = 0.2, b = 0.5 },
@@ -1607,7 +1607,7 @@ local space_connections = {
         from = "pluto",
         to = "charon",
         order = "j[pluto]-v[charon]",
-        length = 1.5,
+        length = 1.78,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.7, g = 0.6, b = 0.9 },
@@ -1621,17 +1621,114 @@ local space_connections = {
         from = "gonggong",
         to = "pluto",
         order = "m[gonggong]-j[pluto]",
-        length = 5.5,
+        length = 49068.1,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
             background_color = { r = 0.3, g = 0.2, b = 0.6 },
             particle_color = { r = 0.6, g = 0.5, b = 0.5 }
         }
     },
+
+    -- #################################################
+    -- #                                               #
+    -- #                    custom                     #
+    -- #                                               #
+    -- #################################################
+
+    {
+        type = "space-connection",
+        name = "gleba-asteroid-belt-inner", -- Mars to the inner asteroid belt
+        subgroup = "planet-connections",
+        from = "gleba",
+        to = "asteroid-belt-inner",
+        order = "u[gleba]-e[asteroid-belt-inner]",
+        length = 9244.1, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.1 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "fulgora-asteroid-belt-inner", -- Mars to the inner asteroid belt
+        subgroup = "planet-connections",
+        from = "fulgora",
+        to = "asteroid-belt-inner",
+        order = "v[fulgora]-e[asteroid-belt-inner]",
+        length = 2767.5, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.1 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "asteroid-belt-inner-aquilo", -- Mars to the inner asteroid belt
+        subgroup = "planet-connections",
+        from = "asteroid-belt-inner",
+        to = "aquilo",
+        order = "e[asteroid-belt-inner]-w[aquilo]",
+        length = 8302.6, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.1 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "asteroid-belt-outer-solar-system-edge", -- Mars to the inner asteroid belt
+        subgroup = "planet-connections",
+        from = "asteroid-belt-outer",
+        to = "solar-system-edge",
+        order = "j[asteroid-belt-outer]-y[solar-system-edge]",
+        length = 29919.57, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
+        space_effects = {
+            background_color = { r = 0.4, g = 0.3, b = 0.1 },
+            particle_color = { r = 0.6, g = 0.5, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "vulcanus-mercury", -- 水星到金星
+        subgroup = "planet-connections",
+        from = "vulcanus",
+        to = "mercury",
+        order = "x[vulcanus]-a[mercury]",
+        length = 384.84, -- Average distance between mercury and venus in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.1, b = 0.3 },
+            particle_color = { r = 0.6, g = 0.4, b = 0.2 }
+        }
+    },
+    {
+        type = "space-connection",
+        name = "mercury-slp-solar-system-sun", -- 水星到金星
+        subgroup = "planet-connections",
+        from = "mercury",
+        to = "slp-solar-system-sun",
+        order = "a[mercury]-t[slp-solar-system-sun]",
+        length = 446.98, -- Average distance between mercury and venus in units of 100 kilometers.
+        asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
+        --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
+        space_effects = {
+            background_color = { r = 0.2, g = 0.1, b = 0.3 },
+            particle_color = { r = 0.6, g = 0.4, b = 0.2 }
+        }
+    },
 }
 
 local MoonScaleFactor = 100 -- Scale each moon space connection down by this factor.
-local ScaleFactor = 10000 -- Scale each non-moon space connection down by this factor.
+local ScaleFactor = 1 -- Scale each space connection by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
