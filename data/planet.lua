@@ -959,7 +959,7 @@ for i, Planet in pairs(planets) do
 
         for j, Moon in pairs(Moons) do
             log("Scanning moon \"" .. Moon.name .. "\" of planet \"" .. Planet.name .. "\". Distance: " .. tostring(Moon.distance) .. ", Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360")
-            Moon.orientation = Moon.orientation + ( CurvingFactor * Moon.distance )
+            Moon.orientation = Moon.orientation + ( CurvingFactor * ( Moon.distance - 1 ) )
             if Moon.orientation > 1 then
                 log("Modulizating moon. Current orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
                 Moon.orientation = Moon.orientation % 1 -- Label orientation cannot be greater than 1.
@@ -1545,8 +1545,9 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "neptune",
         to = "triton",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "t[neptune]-u[triton]",
-        length = 5.0,
+        length = 3548,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.6, g = 0.5, b = 0.8 },
