@@ -1009,14 +1009,14 @@ for i, Planet in pairs(planets) do
         Planet.subgroup = "planets"
     end
 
-    if planet.type == "planet" and planet.surface_properties then
-        if planet.surface_properties.["solar-power"] then
-            planet.solar_power_in_space = planet.surface_properties.["solar-power"] -- Set power in space to the ground value, because that's what the ground value usually is...
+    if Planet.type == "planet" and Planet.surface_properties then
+        if Planet.surface_properties["solar-power"] then
+            Planet.solar_power_in_space = Planet.surface_properties["solar-power"] -- Set power in space to the ground value, because that's what the ground value usually is...
         end
     else
-        planet.solar_power_in_space = 1000000 -- Temporary value until I'm able to work on this more.
+        Planet.solar_power_in_space = 1000000 -- Temporary value until I'm able to work on this more.
     end
-  
+
     Planet.mod = "rsu"
 
 end
