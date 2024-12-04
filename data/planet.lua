@@ -1024,7 +1024,7 @@ for i, Planet in pairs(planets) do
         local solar_power_in_space = ( solar_power_in_space_unscaled / solar_power_on_earth ) * 100 -- Solar power as measured in orbit around the planet (percentage of that on earth)
         Planet.solar_power_in_space = solar_power_in_space -- Set planet property to the local variable.
     end
-  
+
     Planet.mod = "rsu"
 
 end
