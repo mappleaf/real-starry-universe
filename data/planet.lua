@@ -843,7 +843,7 @@ local planets = {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must land on one of it like pluto.
         name = "asteroid-belt-outer",
         icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png",
-        icon_size = 1024,
+        icon_size = 512,
         gravity_pull = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 120, -- 40 AU (centre of the outer asteroid belt)
         orientation = 359 / 360,
@@ -1009,9 +1009,9 @@ for i, Planet in pairs(planets) do
         Planet.subgroup = "planets"
     end
 
-end
+    Planet.mod = "rsu"
 
-log("Extending planets! " .. serpent.block(planets))
+end
 
 data:extend(planets)
 
@@ -1297,7 +1297,7 @@ local space_connections = {
         from = "jupiter",
         to = "saturn",
         order = "f[jupiter]-g[saturn]",
-        length = 65.5,
+        length = 6510700,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1436,7 +1436,7 @@ local space_connections = {
         from = "saturn",
         to = "uranus",
         order = "g[saturn]-h[uranus]",
-        length = 144.0,
+        length = 14415900,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1531,7 +1531,7 @@ local space_connections = {
         from = "uranus",
         to = "neptune",
         order = "h[uranus]-i[neptune]",
-        length = 162.6,
+        length = 16333100,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
