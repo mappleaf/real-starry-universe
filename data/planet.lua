@@ -1694,8 +1694,36 @@ for i, SpaceConnection in pairs(space_connections) do
 
     if SpaceConnection.icons == nil and SpaceConnection.icon == nil then
 
-        SpaceConnection.icons = {}
-        table.insert(SpaceConnection.icons, {icon = "__space-age__/graphics/icons/planet-route.png"})
+        -- Try to reconstruct the icons for space connections. Example:
+        -- icons = {
+        --     {
+        --       icon = "__space-age__/graphics/icons/planet-route.png"
+        --     },
+        --     {
+        --       icon = "__space-age__/graphics/icons/aquilo.png",
+        --       icon_size = 64,
+        --       scale = 0.33300000000000001,
+        --       shift = {
+        --         -6,
+        --         -6
+        --       }
+        --     },
+        --     {
+        --       icon = "__space-age__/graphics/icons/solar-system-edge.png",
+        --       icon_size = 64,
+        --       scale = 0.33300000000000001,
+        --       shift = {
+        --         6,
+        --         6
+        --       }
+        --     }
+        --   },
+
+        SpaceConnection.icons = {
+            {
+                icon = "__space-age__/graphics/icons/planet-route.png"
+            }
+        }
         local From = {}
         local To = {}
         for _,Planet in pairs(planets) do
@@ -1706,12 +1734,13 @@ for i, SpaceConnection in pairs(space_connections) do
                 To = Planet
             end
         end
+
         if From.icon ~= nil then
             local IconSize = From.icon_size or 64
             table.insert(SpaceConnection.icons, {
                 icon = From.icon,
                 icon_size = IconSize,
-                scale = 0.33300000000000001,
+                scale = 1 / ( IconSize / (64 * 0.33300000000000001) ),
                 shift = {
                     -6,
                     -6
@@ -1723,10 +1752,10 @@ for i, SpaceConnection in pairs(space_connections) do
             table.insert(SpaceConnection.icons, {
                 icon = To.icon,
                 icon_size = IconSize,
-                scale = 0.33300000000000001,
+                scale = 1 / ( IconSize / (64 * 0.33300000000000001) ),
                 shift = {
-                    -6,
-                    -6
+                    6,
+                    6
                 }
             })
         end

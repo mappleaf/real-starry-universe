@@ -88,8 +88,8 @@ for i, tech in ipairs(planet_technologies) do
                 },
                 time = 60
             },
-            localised_name = {"?", {"technology-name.planet-discovery-" .. planet_name}, {"technology-name.planet-discovery-fallback", "space-location-name." .. planet_name}},
-            localised_description = {"?", {"", "technology-description.planet-discovery-" .. planet_name}, {"technology-description.planet-discovery-fallback", "space-location-name." .. planet_name}}
+            localised_name = {"?", {"technology-name.planet-discovery-" .. planet_name}, {"technology-name.planet-discovery-fallback", {"space-location-name." .. planet_name}}},
+            localised_description = {"?", {"technology-description.planet-discovery-" .. planet_name}, {"technology-description.planet-discovery-fallback", {"space-location-name." .. planet_name}}}
         }
     })
 end
