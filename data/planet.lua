@@ -983,7 +983,7 @@ local space_connections = {
         from = "sol",
         to = "mercury",
         order = "0[sol]-a[mercury]",
-        length = 510100, -- A safe distance from the sun subtracted from the orbital distance of mercury in units of 100 kilometers.
+        length = 510.1, -- A safe distance from the sun subtracted from the orbital distance of mercury in units of 100 kilometers.
         space_effects = {
             background_color = { r = 0.2, g = 0.1, b = 0.3 },
             particle_color = { r = 0.6, g = 0.4, b = 0.2 }
@@ -1195,7 +1195,7 @@ local space_connections = {
         to = "io",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "f[jupiter]-g[io]",
-        length = 4218,
+        length = 350,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1211,7 +1211,7 @@ local space_connections = {
         to = "europa",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "p[io]-q[europa]",
-        length = 2493,
+        length = 253,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.3, g = 0.2, b = 0.5 },
@@ -1226,7 +1226,7 @@ local space_connections = {
         to = "ganymede",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "p[europa]-s[ganymede]",
-        length = 3993,
+        length = 393,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.5, g = 0.4, b = 0.7 },
@@ -1241,7 +1241,7 @@ local space_connections = {
         to = "callisto",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "f[ganymede]-g[callisto]",
-        length = 8123,
+        length = 813.8,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1272,7 +1272,7 @@ local space_connections = {
         to = "mimas",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "g[saturn]-h[mimas]",
-        length = 1855.4,
+        length = 125,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1287,7 +1287,7 @@ local space_connections = {
         to = "enceladus",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "n[mimas]-o[enceladus]",
-        length = 525,
+        length = 53,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.2, g = 0.2, b = 0.4 },
@@ -1302,7 +1302,7 @@ local space_connections = {
         to = "tethys",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "g[enceladus]-h[tethys]",
-        length = 566.3,
+        length = 57,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1318,7 +1318,7 @@ local space_connections = {
         to = "dione",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "g[tethys]-h[dione]",
-        length = 827.5,
+        length = 83,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1334,7 +1334,7 @@ local space_connections = {
         to = "rhea",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "g[dione]-h[rhea]",
-        length = 1496.5,
+        length = 149,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1350,7 +1350,7 @@ local space_connections = {
         to = "titan",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "g[rhea]-h[titan]",
-        length = 6948,
+        length = 661,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1366,7 +1366,7 @@ local space_connections = {
         to = "hyperion",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "n[titan]-r[hyperion]",
-        length = 2790.1,
+        length = 335,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.6 },
@@ -1381,7 +1381,7 @@ local space_connections = {
         to = "iapetus",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "n[hyperion]-r[iapetus]",
-        length = 20599.60,
+        length = 2027,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         space_effects = {
             background_color = { r = 0.4, g = 0.3, b = 0.6 },
@@ -1395,7 +1395,7 @@ local space_connections = {
         from = "saturn",
         to = "uranus",
         order = "g[saturn]-h[uranus]",
-        length = 144.0,
+        length = 14750.35,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1411,7 +1411,7 @@ local space_connections = {
         to = "ariel",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "h[uranus]-i[ariel]",
-        length = 1909,
+        length = 165,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1427,7 +1427,7 @@ local space_connections = {
         to = "umbriel",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "h[ariel]-i[umbriel]",
-        length = 751,
+        length = 74,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1443,7 +1443,7 @@ local space_connections = {
         to = "titania",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "h[umbriel]-i[titania]",
-        length = 1703,
+        length = 170,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1459,7 +1459,7 @@ local space_connections = {
         to = "oberon",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "h[titania]-i[oberon]",
-        length = 1472,
+        length = 147,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1475,7 +1475,7 @@ local space_connections = {
         to = "miranda",
         moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "h[oberon]-i[miranda]",
-        length = 4536,
+        length = 452,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.giant_asteroids),
         space_effects = {
@@ -1637,12 +1637,12 @@ local space_connections = {
 
     {
         type = "space-connection",
-        name = "gleba-asteroid-belt-inner", -- Mars to the inner asteroid belt
+        name = "gleba-asteroid-belt-inner",
         subgroup = "planet-connections",
         from = "gleba",
         to = "asteroid-belt-inner",
         order = "u[gleba]-e[asteroid-belt-inner]",
-        length = 9244.1, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        length = 9244.1,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1652,12 +1652,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "fulgora-asteroid-belt-inner", -- Mars to the inner asteroid belt
+        name = "fulgora-asteroid-belt-inner",
         subgroup = "planet-connections",
         from = "fulgora",
         to = "asteroid-belt-inner",
         order = "v[fulgora]-e[asteroid-belt-inner]",
-        length = 2767.5, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        length = 2767.5,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1667,12 +1667,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "asteroid-belt-inner-aquilo", -- Mars to the inner asteroid belt
+        name = "asteroid-belt-inner-aquilo",
         subgroup = "planet-connections",
         from = "asteroid-belt-inner",
         to = "aquilo",
         order = "e[asteroid-belt-inner]-w[aquilo]",
-        length = 8302.6, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        length = 8302.6,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1682,12 +1682,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "asteroid-belt-outer-solar-system-edge", -- Mars to the inner asteroid belt
+        name = "asteroid-belt-outer-solar-system-edge",
         subgroup = "planet-connections",
         from = "asteroid-belt-outer",
         to = "solar-system-edge",
         order = "j[asteroid-belt-outer]-y[solar-system-edge]",
-        length = 29919.57, -- Average distance between mars and the center of the inner asteroid belt in units of 100 kilometers.
+        length = 29919.57,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.belt_asteroids),
         space_effects = {
@@ -1697,12 +1697,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "vulcanus-mercury", -- 水星到金星
+        name = "vulcanus-mercury",
         subgroup = "planet-connections",
         from = "vulcanus",
         to = "mercury",
         order = "x[vulcanus]-a[mercury]",
-        length = 384.84, -- Average distance between mercury and venus in units of 100 kilometers.
+        length = 384.84,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
@@ -1712,12 +1712,12 @@ local space_connections = {
     },
     {
         type = "space-connection",
-        name = "mercury-slp-solar-system-sun", -- 水星到金星
+        name = "sol-slp-solar-system-sun",
         subgroup = "planet-connections",
-        from = "mercury",
+        from = "sol",
         to = "slp-solar-system-sun",
-        order = "a[mercury]-t[slp-solar-system-sun]",
-        length = 446.98, -- Average distance between mercury and venus in units of 100 kilometers.
+        order = "0[sol]-t[slp-solar-system-sun]",
+        length = 139.44,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
         --asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.aquilo_solar_system_edge),
         space_effects = {
@@ -1727,12 +1727,12 @@ local space_connections = {
     },
 }
 
-local MoonScaleFactor = 100 -- Scale each moon space connection down by this factor.
+local MoonScaleFactor = 1 -- Scale each moon space connection down by this factor.
 local ScaleFactor = 1 -- Scale each space connection by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
     SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
-
+    
     if SpaceConnection.moon then
         SpaceConnection.length = SpaceConnection.length / MoonScaleFactor -- Divide each length by the Moon Scale Factor.
     else
