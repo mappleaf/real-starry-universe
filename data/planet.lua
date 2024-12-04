@@ -1014,6 +1014,10 @@ for i, Planet in pairs(planets) do
         local distance = Planet.distance -- Distance in map coordinates between the sun and the planet.
         local distance_au = distance / 15 -- Distance in AU between the sun and the planet.
         
+        if distance_au == 0 then -- Check if the distance is equal to 0 and apply a small change so that the solar power is not infinity.
+            distance_au = 0.04623
+        end
+        
         local solar_power_on_earth = 1380 -- Solar power as measured in orbit around earth (watts per meter squared)
 
         local solar_power_in_space_unscaled = solar_power_on_earth / (distance_au * distance_au) -- Solar power as measured in orbit around the planet (watts per meter squared)
