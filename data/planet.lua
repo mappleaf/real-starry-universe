@@ -1009,12 +1009,20 @@ for i, Planet in pairs(planets) do
         Planet.subgroup = "planets"
     end
 
-    if Planet.type == "planet" and Planet.surface_properties then
-        if Planet.surface_properties["solar-power"] then
-            Planet.solar_power_in_space = Planet.surface_properties["solar-power"] -- Set power in space to the ground value, because that's what the ground value usually is...
+    -- Solar power in space is based purely on distance and the units in which we measure it.
+    if not Planet.solar_power_in_space then
+        local distance = Planet.distance -- Distance in map coordinates between the sun and the planet.
+        local distance_au = distance / 15 -- Distance in AU between the sun and the planet.
+        
+        if distance_au == 0 then -- Check if the distance is equal to 0 and apply a small change so that the solar power is not infinity.
+            distance_au = 0.04623
         end
-    else
-        Planet.solar_power_in_space = 1000000 -- Temporary value until I'm able to work on this more.
+        
+        local solar_power_on_earth = 1380 -- Solar power as measured in orbit around earth (watts per meter squared)
+
+        local solar_power_in_space_unscaled = solar_power_on_earth / (distance_au * distance_au) -- Solar power as measured in orbit around the planet (watts per meter squared)
+        local solar_power_in_space = ( solar_power_in_space_unscaled / solar_power_on_earth ) * 100 -- Solar power as measured in orbit around the planet (percentage of that on earth)
+        Planet.solar_power_in_space = solar_power_in_space -- Set planet property to the local variable.
     end
 
     Planet.mod = "rsu"
