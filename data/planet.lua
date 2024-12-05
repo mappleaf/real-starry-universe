@@ -22,6 +22,7 @@ local planets = {
         orientation = 0 / 360, -- Orinetation doesn't matter for the sun.
         magnitude = 5, -- The sizes of planets shown on star maps. 1 is the size of Earth (12,742km).  11.2 is the size of Jupiter (139,820).
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
+        prerequisite = "planet-discovery-mercury",
     },
     {
         type = "planet",
@@ -42,6 +43,7 @@ local planets = {
             pressure = 0, -- 无明显大气压
             gravity = 3.7, -- 重力较小
         },
+        prerequisite = "planet-discovery-venus",
     },
     {
         type = "planet",
@@ -62,6 +64,7 @@ local planets = {
             pressure = 920000, -- 极高的大气压（单位：Pa）
             gravity = 8.87, -- 类似于地球的重力
         },
+        prerequisite = "planet-discovery-earth",
     },
     {
         type = "planet",
@@ -105,6 +108,7 @@ local planets = {
             pressure = 0, -- 无大气
             gravity = 1.62, -- 重力远小于地球
         },
+        prerequisite = "planet-discovery-earth",
     },
     {
         type = "planet",
@@ -125,6 +129,7 @@ local planets = {
             pressure = 6, -- 极低的大气压（单位：Pa）
             gravity = 3.71, -- 重力较低
         },
+        prerequisite = "planet-discovery-earth",
     },
     {
         type = "planet",
@@ -148,6 +153,7 @@ local planets = {
             pressure = 0, -- Phobos is an asteroid-like moon and has no atmosphere.
             gravity = 0.01, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-mars",
     },
     {
         type = "planet",
@@ -171,6 +177,7 @@ local planets = {
             pressure = 0, -- Deimos is an asteroid-like moon and has no atmosphere.
             gravity = 0.003, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-mars",
     },
     {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must go to ceres
@@ -191,6 +198,7 @@ local planets = {
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
             gravity = 0.01, -- Aproximate surface gravity for a specific asteroid (which will right now represnent all asteroids)
         },
+        prerequisite = "planet-discovery-mars",
     },
     {
         type = "planet",
@@ -211,6 +219,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.028, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-inner",
     },
 
     {
@@ -232,6 +241,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.025, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-inner",
     },
 
     {
@@ -253,6 +263,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.020, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-inner",
     },
     {
         type = "planet",
@@ -273,6 +284,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.005, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-inner",
     },
     {
         type = "planet",
@@ -293,6 +305,7 @@ local planets = {
             pressure = 200000000, -- 压力极高（单位：Pa）
             gravity = 24.79, -- 极高重力
         },
+        prerequisite = "planet-discovery-asteroid-belt-inner",
     },
     {
         type = "planet",
@@ -315,6 +328,7 @@ local planets = {
             pressure = 0, -- Io doesn't have an atmosphere
             gravity = 1.796502844, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-jupiter",
     },
     {
         type = "planet",
@@ -339,6 +353,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.134, -- 重力较低
         },
+        prerequisite = "planet-discovery-jupiter",
     },
     {
         type = "planet",
@@ -363,6 +378,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.146, -- 重力较低
         },
+        prerequisite = "planet-discovery-jupiter",
     },
     {
         type = "planet",
@@ -385,6 +401,7 @@ local planets = {
             pressure = 0, -- Callisto doesn't have an atmosphere
             gravity = 1.235, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-jupiter",
     },
     {
         type = "planet",
@@ -405,6 +422,7 @@ local planets = {
             pressure = 100000000, -- 大气压极高（单位：Pa）
             gravity = 10.44, -- 类似木星的重力
         },
+        prerequisite = "planet-discovery-jupiter",
     },
     {
         type = "planet",
@@ -427,6 +445,7 @@ local planets = {
             pressure = 0, -- Mimas doesn't have an atmosphere
             gravity = 0.064, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -451,6 +470,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.011, -- 重力极低
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -473,6 +493,7 @@ local planets = {
             pressure = 0, -- Tethys doesn't have an atmosphere
             gravity = 0.145, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -495,6 +516,7 @@ local planets = {
             pressure = 0, -- Dione doesn't have an atmosphere
             gravity = 0.212, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -517,6 +539,7 @@ local planets = {
             pressure = 0, -- Rhea doesn't have an atmosphere
             gravity = 0.26, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -540,7 +563,8 @@ local planets = {
            ["solar-power"] = 3.7, -- 太阳能效率非常低
            pressure = 146700, -- 大气压极高（单位：Pa）
            gravity = 0.14, -- 重力较低
-       },
+        },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -564,7 +588,8 @@ local planets = {
            ["solar-power"] = 1.1, -- Solar power on hyperion, similar to that of saturn - so hopefully accurate
            pressure = 0, -- Hyperion doesn't have an atmosphere. (How could it, not being gravitationally rounded?)
            gravity = 0.02, -- This is in m/s, convert as necessary. Average surface gravity across the whole unround moon.
-       },
+        },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -587,6 +612,7 @@ local planets = {
             pressure = 0, -- Iapetus doesn't have an atmosphere
             gravity = 0.223, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-saturn",
      },
     {
         type = "planet",
@@ -607,6 +633,7 @@ local planets = {
             pressure = 80000000, -- 大气压较高（单位：Pa）
             gravity = 8.69, -- 类似地球的重力
         },
+        prerequisite = "planet-discovery-saturn",
     },
     {
         type = "planet",
@@ -629,6 +656,7 @@ local planets = {
             pressure = 0, -- Ariel doesn't have an atmosphere
             gravity = 0.246, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -651,6 +679,7 @@ local planets = {
             pressure = 0, -- Umbriel doesn't have an atmosphere
             gravity = 0.195, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -673,6 +702,7 @@ local planets = {
             pressure = 0, -- Titania doesn't have an atmosphere
             gravity = 0.371, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -695,6 +725,7 @@ local planets = {
             pressure = 0, -- Oberon doesn't have an atmosphere
             gravity = 0.358, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -717,6 +748,7 @@ local planets = {
             pressure = 0, -- Miranda doesn't have an atmosphere
             gravity = 0.076, -- This is in m/s, convert as necessary.
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -737,6 +769,7 @@ local planets = {
             pressure = 90000000, -- 高大气压（单位：Pa）
             gravity = 11.15, -- 稍高于地球的重力
         },
+        prerequisite = "planet-discovery-uranus",
     },
     {
         type = "planet",
@@ -760,6 +793,7 @@ local planets = {
             pressure = 1400, -- 大气压较低（单位：Pa）
             gravity = 0.079, -- 重力极低
         },
+        prerequisite = "planet-discovery-neptune",
     },
     {
         type = "planet",
@@ -780,6 +814,7 @@ local planets = {
             pressure = 0.1, -- 极其稀薄的大气压
             gravity = 0.62, -- 极低重力
         },
+        prerequisite = "planet-discovery-neptune",
     },
     {
         type = "planet",
@@ -802,12 +837,13 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.028, -- 重力极低
         },
+        prerequisite = "planet-discovery-pluto",
     },
     {
         type = "space-location", -- You should be able to land on asteroids in the asteroid belt. but must land on one of it like pluto.
         name = "asteroid-belt-outer",
         icon = "__real-starry-universe__/graphics/asteroid-belt-outer.png",
-        icon_size = 1024,
+        icon_size = 512,
         gravity_pull = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         distance = 120, -- 40 AU (centre of the outer asteroid belt)
         orientation = 359 / 360,
@@ -822,6 +858,7 @@ local planets = {
             pressure = 0, -- The pressure in the inner asteroid belt is 0, as there is no atmosphere to sustain (air) pressure, and no large enough objects to sustain an atmosphere.
             gravity = 0.01, -- Aproximate surface gravity for asteroids in the outer asteroid belt (also known as kuiper belt)
         },
+        prerequisite = "planet-discovery-neptune",
     },
     {
         type = "planet",
@@ -842,6 +879,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.05, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-outer",
     },
     {
         type = "planet",
@@ -862,6 +900,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.04, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-outer",
     },
     {
         type = "planet",
@@ -882,6 +921,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.08, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-outer",
     },
     {
         type = "planet",
@@ -902,6 +942,7 @@ local planets = {
             pressure = 0, -- 大气压为零
             gravity = 0.06, -- 重力极低
         },
+        prerequisite = "planet-discovery-asteroid-belt-outer",
     },
 
 }
@@ -917,18 +958,13 @@ for i, Planet in pairs(planets) do
         end
 
         for j, Moon in pairs(Moons) do
-            log("Scanning moon \"" .. Moon.name .. "\" of planet \"" .. Planet.name .. "\". Distance: " .. tostring(Moon.distance) .. ", Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360")
-            Moon.orientation = Moon.orientation + ( CurvingFactor * Moon.distance )
+            Moon.orientation = Moon.orientation + ( CurvingFactor * ( Moon.distance - 1 ) )
             if Moon.orientation > 1 then
-                log("Modulizating moon. Current orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
                 Moon.orientation = Moon.orientation % 1 -- Label orientation cannot be greater than 1.
-                log("Moon modulized. New orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
             end
-            log("New Distance: " .. tostring(Moon.distance) .. ", New Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360")
         end
     else
         if not Planet.label_orientation then
-            log("Changed label orientation of \"" .. Planet.name .. "\" from nil to 270°")
             Planet.label_orientation = ( 270 / 360 + Planet.orientation )
             if Planet.label_orientation > 1 then
                 Planet.label_orientation = Planet.label_orientation % 1 -- Label orientation cannot be greater than 1.
@@ -968,9 +1004,25 @@ for i, Planet in pairs(planets) do
         Planet.subgroup = "planets"
     end
 
-end
+    -- Solar power in space is based purely on distance and the units in which we measure it.
+    if not Planet.solar_power_in_space then
+        local distance = Planet.distance -- Distance in map coordinates between the sun and the planet.
+        local distance_au = distance / 15 -- Distance in AU between the sun and the planet.
 
-log("Extending planets! " .. serpent.block(planets))
+        if distance_au == 0 then -- Check if the distance is equal to 0 and apply a small change so that the solar power is not infinity.
+            distance_au = 0.04623
+        end
+        
+        local solar_power_on_earth = 1380 -- Solar power as measured in orbit around earth (watts per meter squared)
+
+        local solar_power_in_space_unscaled = solar_power_on_earth / (distance_au * distance_au) -- Solar power as measured in orbit around the planet (watts per meter squared)
+        local solar_power_in_space = ( solar_power_in_space_unscaled / solar_power_on_earth ) * 100 -- Solar power as measured in orbit around the planet (percentage of that on earth)
+        Planet.solar_power_in_space = solar_power_in_space -- Set planet property to the local variable.
+    end
+
+    Planet.mod = "rsu"
+
+end
 
 data:extend(planets)
 
@@ -1504,6 +1556,7 @@ local space_connections = {
         subgroup = "planet-connections",
         from = "neptune",
         to = "triton",
+        moon = true, -- The lengths of connections involving moons should not be scaled down as much.
         order = "t[neptune]-u[triton]",
         length = 3.29,
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_gleba),
@@ -1749,8 +1802,36 @@ for i, SpaceConnection in pairs(space_connections) do
 
     if SpaceConnection.icons == nil and SpaceConnection.icon == nil then
 
-        SpaceConnection.icons = {}
-        table.insert(SpaceConnection.icons, {icon = "__space-age__/graphics/icons/planet-route.png"})
+        -- Try to reconstruct the icons for space connections. Example:
+        -- icons = {
+        --     {
+        --       icon = "__space-age__/graphics/icons/planet-route.png"
+        --     },
+        --     {
+        --       icon = "__space-age__/graphics/icons/aquilo.png",
+        --       icon_size = 64,
+        --       scale = 0.33300000000000001,
+        --       shift = {
+        --         -6,
+        --         -6
+        --       }
+        --     },
+        --     {
+        --       icon = "__space-age__/graphics/icons/solar-system-edge.png",
+        --       icon_size = 64,
+        --       scale = 0.33300000000000001,
+        --       shift = {
+        --         6,
+        --         6
+        --       }
+        --     }
+        --   },
+
+        SpaceConnection.icons = {
+            {
+                icon = "__space-age__/graphics/icons/planet-route.png"
+            }
+        }
         local From = {}
         local To = {}
         for _,Planet in pairs(planets) do
@@ -1761,12 +1842,13 @@ for i, SpaceConnection in pairs(space_connections) do
                 To = Planet
             end
         end
+
         if From.icon ~= nil then
             local IconSize = From.icon_size or 64
             table.insert(SpaceConnection.icons, {
                 icon = From.icon,
                 icon_size = IconSize,
-                scale = 0.33300000000000001,
+                scale = 1 / ( IconSize / (64 * 0.33300000000000001) ),
                 shift = {
                     -6,
                     -6
@@ -1778,10 +1860,10 @@ for i, SpaceConnection in pairs(space_connections) do
             table.insert(SpaceConnection.icons, {
                 icon = To.icon,
                 icon_size = IconSize,
-                scale = 0.33300000000000001,
+                scale = 1 / ( IconSize / (64 * 0.33300000000000001) ),
                 shift = {
-                    -6,
-                    -6
+                    6,
+                    6
                 }
             })
         end

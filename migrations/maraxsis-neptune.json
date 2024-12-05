@@ -1,0 +1,10 @@
+{
+    "planet":
+    [
+      ["neptune", "maraxsis"]
+    ],
+    "technology":
+    [
+      ["planet-discovery-neptune", "planet-discovery-maraxsis"]
+    ]
+}
