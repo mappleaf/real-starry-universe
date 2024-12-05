@@ -25,4 +25,32 @@ end
 
 RotationUtil.Unrelate = Unrelate
 
+-- Change coordinate systems from that of the first and second paramaters to one relative to the second. Expects a "space-location" or "planet" Prototype for each paramater, with both paramaters in the same coordinate system.
+local function Relate(Planet, ParentObject)
+    local AB = ParentObject.distance
+    local AC = Planet.distance
+    local AB_AC = math.abs(Planet.orientation - ParentObject.orientation)
+
+    local AB_AC_Radians = AB_AC * 2 * math.pi
+
+    local BC = math.sqrt(AB^2 + AC^2 - 2 * AB * AC * math.cos(AB_AC_Radians))
+
+    local SIN_AB_AC = math.sqrt(1 - math.cos(AB_AC_Radians)^2)
+    local SIN_AB_BC_Radians = (BC * SIN_AB_AC) / AC
+
+    SIN_AB_BC_Radians = math.max(-1, math.min(1, SIN_AB_BC_Radians))
+
+    local AB_BC_Radians = math.asin(SIN_AB_BC_Radians)
+
+    local AB_BC = AB_BC_Radians / (2 * math.pi)
+
+    Planet.orientation = AB_BC
+    Planet.distance = BC - ParentObject.magnitude
+    if Planet.orientation > 1 then
+        Planet.orientation = Planet.orientation % 1 -- Orientation cannot be greater than 1.
+    end
+end
+
+RotationUtil.Relate = Relate
+
 return RotationUtil
