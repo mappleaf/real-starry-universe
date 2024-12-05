@@ -4,7 +4,7 @@
     "title": "Realistic Celestial Universe",
     "author": "plexpt",
     "description": "A mod that transforms the Factorio universe into a realistic starry cosmos. Bringing real astronomical data, Explore planets and a real solar system.",
-    "homepage": "https://github.com/plexpt",
+    "homepage": "https://github.com/mappleaf/tenebris",
     "dependencies": [
         "space-age",
         "alien-biomes"
