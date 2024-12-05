@@ -4,6 +4,8 @@ local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-de
 local planet_catalogue_gleba = require("__space-age__.prototypes.planet.procession-catalogue-gleba")
 local rotation_util = require("data.rotation_util")
 
+require("data.mod-compat-planet")
+
 local planet_map_gen = require("data.planet-map-gen")
 local day = 24 * hour
 
@@ -958,13 +960,18 @@ for i, Planet in pairs(planets) do
         end
 
         for j, Moon in pairs(Moons) do
+            log("Scanning moon \"" .. Moon.name .. "\" of planet \"" .. Planet.name .. "\". Distance: " .. tostring(Moon.distance) .. ", Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360")
             Moon.orientation = Moon.orientation + ( CurvingFactor * ( Moon.distance - 1 ) )
             if Moon.orientation > 1 then
+                log("Modulizating moon. Current orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
                 Moon.orientation = Moon.orientation % 1 -- Label orientation cannot be greater than 1.
+                log("Moon modulized. New orientation: " .. tostring(Moon.orientation) * 360 .. " / 360.")
             end
+            log("New Distance: " .. tostring(Moon.distance) .. ", New Orientation: " .. tostring(Moon.orientation) * 360 .. " / 360")
         end
     else
         if not Planet.label_orientation then
+            log("Changed label orientation of \"" .. Planet.name .. "\" from nil to 270°")
             Planet.label_orientation = ( 270 / 360 + Planet.orientation )
             if Planet.label_orientation > 1 then
                 Planet.label_orientation = Planet.label_orientation % 1 -- Label orientation cannot be greater than 1.
