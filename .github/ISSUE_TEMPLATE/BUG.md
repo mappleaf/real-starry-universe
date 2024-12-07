@@ -26,9 +26,9 @@ A clear and concise description of what actually happened.
 If applicable, add screenshots to help explain your problem.
 
 ### Environment
-- OS: [e.g., iOS, Windows, Linux]
-- Browser: [e.g., Chrome, Firefox, Safari]
-- Version: [e.g., 22]
+- Factorio Version: [e.g., 2.0.20, 2.0.23, experimental]
+- RCU Version: [e.g., 1.1.0, 1.1.5, development]
+- Other mods: [eg., maraxsis, tenebris, naufulglebunusilo] 
 
 ### Additional Context
 Add any other context about the problem here.
