@@ -28,6 +28,8 @@ function MapGen.mercury()
     --map_gen_setting.aux_climate_control = true
     --map_gen_setting.moisture_climate_control = false
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
@@ -73,6 +75,9 @@ function MapGen.venus()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = false
+
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
@@ -82,6 +87,9 @@ function MapGen.earth()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
     -- This is completely fine as-is, earth is very similar to nauvis.
     -- 保持完整的nauvis设置，因为它已经很好地模拟了地球环境
+
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
@@ -134,17 +142,24 @@ function MapGen.mars()
 
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = false
+
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.phobos()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.deimos()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -155,11 +170,15 @@ function MapGen.asteroid_belt_1()
     -- The asteroid belt between Mars and Jupiter.
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.ceres()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -167,15 +186,21 @@ end
 function MapGen.hygiea()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 function MapGen.pallas()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 function MapGen.vesta()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -183,20 +208,28 @@ end
 function MapGen.makemake()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 function MapGen.eris()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
 function MapGen.haumea()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 function MapGen.gonggong()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -204,11 +237,15 @@ end
 function MapGen.europa()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.titan()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -216,11 +253,15 @@ end
 function MapGen.ganymede()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.triton()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -228,11 +269,15 @@ end
 function MapGen.charon()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.enceladus()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -264,17 +309,23 @@ function MapGen.jupiter()
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = false
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.io()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.callisto()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -300,11 +351,15 @@ function MapGen.saturn()
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.mimas()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -312,11 +367,15 @@ end
 function MapGen.tethys()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.dione()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -324,17 +383,23 @@ end
 function MapGen.rhea()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.hyperion()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.iapetus()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -365,11 +430,15 @@ function MapGen.uranus()
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.ariel()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -377,11 +446,15 @@ end
 function MapGen.umbriel()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.titania()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -389,11 +462,15 @@ end
 function MapGen.oberon()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
 function MapGen.miranda()
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -417,6 +494,8 @@ function MapGen.neptune()
     map_gen_setting.aux_climate_control = true
     map_gen_setting.moisture_climate_control = true
 
+    map_gen_setting.autoplace_controls = nil
+
     return map_gen_setting
 end
 
@@ -425,6 +504,8 @@ end
 function MapGen.asteroid_belt_2()
     -- The asteroid belt between Neptune and Solar System Edge.
     local map_gen_setting = table.deepcopy(data.raw.planet.nauvis.map_gen_settings)
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -452,6 +533,8 @@ function MapGen.pluto()
     --    ["dirt-1"] = {},
     --    ["dirt-2"] = {}
     --}
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end
@@ -539,6 +622,8 @@ function MapGen.luna()
         ["volcanic-jagged-ground"] = {},
         ["volcanic-pumice-stones"] = {},
     }
+
+    map_gen_setting.autoplace_controls = nil
 
     return map_gen_setting
 end

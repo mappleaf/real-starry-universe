@@ -58,6 +58,8 @@ if mods["maraxsis"] then -- Check if the mod exists, just in case. Plus it's a c
     maraxsis.surface_properties["gravity"] = neptune.surface_properties["gravity"] -- May need to be removed.
     maraxsis_trench.surface_properties["day-night-cycle"] = neptune.surface_properties["day-night-cycle"] -- May need to be removed.
     maraxsis_trench.surface_properties["gravity"] = neptune.surface_properties["gravity"] -- May need to be removed.
+    
+    maraxsis.map_gen_settings.autoplace_controls = nil
 
     maraxsis.draw_orbit = neptune.draw_orbit
 
