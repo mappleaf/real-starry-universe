@@ -77,7 +77,7 @@ local planets = {
         distance = 15, -- 1 AU
         orientation = 120 / 360,
         magnitude = 1, -- The sizes of planets shown on star maps. 1 is the size of Earth (12,742km).  11.2 is the size of Jupiter (139,820).
-        map_gen_settings = planet_map_gen.normal(),
+        map_gen_settings = planet_map_gen.earth(),
         asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_vulcanus, 0.9),
         surface_properties = {
             -- Earth (地球)
