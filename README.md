@@ -2,7 +2,7 @@
 **Realistic Celestial Universe**
 
 
-## **[Introduction]**
+## **Introduction**
 Welcome to the Realistic Celestial Universe! This mod brings scientifically accurate planetary environments to **Factorio 2.0**, allowing players to experience the unique challenges and environments of our solar system.
 
 #### **Key Features:**
@@ -11,12 +11,12 @@ Welcome to the Realistic Celestial Universe! This mod brings scientifically accu
     - Day-night cycles, solar power efficiency, magnetic fields, atmospheric pressure, and gravity are modeled after real astronomical data.
     - Example:
         - Venus has an extreme atmospheric pressure of 920,000 Pa.
-        - Jupiter’s magnetic field is 20,000 times stronger than Earth’s.
+        - Jupiter’s magnetic field is 20,000 times stronger than that of Earth.
         - Mars features low gravity and a thin atmosphere.
         - Mercury doesn't contain an atmosphere.
 
 2. **Complete Planetary Exploration System:**
-    - Explore the Solar System and beyond with all its planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, and Luna (the Moon).
+    - Explore the Solar System and beyond with all its planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune.
     - Unique day-night cycles:
         - Mercury: 58.7 Earth days
         - Jupiter: 0.416 Earth days
@@ -40,7 +40,7 @@ Welcome to the Realistic Celestial Universe! This mod brings scientifically accu
 **Are you ready for the ultimate challenge?**
 - Can you build a sustainable base in Pluto’s cold and dark environment?
 - Can you utilize Jupiter’s strong magnetic fields or Luna’s high solar power efficiency for maximum factory productivity?
-- Can you brave the storms of interstellar space?
+- Can you brave the *"storms"* of interstellar space?
 
 ---
 
