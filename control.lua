@@ -1,3 +1,3 @@
-function script.on_init()
+-- function script.on_init()
     -- Do something!
-end
+-- end
