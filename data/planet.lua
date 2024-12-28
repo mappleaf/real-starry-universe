@@ -1791,7 +1791,7 @@ local MoonScaleFactor = 1 -- Scale each moon space connection down by this facto
 local ScaleFactor = 1 -- Scale each space connection by this factor.
 
 for i, SpaceConnection in pairs(space_connections) do
-    SpaceConnection.length = SpaceConnection.length * 100 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
+    SpaceConnection.length = SpaceConnection.length * 20 -- Multiply each space connection length by 100 as the lengths in each space connection as defined above are in kilometers times 100.
     
     if SpaceConnection.moon then
         SpaceConnection.length = SpaceConnection.length / MoonScaleFactor -- Divide each length by the Moon Scale Factor.
