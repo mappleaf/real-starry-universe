@@ -17,7 +17,7 @@ local function merge_prerequisites(technology_to_merge_into, technology_to_merge
     end
 end
 
-if mods["maraxsis"] then -- Check if the mod exists, just in case. Plus it's a clean way to distinglish code for different mod compatibilities.
+if mods["maraxsis"] and settings.startup["replace-neptune-with-maraxsis"].value == true then -- Check if the mod exists, just in case. Plus it's a clean way to distinglish code for different mod compatibilities.
     local maraxsis = data.raw["planet"]["maraxsis"]
     local maraxsis_trench = data.raw["planet"]["maraxsis-trench"]
     local maraxsis_discovery = data.raw["technology"]["planet-discovery-maraxsis"]
